@@ -365,14 +365,14 @@ export function App() {
       const fitAllScale =
         typeof window !== 'undefined'
           ? Math.max(
-              0.24,
+              0.22,
               Math.min(
-                0.56,
-                Math.min(window.innerWidth, window.innerHeight) / 1780
+                0.5,
+                Math.min(window.innerWidth, window.innerHeight) / 2240
               )
             )
-          : 0.46;
-      animateCameraTo({ tx: 0, ty: 8, scale: fitAllScale }, 680);
+          : 0.4;
+      animateCameraTo({ tx: 0, ty: 28, scale: fitAllScale }, 680);
     }
   }, [expandedFamilies.size, families, animateCameraTo, setUrlHash]);
 
@@ -381,13 +381,13 @@ export function App() {
     const hasDrawer = Boolean(selectedConceptSlug || selectedCore);
     const targetScale = anyOpen
       ? Math.max(
-          0.26,
-          Math.min(0.56, Math.min(window.innerWidth, window.innerHeight) / 1780)
+          0.22,
+          Math.min(0.5, Math.min(window.innerWidth, window.innerHeight) / 2240)
         )
       : getInitialScale();
     animateCameraTo({
       tx: hasDrawer ? getDrawerOffsetX() : 0,
-      ty: 8,
+      ty: anyOpen ? 28 : 8,
       scale: targetScale,
     });
   }, [expandedFamilies.size, selectedConceptSlug, selectedCore, animateCameraTo]);
@@ -854,17 +854,28 @@ export function App() {
         </nav>
       )}
 
-      {/* Discreet Source Attribution Pill (desktop bottom-right) */}
+      {/* Discreet Source Attribution & Suggest Concept Pills (desktop bottom-right) */}
       {!selectedConcept && !selectedCore && (
-        <a
-          href="https://turrero.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-4 right-4 z-20 hidden md:inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-amber-400/30 hover:text-amber-200"
-        >
-          <span>{t.basedOnAttribution}</span>
-          <ExternalLink className="h-3 w-3 opacity-70" />
-        </a>
+        <div className="fixed bottom-4 right-4 z-20 hidden md:flex flex-col items-end gap-1.5">
+          <a
+            href="https://github.com/marcmonf/entendiendo-cps/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-cyan-400/35 hover:text-cyan-200"
+          >
+            <span>{t.suggestConcept}</span>
+            <ExternalLink className="h-3 w-3 opacity-70" />
+          </a>
+          <a
+            href="https://turrero.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-amber-400/30 hover:text-amber-200"
+          >
+            <span>{t.basedOnAttribution}</span>
+            <ExternalLink className="h-3 w-3 opacity-70" />
+          </a>
+        </div>
       )}
 
       {/* Gentle First-Visit Onboarding Whisper Pill (desktop) */}

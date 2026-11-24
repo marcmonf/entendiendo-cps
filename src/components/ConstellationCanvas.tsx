@@ -213,7 +213,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
       const py = e.clientY - rect.top - rect.height / 2;
 
       const factor = Math.exp(-e.deltaY * 0.0014);
-      const nextScale = Math.min(2.15, Math.max(0.36, camera.scale * factor));
+      const nextScale = Math.min(2.15, Math.max(0.22, camera.scale * factor));
       const ratio = nextScale / camera.scale;
 
       onCameraChange({
@@ -281,7 +281,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
       const p = pinchRef.current;
       const nextScale = Math.min(
         2.15,
-        Math.max(0.36, p.initialScale * (dist / p.initialDist))
+        Math.max(0.22, p.initialScale * (dist / p.initialDist))
       );
       const ratio = nextScale / p.initialScale;
       onCameraChange({
@@ -451,11 +451,11 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
               strokeDasharray="2 10"
             />
 
-            {/* Delicate orbital ring labels placed cleanly in clear open sector (-115 deg / top-left) */}
+            {/* Delicate orbital ring labels placed cleanly in clear open sector (-110 deg, between Oficio and Tecnología) */}
             <text
-              x={-R_FAMILY * 0.42}
-              y={-R_FAMILY * 0.86}
-              textAnchor="end"
+              x={-R_FAMILY * 0.34}
+              y={-R_FAMILY * 0.94 - 8}
+              textAnchor="middle"
               fill="rgba(148, 163, 184, 0.3)"
               fontSize={9}
               letterSpacing="0.2em"
@@ -466,9 +466,9 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
             {hasExpandedAny && (
               <>
                 <text
-                  x={-R_CORE_BASE * 0.44}
-                  y={-R_CORE_BASE * 0.87}
-                  textAnchor="end"
+                  x={-R_CORE_BASE * 0.34}
+                  y={-R_CORE_BASE * 0.94 - 8}
+                  textAnchor="middle"
                   fill="rgba(148, 163, 184, 0.24)"
                   fontSize={8.5}
                   letterSpacing="0.2em"
@@ -477,9 +477,9 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                   {t.ringGateway}
                 </text>
                 <text
-                  x={-R_DEEP_BASE * 0.44}
-                  y={-R_DEEP_BASE * 0.87}
-                  textAnchor="end"
+                  x={-R_DEEP_BASE * 0.34}
+                  y={-R_DEEP_BASE * 0.94 - 8}
+                  textAnchor="middle"
                   fill="rgba(148, 163, 184, 0.2)"
                   fontSize={8.5}
                   letterSpacing="0.2em"

@@ -30,6 +30,7 @@ export const UI_ES: UIStrings = {
   expandAll: 'Desplegar todo',
   collapseAll: 'Contraer todo',
   basedOnAttribution: 'Basado en El Turrero Post · @Recuenco',
+  suggestConcept: '¿Falta un concepto? Sugiérelo',
   onboardingWhisperPrefix: 'Haz clic en una',
   onboardingWhisperStrong: 'constelación',
   onboardingWhisperMid: 'para abrir sus ramas · o',
@@ -108,14 +109,14 @@ export const UI_ES: UIStrings = {
   coreFifteenThemesHelp:
     'Pulsa cualquier temática para desplegar su constelación en el mapa.',
   coreCreditPre:
-    'Basado en el archivo público, glosario (90 conceptos) y biblioteca (324 libros) de',
+    'Basado en el archivo público (263 turras), glosario (90 conceptos) y biblioteca (324 libros) de',
   coreCreditPost:
     ', recopilado por la Comunidad CPS a partir de las turras de Javier G. Recuenco.',
 
   indexEyebrow: 'El Turrero Post · 9 Constelaciones · 4 Niveles',
   indexTitle: 'Atlas de Complex Problem Solving',
   indexSubtitle:
-    'Los 94 conceptos de Javier G. Recuenco explicados en llano, con práctica, lectura a fondo de las 131 turras y libros citados.',
+    'Los 121 conceptos de Javier G. Recuenco explicados en llano, con práctica, lectura a fondo de las 263 turras y libros citados.',
   indexCountBadge: '{visible} de {total} conceptos',
   indexQuickStartTitle: 'Empieza aquí',
   indexQuickStartSub: 'Ruta de 8 paradas',
@@ -312,7 +313,7 @@ export const TOUR_DESKTOP_ES: TourStepCopy[] = [
     id: 'welcome',
     title: 'Bienvenido al Observatorio CPS',
     description:
-      'Aquí tienes 94 conceptos de Complex Problem Solving organizados en 9 constelaciones y 4 niveles de profundidad (de lo más sencillo a la lectura de las 131 turras originales). Haz clic en cualquier constelación para desplegar sus ramas, o en el Sol central para ver los 4 Pilares y los 5 Atractores.',
+      'Aquí tienes 121 conceptos de Complex Problem Solving organizados en 9 constelaciones y 4 niveles de profundidad (de lo más sencillo a la lectura de las 263 turras originales). Haz clic en cualquier constelación para desplegar sus ramas, o en el Sol central para ver los 4 Pilares y los 5 Atractores.',
     tip: 'Arrastra el fondo para moverte libremente por el cielo.',
   },
   {
@@ -352,7 +353,7 @@ export const TOUR_DESKTOP_ES: TourStepCopy[] = [
     target: 'controls',
     title: 'Zoom, encuadre y desplegar todo',
     description:
-      'Desde estos controles puedes acercar (+), alejar (−), centrar la vista o desplegar las 94 estrellas a la vez con un solo clic.',
+      'Desde estos controles puedes acercar (+), alejar (−), centrar la vista o desplegar las 121 estrellas a la vez con un solo clic.',
     tip: 'También puedes hacer zoom con la rueda del ratón o pellizcando con dos dedos en móvil y tablet.',
   },
 ];
@@ -362,7 +363,7 @@ export const TOUR_MOBILE_ES: TourStepCopy[] = [
     id: 'm-welcome',
     title: 'Bienvenido al Observatorio CPS',
     description:
-      'Tienes 94 conceptos de Complex Problem Solving de Javier G. Recuenco organizados en 9 constelaciones. Toca cualquier tarjeta para abrir sus 4 niveles: En llano, Práctica, A fondo (131 turras) y Fuentes.',
+      'Tienes 121 conceptos de Complex Problem Solving de Javier G. Recuenco organizados en 9 constelaciones. Toca cualquier tarjeta para abrir sus 4 niveles: En llano, Práctica, A fondo (263 turras) y Fuentes.',
     tip: 'Puedes empezar por la ruta guiada «Empieza aquí» o filtrar por familia.',
   },
   {

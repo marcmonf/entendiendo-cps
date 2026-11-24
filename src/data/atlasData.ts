@@ -1,5 +1,5 @@
 // Generado a partir del archivo público de El Turrero Post (https://turrero.vercel.app/)
-// Contiene 94 conceptos organizados en 9 constelaciones + 5 rutas guiadas.
+// Contiene 121 conceptos organizados en 9 constelaciones + 5 rutas guiadas (V2: barrido completo de 263 turras).
 
 export interface ConceptSource {
   threadId: string;
@@ -233,11 +233,13 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "business-acumen",
+      "efecto-cobra",
       "emergencia",
       "factor-x",
       "falacia-de-mcnamara",
       "huevos-de-serpiente",
       "incentivo-perverso",
+      "metaincentivos",
       "private-equity",
       "procesos-de-alta-variabilidad",
       "skin-in-the-game"
@@ -304,7 +306,8 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "ecosistemas-tecnologicos",
-      "estrategia"
+      "estrategia",
+      "metaincentivos"
     ],
     "sources": [
       {
@@ -371,6 +374,7 @@ export const CONCEPTS: Concept[] = [
       "arquitectura-de-incentivos",
       "contexto",
       "cultura-luterana",
+      "efecto-cobra",
       "test-astudillo",
       "vaca-esferica"
     ],
@@ -423,6 +427,8 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "arquitectura-de-incentivos",
       "consultoria",
+      "efecto-cobra",
+      "enshittification",
       "huevos-de-serpiente"
     ],
     "sources": [
@@ -472,8 +478,11 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "arquitectura-de-incentivos",
       "consultoria",
+      "efecto-cobra",
       "enactacion",
       "huevos-de-serpiente",
+      "metaincentivos",
+      "post-pe-y-cfu",
       "singular-solving"
     ],
     "sources": [
@@ -517,6 +526,88 @@ export const CONCEPTS: Concept[] = [
     ],
     "domains": null,
     "glossaryUrl": "https://turrero.vercel.app/glosario#skin-in-the-game",
+    "isPillar": false
+  },
+  {
+    "slug": "post-pe-y-cfu",
+    "term": "Post-PE y CFU",
+    "familyId": "empresas",
+    "tier": "core",
+    "short": "La transición del Private Equity mecánico y apalancado hacia el Post-PE relacional y el Company Fixer-Upper (CFU): equipos CPS que rescatan y transforman estratégicamente empresas viables.",
+    "analogy": "Dejar de maquillar y trocear casas antiguas con bricolaje barato para venderlas rápido, y traer arquitectos e ingenieros capaces de reformar a fondo un «fixer-upper» para que valga el doble de verdad.",
+    "howToApply": "Desplaza el centro de gravedad de la creación de valor del apalancamiento financiero y el recorte cortoplacista a la estrategia, el juego iterado a largo plazo y la diferenciación personotécnica.",
+    "antiPattern": "Encadenar fondos de continuación, «tanatopraxia financiera» y más optimización luterana sobre un modelo de negocio caducado (solución reiterada ineficiente).",
+    "paragraphs": [
+      "Ante el atasco de liquidez del Private Equity tradicional —tipos más altos, billones atrapados sin salida, fondos zombi y mercados secundarios crecientes—, Recuenco plantea en su arco 2025-2026 el salto al Post-PE: mover el fulcro del deal de las finanzas a la estrategia, del corto plazo al juego infinito y del capital al talento.",
+      "El vehículo operativo de ese cambio es el CFU (Company Fixer-Upper), un «Distress 2.0» inspirado en la reforma inmobiliaria donde equipos CPS rehabilitan compañías viables en apuros en lugar de enviarlas al matadero financiero."
+    ],
+    "origin": "Javier G. Recuenco (arco Post-PE, 2025-2026)",
+    "aliases": [
+      "Post-PE",
+      "CFU",
+      "Company Fixer-Upper",
+      "Distress 2.0"
+    ],
+    "related": [
+      "cps-hispano",
+      "decadencia-y-reconversion",
+      "hotel-de-hilbert",
+      "juego-infinito",
+      "optimizacion-luterana-y-feijoada",
+      "private-equity",
+      "skin-in-the-game"
+    ],
+    "sources": [
+      {
+        "threadId": "1999746151839338739",
+        "title": "CFU: el \"fixer-upper\" corporativo que promete reemplazar al Private Equity tradicional",
+        "url": "https://turrero.vercel.app/turra/1999746151839338739"
+      },
+      {
+        "threadId": "2030161085941039583",
+        "title": "Del PE mecánico al juego infinito y personotécnico",
+        "url": "https://turrero.vercel.app/turra/2030161085941039583"
+      },
+      {
+        "threadId": "2025116934572843338",
+        "title": "Feijoada, post-PE y CPS: crítica a la optimización luterana",
+        "url": "https://turrero.vercel.app/turra/2025116934572843338"
+      },
+      {
+        "threadId": "2002288705726304422",
+        "title": "Cierre de la discusión sobre PE y oportunidades de mercado",
+        "url": "https://turrero.vercel.app/turra/2002288705726304422"
+      },
+      {
+        "threadId": "1994665880878186846",
+        "title": "El PE español se enfrenta a un colapso financiero",
+        "url": "https://turrero.vercel.app/turra/1994665880878186846"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Big Short: Inside the Doomsday Machine",
+        "author": "Michael Lewis",
+        "url": "https://www.goodreads.com/book/show/26889576-the-big-short"
+      },
+      {
+        "title": "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets",
+        "author": "Nassim Nicholas Taleb",
+        "url": "https://goodreads.com/book/show/38315.Fooled_by_Randomness_The_Hidden_Role_of_Chance_in_Life_and_in_the_Markets"
+      },
+      {
+        "title": "Game Theory and Economic Behaviour: Selected Essays",
+        "author": "Reinhard Selten",
+        "url": "https://www.goodreads.com/book/show/4731519-game-theory-and-economic-behaviour"
+      },
+      {
+        "title": "The Savage Mind",
+        "author": "Claude Lévi-Strauss",
+        "url": "https://www.goodreads.com/book/show/782026.The_Savage_Mind"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1999746151839338739",
     "isPillar": false
   },
   {
@@ -589,6 +680,7 @@ export const CONCEPTS: Concept[] = [
       "consultoras"
     ],
     "related": [
+      "companias-problem-centric",
       "cps",
       "cynefin",
       "incentivo-perverso",
@@ -643,7 +735,9 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "arquitectura-de-incentivos",
+      "efecto-cobra",
       "incentivo-perverso",
+      "metaincentivos",
       "skin-in-the-game"
     ],
     "sources": [
@@ -708,7 +802,9 @@ export const CONCEPTS: Concept[] = [
       "cul-de-sac",
       "cultura-luterana",
       "hotel-de-hilbert",
-      "juego-infinito"
+      "juego-infinito",
+      "optimizacion-luterana-y-feijoada",
+      "post-pe-y-cfu"
     ],
     "sources": [
       {
@@ -773,7 +869,9 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "abrochador-liminal",
+      "aftershock",
       "contexto",
+      "eta",
       "soluciones-de-mierda",
       "zeitgeist"
     ],
@@ -801,6 +899,211 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "taylorismo",
+    "term": "Taylorismo",
+    "familyId": "empresas",
+    "tier": "deep",
+    "short": "Organización científica y mecanicista del trabajo nacida para la fábrica industrial que colapsa cuando se impone sobre problemas complejos, únicos y no lineales.",
+    "analogy": "Intentar curar a todos los pacientes de un hospital con la misma receta fotocopiada y un cronómetro porque ese sistema funcionó de maravilla ensamblando coches en 1911.",
+    "howToApply": "Aplica estandarización, cronometraje y eficiencia solo a tareas repetitivas y predecibles; cuando entren la incertidumbre, la estrategia o el Factor X, abandona la plantilla y diseña una solución contextual.",
+    "antiPattern": "Tratar el marketing, la educación, la atención al cliente o el talento atípico como una cadena de montaje y comprar «plataformas mágicas» esperando que reduzcan la incertidumbre por arte de magia.",
+    "paragraphs": [
+      "Recuenco reconoce que el taylorismo de Frederick Taylor (1911) permitió a la humanidad dar un salto evolutivo gigantesco al entrar en la era industrial, pero denuncia las taras graves que dejó en herencia: la creencia ciega de que la cadena de producción y la plantilla son la única manera de escalar. A su obsesión por aplicarlo fuera de su dominio lo bautiza «taylorismo de mierda»: dietas de fotocopia, funnels estándar, ERPs vendidos como reductores esotéricos de incertidumbre y una educación reglada convertida en fábrica de obediencia que tritura el talento neurodivergente mientras la IA liquida la mediocridad solvente."
+    ],
+    "origin": "Frederick W. Taylor (1911) / Crítica de Javier G. Recuenco",
+    "aliases": [
+      "taylorismo de mierda",
+      "gestión científica",
+      "producción en cadena",
+      "soluciones de plantilla"
+    ],
+    "related": [
+      "cps",
+      "cultura-luterana",
+      "optimizacion-luterana-y-feijoada",
+      "procesos-de-alta-variabilidad",
+      "soluciones-de-mierda",
+      "vaca-esferica"
+    ],
+    "sources": [
+      {
+        "threadId": "1434087755198386177",
+        "title": "Taylorismo de mierda",
+        "url": "https://turrero.vercel.app/turra/1434087755198386177"
+      },
+      {
+        "threadId": "2053002707628142991",
+        "title": "Educación, neurodivergencia e IA: formar talento para un mundo no lineal",
+        "url": "https://turrero.vercel.app/turra/2053002707628142991"
+      },
+      {
+        "threadId": "2025116934572843338",
+        "title": "Feijoada, post-PE y CPS: crítica a la optimización luterana",
+        "url": "https://turrero.vercel.app/turra/2025116934572843338"
+      },
+      {
+        "threadId": "1791716794312318984",
+        "title": "Reflexión sobre los desafíos y el futuro del CPS en la comunidad de innovación",
+        "url": "https://turrero.vercel.app/turra/1791716794312318984"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Management Myth: Why the Experts Keep Getting it Wrong",
+        "author": "Matthew Stewart",
+        "url": "https://www.goodreads.com/book/show/6100832-the-management-myth"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1434087755198386177",
+    "isPillar": false
+  },
+  {
+    "slug": "metaincentivos",
+    "term": "Metaincentivos",
+    "familyId": "empresas",
+    "tier": "deep",
+    "short": "Las motivaciones no explícitas, subterráneas y agendas particulares que mueven realmente a cada miembro de un consejo de administración por debajo del debate oficial.",
+    "analogy": "Jugar una partida de póker donde crees que todos apuestan por el bote del centro, cuando en realidad cada jugador tiene un pacto secreto sobre a quién quiere echar de la mesa.",
+    "howToApply": "Antes de presentar una transformación al board, mapea las agendas invisibles de cada consejero, acorta la distancia de intermediarios hasta quien decide de verdad y exige skin in the game compartido.",
+    "antiPattern": "Entrar en una sala de consejo creyendo que el debate gira únicamente sobre la moda tecnológica del día (saveur du jour) y que la mejor presentación racional ganará por sí sola.",
+    "paragraphs": [
+      "Al explicar cómo hablar al board, Recuenco señala que en toda sala de consejo conviven tres planos: la moda del momento —hoy la IA—, el futuro real del negocio y una montaña silenciosa de la que nadie habla: las agendas particulares de cada decisor. Mientras las motivaciones explícitas se deducen observando, los metaincentivos operan en distintos niveles de subterraneidad, sobre todo en compañías en apuros. Cartografiar esa arquitectura oculta es «dificultad máxima rollo software español de los 80, final boss y niebla de Silent Hill», y tu probabilidad de éxito cae logarítmicamente con cada intermediario que te separa del board."
+    ],
+    "origin": "Javier G. Recuenco",
+    "aliases": [
+      "agendas ocultas",
+      "hablar al board",
+      "incentivos subterráneos",
+      "arquitectura real de incentivos"
+    ],
+    "related": [
+      "arquitectura-de-incentivos",
+      "decision-makers",
+      "efecto-cobra",
+      "huevos-de-serpiente",
+      "pantomima",
+      "skin-in-the-game"
+    ],
+    "sources": [
+      {
+        "threadId": "1738462543344005507",
+        "title": "Metaincentivos y decisiones en corporaciones (sobre cómo hablar al board)",
+        "url": "https://turrero.vercel.app/turra/1738462543344005507"
+      },
+      {
+        "threadId": "1662345754642378753",
+        "title": "Revelada la tercera parte de la trilogía sobre arquitectura de incentivos y modificación de comportamiento",
+        "url": "https://turrero.vercel.app/turra/1662345754642378753"
+      },
+      {
+        "threadId": "1398571638170529792",
+        "title": "CPS real en grandes corporaciones cuando los incentivos están desalineados",
+        "url": "https://turrero.vercel.app/turra/1398571638170529792"
+      }
+    ],
+    "books": [
+      {
+        "title": "Board Talk: 18 Crucial Conversations That Count Inside and Outside the Boardroom",
+        "author": "Kathryn Bishop",
+        "url": "https://www.goodreads.com/book/show/125396725-board-talk"
+      },
+      {
+        "title": "Crucial Conversations: Tools for Talking When Stakes are High",
+        "author": "Kerry Patterson, Joseph Grenny, Ron McMillan, Al Switzler",
+        "url": "https://www.goodreads.com/es/book/show/15014"
+      },
+      {
+        "title": "Migrating Legacy Systems: Gateways, Interfaces and the Incremental Approach",
+        "author": "Michael L. Brodie, Michael Stonebraker",
+        "url": "https://www.goodreads.com/book/show/832398.Migrating_Legacy_Systems"
+      },
+      {
+        "title": "Persuasive Technology: Using Computers to Change What We Think and Do",
+        "author": "B.J. Fogg",
+        "url": "https://www.goodreads.com/book/show/344733.Persuasive_Technology"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1738462543344005507",
+    "isPillar": false
+  },
+  {
+    "slug": "efecto-cobra",
+    "term": "Efecto cobra",
+    "familyId": "empresas",
+    "tier": "deep",
+    "short": "Fenómeno por el cual un incentivo mal diseñado o un parche parcial en un sistema complejo agrava exactamente el problema que pretendía erradicar.",
+    "analogy": "Pagar una recompensa por cada rata entregada para limpiar un edificio y descubrir meses después que la gente ha montado criaderos clandestinos de ratas en el sótano.",
+    "howToApply": "Antes de implantar un bono o KPI, pregúntate cómo lo explotaría un actor racional sin escrúpulos y alinea skin in the game en todo el sistema en lugar de premiar una métrica aislada.",
+    "antiPattern": "Lanzar comisiones ligadas solo a facturación, velocidad de producción o bonos trimestrales desde arriba sin medir el daño colateral en calidad, clientes o innovación.",
+    "paragraphs": [
+      "En su trilogía sobre arquitecturas dinámicas de incentivos, Recuenco sitúa el efecto cobra —junto a los problemas de agencia— en el corazón del fracaso corporativo. Cuando se aplican soluciones parciales a sistemas entrelazados o se diseñan premios desde la pereza de la falacia de McNamara y sin skin in the game, las personas optimizan la métrica y destruyen el valor real: comerciales manipulando contratos, velocidad arruinando la calidad o atención al cliente degenerada en procesos Golem. Como advierte con dureza: todos los modelos débiles de incentivos corporativos son letales."
+    ],
+    "origin": "Horst Siebert (2001) / Trilogía de incentivos de Javier G. Recuenco",
+    "aliases": [
+      "consecuencias imprevistas de incentivos",
+      "efecto bumerán",
+      "incentivos contraproducentes"
+    ],
+    "related": [
+      "arquitectura-de-incentivos",
+      "falacia-de-mcnamara",
+      "huevos-de-serpiente",
+      "incentivo-perverso",
+      "metaincentivos",
+      "sistemas-complejos",
+      "skin-in-the-game"
+    ],
+    "sources": [
+      {
+        "threadId": "1654727164086960130",
+        "title": "Continúa la trilogía sobre incentivos: impacto en la dinámica corporativa",
+        "url": "https://turrero.vercel.app/turra/1654727164086960130"
+      },
+      {
+        "threadId": "1649673649866113024",
+        "title": "Analizando la importancia de los incentivos en el ámbito empresarial y cómo influyen en el éxito o fracaso",
+        "url": "https://turrero.vercel.app/turra/1649673649866113024"
+      },
+      {
+        "threadId": "1642053681766883330",
+        "title": "La tensión entre fidelidad y conveniencia en el éxito de productos y servicios en el mercado",
+        "url": "https://turrero.vercel.app/turra/1642053681766883330"
+      },
+      {
+        "threadId": "1543107844043673600",
+        "title": "Complejidad vs. aleatoriedad: La ampliamente usada complejidad de Kolmogorov es simplemente una medida de la aleatoriedad",
+        "url": "https://turrero.vercel.app/turra/1543107844043673600"
+      }
+    ],
+    "books": [
+      {
+        "title": "Predictably Irrational: The Hidden Forces That Shape Our Decisions",
+        "author": "Dan Ariely",
+        "url": "https://www.goodreads.com/book/show/1713426.Predictably_Irrational"
+      },
+      {
+        "title": "Punished by Rewards: The Trouble with Gold Stars, Incentive Plans, A's, Praise and Other Bribes",
+        "author": "Alfie Kohn",
+        "url": "https://www.goodreads.com/book/show/541132.Punished_by_Rewards"
+      },
+      {
+        "title": "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything",
+        "author": "Steven D. Levitt, Stephen J. Dubner",
+        "url": "https://www.goodreads.com/book/show/1202.Freakonomics"
+      },
+      {
+        "title": "Skin in the Game: The Hidden Asymmetries in Daily Life",
+        "author": "Nassim Nicholas Taleb",
+        "url": "https://www.goodreads.com/book/show/36064445-skin-in-the-game"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1654727164086960130",
+    "isPillar": false
+  },
+  {
     "slug": "atractores",
     "term": "Atractores",
     "familyId": "estrategia",
@@ -822,9 +1125,12 @@ export const CONCEPTS: Concept[] = [
       "macro atractor"
     ],
     "related": [
+      "aftershock",
       "business-acumen",
       "ciencias-de-la-complejidad",
+      "decadencia-y-reconversion",
       "factor-x",
+      "reshuffle",
       "zeitgeist"
     ],
     "sources": [
@@ -1012,7 +1318,13 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "cul-de-sac",
+      "decadencia-y-reconversion",
+      "enshittification",
+      "eta",
+      "harbingers-of-doom",
+      "post-pe-y-cfu",
       "private-equity",
+      "reshuffle",
       "zugzwang"
     ],
     "sources": [
@@ -1099,6 +1411,11 @@ export const CONCEPTS: Concept[] = [
       "cul de sacs"
     ],
     "related": [
+      "all-models-are-wrong",
+      "decadencia-y-reconversion",
+      "desierto-tipo-sierra",
+      "eta",
+      "harbingers-of-doom",
       "hotel-de-hilbert",
       "private-equity",
       "zugzwang"
@@ -1138,6 +1455,7 @@ export const CONCEPTS: Concept[] = [
       "fatiga de materiales"
     ],
     "related": [
+      "decadencia-y-reconversion",
       "game-awareness",
       "transicion-obligada"
     ],
@@ -1231,6 +1549,7 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "blitzscaling",
+      "post-pe-y-cfu",
       "private-equity"
     ],
     "sources": [
@@ -1455,6 +1774,253 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "futurismo-de-frontera",
+    "term": "Futurismo de frontera",
+    "familyId": "estrategia",
+    "tier": "deep",
+    "short": "La práctica del CPS como puente entre la mejora incremental y el moonshooting: soluciones radicales a problemas sin precedente ejecutables en horizontes de 6 a 18 meses.",
+    "analogy": "Ni arreglar un bache en la carretera comarcal ni diseñar planos para colonizar Marte en 2050: construir el puente de campaña que cruza el río crecido hoy mismo con los materiales que ya existen.",
+    "howToApply": "Combina pensamiento lateral con tecnologías maduras y fija hipótesis comprobables a seis meses vista con líneas estratégicas a dieciocho, descartando cualquier plan plurianual rígido como wishful thinking.",
+    "antiPattern": "Quedarse atrapado en presupuestos anuales que fingen certidumbre o enamorarse de «visiones oceánicas» a diez años que suenan inspiradoras pero no bajan jamás a ejecución.",
+    "paragraphs": [
+      "Recuenco acuña y reivindica el futurismo de frontera (fringe futurism) como una piedra angular del CPS. Frente a la optimización incremental —propia de problemas claros o complicados— y el futurismo clásico o el diseño especulativo a cinco o diez años vista, el CPS opera en la franja inmediata de lo inédito: problemas sin manual que exigen creatividad radical pero actuación contundente y tangible hoy.",
+      "A diferencia del Moonshot Thinking canónico de Peter Diamandis, el futurismo de frontera no exige un avance tecnológico disruptivo ni un batallón de veinteañeros sin experiencia: incorpora el pensamiento lateral con tecnologías maduras de Gunpei Yokoi —como la Game Boy o el iPod— y sustituye la extrapolación de rectas del pasado por hipótesis que se prueban y ajustan sobre el terreno."
+    ],
+    "origin": "Javier G. Recuenco (fringe futurism en su framework CPS), en diálogo con Gunpei Yokoi y el Moonshot Thinking de Peter Diamandis",
+    "aliases": [
+      "fringe futurism",
+      "futurismo de frontera",
+      "moonshooting",
+      "lateral thinking with withered technologies"
+    ],
+    "related": [
+      "aftershock",
+      "cps",
+      "cynefin",
+      "eta",
+      "incertidumbre",
+      "pensamiento-lateral",
+      "santuario-humano",
+      "sensemaking"
+    ],
+    "sources": [
+      {
+        "threadId": "2118979141928104262",
+        "title": "El CPS como puente entre lo incremental y el moonshot",
+        "url": "https://turrero.vercel.app/turra/2118979141928104262"
+      },
+      {
+        "threadId": "1469583058563121153",
+        "title": "Soluciones a problemas imposibles y como abordarlos",
+        "url": "https://turrero.vercel.app/turra/1469583058563121153"
+      },
+      {
+        "threadId": "1746066280782631368",
+        "title": "CFOs y el desafío de adaptarse en un mundo incierto",
+        "url": "https://turrero.vercel.app/turra/1746066280782631368"
+      }
+    ],
+    "books": [
+      {
+        "title": "Gunpei Yokoi: The Life & Philosophy of Nintendo's God of Toys",
+        "author": "Florent Gorges & Takefumi Makino",
+        "url": "https://www.goodreads.com/book/show/17126891-gunpei-yokoi"
+      },
+      {
+        "title": "Aha! Insight",
+        "author": "Martin Gardner",
+        "url": "https://www.goodreads.com/book/show/397238.Aha_Insight"
+      },
+      {
+        "title": "Ingenuity in Mathematics",
+        "author": "Ross Honsberger",
+        "url": "https://www.goodreads.com/book/show/1416864.Ingenuity_in_Mathematics"
+      },
+      {
+        "title": "Future Ready: How to Master Business Forecasting",
+        "author": "Steve Morlidge & Steve Player",
+        "url": "https://www.goodreads.com/book/show/7554096-future-ready"
+      },
+      {
+        "title": "Great by Choice: Uncertainty, Chaos, and Luck—Why Some Thrive Despite Them All",
+        "author": "Jim Collins & Morten T. Hansen",
+        "url": "https://www.goodreads.com/book/show/12675109-great-by-choice"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2118979141928104262",
+    "isPillar": false
+  },
+  {
+    "slug": "decadencia-y-reconversion",
+    "term": "Decadencia y reconversión",
+    "familyId": "estrategia",
+    "tier": "deep",
+    "short": "El ciclo por el que empresas, sagas familiares y sectores enteros declinan aferrados a su pasado glorioso, y el reto quirúrgico de planificar su transición en vez de sedarlos con subvenciones.",
+    "analogy": "Un cirujano frente a un enfermo grave que niega su diagnóstico: operar duele y exige cortar a tiempo, mientras que despachar barbitúricos solo compra calma aparente hasta que la zona muere.",
+    "howToApply": "Afronta la caducidad de tu modelo antes de agotar caja y energía emocional; evalúa con crudeza si el equipo actual tiene humildad para pivotar o necesita sangre nueva, y diseña transiciones reales en vez de subsidios perpetuos.",
+    "antiPattern": "Pedirle a un asesor una «máquina del tiempo» para volver a los años dorados, colgarse del larguero en la tercera generación por miedo a perder lo heredado o confundir paz social subvencionada con reconversión.",
+    "paragraphs": [
+      "En su gran arco de mayo y junio de 2025 —junto a su análisis previo de las reconversiones industriales en España—, Recuenco disecciona la anatomía humana y estratégica del declive: desde la nostalgia congelada de «Ventiladores Clyde» de Seth hasta el agotamiento físico y emocional que convierte la reinvención bajo los mismos líderes en «pasarse el juego en modo hardcore».",
+      "Ya sea en una pyme familiar atrapada en la aversión al riesgo de la tercera generación o en comarcas enteras arrasadas tras el cierre de la minería, la siderurgia o los astilleros, el diagnóstico coincide: los modelos funcionan hasta que dejan de funcionar. Saltar a tiempo a otra liana —como Nintendo desde las cartas hanafuda o IBM bajo Gerstner— exige audacia y cirugía, nunca cuidados paliativos disfrazados de política industrial."
+    ],
+    "origin": "Arco de Javier G. Recuenco sobre decadencia empresarial, tercera generación y reconversiones industriales (en diálogo con Seth, Ronald Heifetz, John Kotter y Louis Gerstner)",
+    "aliases": [
+      "decadencia empresarial",
+      "reconversión industrial",
+      "riesgo de la tercera generación",
+      "salto de la liana",
+      "Ventiladores Clyde"
+    ],
+    "related": [
+      "atractores",
+      "cul-de-sac",
+      "fatiga-de-materiales",
+      "harbingers-of-doom",
+      "hotel-de-hilbert",
+      "post-pe-y-cfu",
+      "transicion-obligada",
+      "truth-coping"
+    ],
+    "sources": [
+      {
+        "threadId": "1918555369426522309",
+        "title": "Decadencia empresarial: nostalgia, pasado glorioso y el coste humano de no adaptarse",
+        "url": "https://turrero.vercel.app/turra/1918555369426522309"
+      },
+      {
+        "threadId": "1923622497406140517",
+        "title": "Decadencia empresarial: cuándo renovar la guardia y cuándo apostar por los mismos líderes",
+        "url": "https://turrero.vercel.app/turra/1923622497406140517"
+      },
+      {
+        "threadId": "1926142175105995150",
+        "title": "Obsolescencia global y reconversiones industriales: el pulso público-privado",
+        "url": "https://turrero.vercel.app/turra/1926142175105995150"
+      },
+      {
+        "threadId": "1936303239193878741",
+        "title": "El riesgo de la tercera generación en negocios familiares",
+        "url": "https://turrero.vercel.app/turra/1936303239193878741"
+      },
+      {
+        "threadId": "1413787729079545858",
+        "title": "Reconversiones. Los sectores estratégicos se pueden y se deben cuestionar, lo que tienes que planificar con ellos es la transición",
+        "url": "https://turrero.vercel.app/turra/1413787729079545858"
+      }
+    ],
+    "books": [
+      {
+        "title": "Leadership Without Easy Answers",
+        "author": "Ronald A. Heifetz",
+        "url": "https://www.goodreads.com/book/show/6638.Leadership_Without_Easy_Answers"
+      },
+      {
+        "title": "Leading Change",
+        "author": "John P. Kotter",
+        "url": "https://www.goodreads.com/book/show/51370.Leading_Change"
+      },
+      {
+        "title": "Who Says Elephants Can't Dance? Inside IBM's Historic Turnaround",
+        "author": "Louis V. Gerstner Jr.",
+        "url": "https://www.goodreads.com/book/show/603985.Who_Says_Elephants_Can_t_Dance_Inside_IBM_s_Historic_Turnaround"
+      },
+      {
+        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
+        "author": "Clayton M. Christensen",
+        "url": "https://www.goodreads.com/book/show/26160019-the-innovator-s-dilemma"
+      },
+      {
+        "title": "That Will Never Work: The Birth of Netflix and the Amazing Life of an Idea",
+        "author": "Marc Randolph",
+        "url": "https://www.goodreads.com/book/show/44428950-that-will-never-work"
+      },
+      {
+        "title": "The Name of the Game",
+        "author": "Will Eisner",
+        "url": "https://www.goodreads.com/book/show/602517.The_Name_of_the_Game"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1918555369426522309",
+    "isPillar": false
+  },
+  {
+    "slug": "harbingers-of-doom",
+    "term": "Harbingers of Doom",
+    "familyId": "estrategia",
+    "tier": "deep",
+    "short": "Profesionales entrenados para detectar las primeras grietas de un negocio exitoso y advertir qué puertas del Hotel de Hilbert están a punto de cerrarse, aunque sean percibidos como cenizos.",
+    "analogy": "Un inspector de edificios que avisa del primer brote de moho en la esquina antes de que el techo se hunda, y al que los inquilinos odian porque les obliga a hacer la mudanza cuando estaban cómodos.",
+    "howToApply": "Escucha a quien señala las debilidades estructurales de tu negocio cuando todavía funciona bien y prepara la mudanza a la siguiente habitación antes de que el temporizador te eche al pasillo.",
+    "antiPattern": "Despachar como agorero, envidioso o negativo interesado a cualquiera que cuestione tu propuesta de valor actual mientras sigues relajado disfrutando de rentas pasadas.",
+    "paragraphs": [
+      "En el hilo turras fundacional de agosto de 2020, Recuenco explica por qué quienes anticipan el agotamiento de modelos de negocio son tachados de cenizos o «Bad News» (como Marvin Barnes). No buscan polemizar ni hacer de enfant terrible: como Karnak de Los Inhumanos, están entrenados para ver la semilla de autodestrucción sembrada en cada negocio exitoso y detectar la pelusa antes de que la habitación del Hotel de Hilbert acumule diez centímetros de basura. Son ecológicamente necesarios —como los escarabajos peloteros, los buitres o las levaduras— para evitar el desahucio."
+    ],
+    "origin": "Javier G. Recuenco (hilo fundacional, 2020)",
+    "aliases": [
+      "cenizos",
+      "Bad News",
+      "inspectores de habitación",
+      "Karnak empresarial"
+    ],
+    "related": [
+      "asertividad",
+      "cul-de-sac",
+      "decadencia-y-reconversion",
+      "elefante-negro",
+      "hotel-de-hilbert",
+      "zeitgeist"
+    ],
+    "sources": [
+      {
+        "threadId": "1294936782497361928",
+        "title": "Visionarios del futuro empresarial percibidos como cenizos",
+        "url": "https://turrero.vercel.app/turra/1294936782497361928"
+      },
+      {
+        "threadId": "1989585041949622370",
+        "title": "Ciclos de auge y caída en la era de los bonos basura",
+        "url": "https://turrero.vercel.app/turra/1989585041949622370"
+      },
+      {
+        "threadId": "1842453861094609097",
+        "title": "Modelos extractivos de datos ponen en riesgo la privacidad y el control de los anunciantes",
+        "url": "https://turrero.vercel.app/turra/1842453861094609097"
+      },
+      {
+        "threadId": "1517738336210894850",
+        "title": "La importancia de la asertividad en la vida, especialmente en el ámbito de la complejidad.",
+        "url": "https://turrero.vercel.app/turra/1517738336210894850"
+      },
+      {
+        "threadId": "1494930305811111938",
+        "title": "La transición de la creación del valor del dinero y las operaciones a las propuestas de valor",
+        "url": "https://turrero.vercel.app/turra/1494930305811111938"
+      }
+    ],
+    "books": [
+      {
+        "title": "When Genius Failed: The Rise and Fall of Long-Term Capital Management",
+        "author": "Roger Lowenstein",
+        "url": "https://www.goodreads.com/es/book/show/10669.When_Genius_Failed"
+      },
+      {
+        "title": "The Buyout of America: How Private Equity Will Cause the Next Great Credit Crisis",
+        "author": "Josh Kosman",
+        "url": "https://www.goodreads.com/book/show/19013459-the-buyout-of-america"
+      },
+      {
+        "title": "The Art of Everyday Assertiveness: Speak Up. Say No. Set Boundaries. Take Back Control.",
+        "author": "Patrick King",
+        "url": "https://www.goodreads.com/book/show/37786303-the-art-of-everyday-assertiveness"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1294936782497361928",
+    "isPillar": false
+  },
+  {
     "slug": "emulsificador-de-equipo",
     "term": "Emulsificador de equipo",
     "familyId": "factorx",
@@ -1475,7 +2041,9 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "equipo-apolo",
-      "orquestacion-cognitiva"
+      "orquestacion-cognitiva",
+      "resolutivas-invisibles",
+      "sincronizacion-de-pedalada"
     ],
     "sources": [
       {
@@ -1516,7 +2084,8 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "altas-capacidades",
       "emulsificador-de-equipo",
-      "orquestacion-cognitiva"
+      "orquestacion-cognitiva",
+      "sincronizacion-de-pedalada"
     ],
     "sources": [
       {
@@ -1569,7 +2138,11 @@ export const CONCEPTS: Concept[] = [
       "ecosistemas-tecnologicos",
       "javier-g-recuenco",
       "personotecnia",
+      "personotecnia-ia",
+      "resolutivas-invisibles",
+      "santuario-humano",
       "sesgo",
+      "sincronizacion-de-pedalada",
       "sistemas-complejos",
       "test-astudillo",
       "truth-coping",
@@ -1648,7 +2221,10 @@ export const CONCEPTS: Concept[] = [
       "factor-x",
       "ia-chasm",
       "javier-g-recuenco",
-      "procesos-de-alta-variabilidad"
+      "neuroestetica",
+      "personotecnia-ia",
+      "procesos-de-alta-variabilidad",
+      "s4-nightmare"
     ],
     "sources": [
       {
@@ -1755,7 +2331,9 @@ export const CONCEPTS: Concept[] = [
       "asertivos"
     ],
     "related": [
+      "autoengano",
       "factor-x",
+      "harbingers-of-doom",
       "truth-coping",
       "zelotes"
     ],
@@ -1822,8 +2400,11 @@ export const CONCEPTS: Concept[] = [
       "autosegmente"
     ],
     "related": [
+      "alta-agencia",
       "capitalismo-de-vigilancia",
       "personotecnia",
+      "personotecnia-ia",
+      "s4-nightmare",
       "tokens-de-confianza"
     ],
     "sources": [
@@ -1872,6 +2453,7 @@ export const CONCEPTS: Concept[] = [
       "Man on a Mission"
     ],
     "related": [
+      "alta-agencia",
       "man-out-of-time",
       "pompismo",
       "sweet-spot"
@@ -1998,6 +2580,121 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "resolutivas-invisibles",
+    "term": "Resolutivas invisibles",
+    "familyId": "factorx",
+    "tier": "deep",
+    "short": "El arquetipo de la persona aparentemente secundaria que, sin foco ni grandilocuencia, sostiene la realidad y desbloquea los problemas cotidianos mediante inteligencia práctica y sentido común.",
+    "analogy": "La regidora entre bambalinas que nadie aplaude al caer el telón, pero sin cuya calma, ingenio y mano izquierda el decorado se desplomaría en el minuto cinco.",
+    "howToApply": "Identifica y protege en tu organización a quienes resuelven fricciones reales sin buscar el foco; dales autoridad directa en vez de obligarlas a operar a través de intermediarios.",
+    "antiPattern": "Confundir presencia escénica, título o volumen de voz con capacidad resolutiva, ignorando al perfil discreto que mantiene a flote la operación hasta el día en que se marcha.",
+    "paragraphs": [
+      "A partir de una propuesta de Pedro Pajares, Recuenco analiza el arquetipo cultural de la «resolutiva invisible» contraponiendo dos figuras memorables: los personajes de Gracita Morales en el cine español de los sesenta y Bettye McCartt, la secretaria de Albert S. Ruddy en la serie «The Offer» sobre el rodaje de «El Padrino».",
+      "Aunque pertenecen a mundos distintos —Bettye encarna el rigor operativo luterano y Gracita es CPS Hispano por los cuatro costados—, ambas demuestran que la fuerza real raramente viste de grandilocuencia: mezcla intuición, firmeza moral, lectura humana y capacidad para desactivar conflictos cuando todo parece perdido. En la era de las megamáquinas de IA, esa competencia humana silenciosa se vuelve más valiosa que nunca."
+    ],
+    "origin": "Javier G. Recuenco (a sugerencia de Pedro Pajares), a partir del contraste cultural entre Gracita Morales y Bettye McCartt en «The Offer»",
+    "aliases": [
+      "resolutiva invisible",
+      "arquetipo Gracita Morales",
+      "Bettye McCartt",
+      "inteligencia práctica silenciosa"
+    ],
+    "related": [
+      "companias-problem-centric",
+      "cps-hispano",
+      "emulsificador-de-equipo",
+      "factor-x",
+      "lujo-humano",
+      "orquestacion-cognitiva"
+    ],
+    "sources": [
+      {
+        "threadId": "2014969801395814716",
+        "title": "El poder silencioso de las resolutivas invisibles",
+        "url": "https://turrero.vercel.app/turra/2014969801395814716"
+      },
+      {
+        "threadId": "1779018888203608064",
+        "title": "The Offer: Las compañías problem-centric y el CPS sistemático",
+        "url": "https://turrero.vercel.app/turra/1779018888203608064"
+      }
+    ],
+    "books": [],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2014969801395814716",
+    "isPillar": false
+  },
+  {
+    "slug": "sincronizacion-de-pedalada",
+    "term": "Sincronización de pedalada",
+    "familyId": "factorx",
+    "tier": "deep",
+    "short": "Sutileza de la orquestación cognitiva que consiste en acoplar ritmos, agendas vitales y prioridades de talentos muy distintos sin anular su brillantez individual.",
+    "analogy": "Un cuarteto de jazz donde cada músico improvisa a su máximo nivel escuchando el pulso de los demás, frente a una clase de spinning donde todos pedalean igual como autómatas.",
+    "howToApply": "Dedica tiempo explícito al inicio del proyecto a alinear agendas internas, plazos, inseguridades y una historia común poderosa en lugar de asumir que la química surgirá sola.",
+    "antiPattern": "Juntar estrellas como si fuera una plantilla de PlayStation esperando resultados inmediatos, o intentar sincronizarlas a base de automatismos rígidos y ejercicios corporativos artificiales.",
+    "paragraphs": [
+      "Recuenco distingue radicalmente esta sutileza del sincronismo robótico de una clase de spinning o de un ejército al paso de la oca. En CPS, acompasar la pedalada exige mantener intacta la excelencia individual mientras cada persona logra operar rodeada de otros perfiles igualmente brillantes e incómodos. No ocurre de forma espontánea: incluso con respeto mutuo, compartir prioridades, tiempos internos y gestionar el síndrome del pato o los fallos inevitables del Factor X requiere tiempo, un relato compartido y un orquestador que evite que el equipo implosione como los Galácticos o Van Halen."
+    ],
+    "origin": "Javier G. Recuenco",
+    "aliases": [
+      "acompasar la pedalada",
+      "orquestación de pedalada",
+      "acoplamiento de ritmos",
+      "cadencia de equipo"
+    ],
+    "related": [
+      "autopoiesis",
+      "emulsificador-de-equipo",
+      "equipo-apolo",
+      "factor-x",
+      "homeostasis",
+      "orquestacion-cognitiva"
+    ],
+    "sources": [
+      {
+        "threadId": "1489874989809639424",
+        "title": "Una sutileza en la orquestación cognitiva: La sincronización de pedalada",
+        "url": "https://turrero.vercel.app/turra/1489874989809639424"
+      },
+      {
+        "threadId": "1502547574263361538",
+        "title": "Orquestación cognitiva en equipos y cómo esto afecta a su rendimiento",
+        "url": "https://turrero.vercel.app/turra/1502547574263361538"
+      },
+      {
+        "threadId": "1834829754488221846",
+        "title": "La autopoiesis y la tensión en la evolución empresarial",
+        "url": "https://turrero.vercel.app/turra/1834829754488221846"
+      },
+      {
+        "threadId": "1634418954511822848",
+        "title": "Loonshots: Cómo las ideas radicales y la colaboración pueden cambiar la historia y la innovación",
+        "url": "https://turrero.vercel.app/turra/1634418954511822848"
+      }
+    ],
+    "books": [
+      {
+        "title": "Loonshots: How to Nurture the Crazy Ideas That Win Wars, Cure Diseases, and Transform Industries",
+        "author": "Safi Bahcall",
+        "url": "https://www.goodreads.com/book/show/39863447-loonshots"
+      },
+      {
+        "title": "Autopoiesis and Cognition: The Realization of the Living",
+        "author": "Humberto R. Maturana, Francisco J. Varela",
+        "url": "https://www.goodreads.com/book/show/695442.Autopoiesis_and_Cognition"
+      },
+      {
+        "title": "Social Systems",
+        "author": "Niklas Luhmann",
+        "url": "https://www.goodreads.com/book/show/337482.Social_Systems"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1489874989809639424",
+    "isPillar": false
+  },
+  {
     "slug": "contexto",
     "term": "Contexto",
     "familyId": "incertidumbre",
@@ -2016,8 +2713,10 @@ export const CONCEPTS: Concept[] = [
       "contexto über alles"
     ],
     "related": [
+      "all-models-are-wrong",
       "falacia-de-mcnamara",
       "personotecnia",
+      "personotecnia-ia",
       "sindrome-del-coronel-thompson",
       "sistemas-complejos"
     ],
@@ -2077,6 +2776,7 @@ export const CONCEPTS: Concept[] = [
       "elefantes negros"
     ],
     "related": [
+      "harbingers-of-doom",
       "incertidumbre",
       "sesgo",
       "truth-coping"
@@ -2113,13 +2813,17 @@ export const CONCEPTS: Concept[] = [
       "gestión de la incertidumbre"
     ],
     "related": [
+      "aftershock",
+      "all-models-are-wrong",
       "aporia",
       "consultoria",
       "cps-hispano",
       "cultura-luterana",
       "cynefin",
       "elefante-negro",
-      "niebla-de-guerra"
+      "futurismo-de-frontera",
+      "niebla-de-guerra",
+      "santuario-humano"
     ],
     "sources": [
       {
@@ -2179,6 +2883,7 @@ export const CONCEPTS: Concept[] = [
       "niebla rollo Silent Hill"
     ],
     "related": [
+      "colapso-cognitivo",
       "cynefin",
       "game-awareness",
       "incertidumbre",
@@ -2233,9 +2938,12 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "arquitectura-de-incentivos",
+      "neuroestetica",
       "orquestacion-cognitiva",
       "personotecnia",
+      "personotecnia-ia",
       "sistemas-complejos",
+      "taylorismo",
       "vaca-esferica"
     ],
     "sources": [
@@ -2347,6 +3055,7 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "autopoiesis",
+      "desierto-tipo-sierra",
       "homeostasis"
     ],
     "sources": [
@@ -2547,6 +3256,237 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "aftershock",
+    "term": "After Shock",
+    "familyId": "incertidumbre",
+    "tier": "deep",
+    "short": "Las réplicas y ondas expansivas organizativas, cognitivas y de negocio que golpean tras una disrupción acelerada —como el IA Chasm— cuando el reloj tecnológico desborda la capacidad de absorción humana.",
+    "analogy": "En tenis, si esperas a que la bola cruce la red para empezar a moverte, solo ves pasar un borrón; sobrevivir al seísmo exige leer el golpe antes y preparar el cuerpo para las réplicas.",
+    "howToApply": "Combina observación directa sobre el terreno (Genchi Genbutsu), lectura de patrones, cálculo realista de ETA y sincronización deliberada de los dos relojes del IA Chasm en lugar de extrapolar casos pasados.",
+    "antiPattern": "Quedarse en pilotos cosméticos de IA o informes de consultoría basados en post-mortems históricos y entrar en negación (truth coping) cuando llegan las réplicas del IA Chasm y el Sudden Reality Shock.",
+    "paragraphs": [
+      "Recuenco destaca «After Shock» —el volumen editado por John Schroeter en homenaje al cincuentenario de «Future Shock» de Alvin Toffler— como el libro sobre futurismo que más le ha influido en su canon CPS, al examinar las réplicas que desata el cambio acelerado y las cuatro fases de la anticipación: lectura situacional, interpretación de patrones, cálculo de ETA y diseño de futuros.",
+      "En la ola actual de la IA, esa dinámica de réplicas enlaza directamente con el IA Chasm y la tesis de los dos relojes: mientras el reloj exponencial de la tecnología avanza a toda velocidad, el reloj lento de la absorción organizacional queda desfasado. Las empresas que solo proyectan el pasado se estrellan en el desierto tipo Sierra y sufren el golpe psicológico del Sudden Reality Shock."
+    ],
+    "origin": "John Schroeter (ed.), «After Shock» (2020), homenaje a «Future Shock» de Alvin Toffler",
+    "aliases": [
+      "aftershock",
+      "After Shock",
+      "Future Shock",
+      "réplicas post-disrupción",
+      "réplicas del IA Chasm",
+      "Sudden Reality Shock"
+    ],
+    "related": [
+      "atractores",
+      "desierto-tipo-sierra",
+      "eta",
+      "futurismo-de-frontera",
+      "ia-chasm",
+      "incertidumbre",
+      "reshuffle",
+      "sindrome-del-coronel-thompson",
+      "truth-coping"
+    ],
+    "sources": [
+      {
+        "threadId": "1330075571116777474",
+        "title": "La segunda parte de los libros que más me han influido a la hora de convertirme en CPSer",
+        "url": "https://turrero.vercel.app/turra/1330075571116777474"
+      },
+      {
+        "threadId": "2075812328566562908",
+        "title": "IA Chasm: la brecha entre pilotos y adopción real de IA",
+        "url": "https://turrero.vercel.app/turra/2075812328566562908"
+      },
+      {
+        "threadId": "2004624575837958361",
+        "title": "Nuevos atractores 2026 redefinen el futuro tecnológico",
+        "url": "https://turrero.vercel.app/turra/2004624575837958361"
+      },
+      {
+        "threadId": "1928694865052741791",
+        "title": "Truth coping: cómo sobrevivir a verdades incómodas en empresas y personas",
+        "url": "https://turrero.vercel.app/turra/1928694865052741791"
+      }
+    ],
+    "books": [
+      {
+        "title": "After Shock: The World's Foremost Futurists Reflect on 50 Years of Future Shock—and Look Ahead to the Next 50",
+        "author": "John Schroeter",
+        "url": "https://www.goodreads.com/search?q=After+Shock+John+Schroeter"
+      },
+      {
+        "title": "The Innovator's Dilemma: The Revolutionary Book that Will Change the Way You Do Business",
+        "author": "Clayton M. Christensen",
+        "url": "https://www.goodreads.com/book/show/2615"
+      },
+      {
+        "title": "The Toyota Way to Lean Leadership: Achieving and Sustaining Excellence Through Leadership Development",
+        "author": "Jeffrey K. Liker & Gary L. Convis",
+        "url": "https://www.goodreads.com/book/show/11722275"
+      },
+      {
+        "title": "When Breath Becomes Air",
+        "author": "Paul Kalanithi",
+        "url": "https://www.goodreads.com/book/show/25899336-when-breath-becomes-air"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1330075571116777474",
+    "isPillar": false
+  },
+  {
+    "slug": "eta",
+    "term": "ETA (Estimated Time of Arrival)",
+    "familyId": "incertidumbre",
+    "tier": "deep",
+    "short": "El cálculo del momento exacto en que una tecnología, tendencia o paradigma deja de ser marginal y la sociedad está lista para adoptarlo.",
+    "analogy": "Saber con certeza que va a estallar una tormenta en la montaña, pero no poder precisar si descargará en diez minutos o dentro de tres días mientras decides cuándo levantar el campamento.",
+    "howToApply": "Separa la existencia de una idea de su adopción real, dimensiona tu caja y tu resistencia emocional para «aguantar a pulmón» y vigila señales de contexto sin fiarte de rectas de regresión ni predicciones optimistas.",
+    "antiPattern": "Asumir que porque una innovación es técnicamente superior o evidente el mercado la adoptará mañana, o quemar todos tus recursos apostando a una fecha fija dictada por un futurista.",
+    "paragraphs": [
+      "Dentro de las cuatro fases de la anticipación —lectura de situación con Genchi Genbutsu, interpretación de patrones, cálculo del ETA y diseño de futuros—, Recuenco señala el ETA como la disciplina más endiabladamente difícil y la causa de sus peloteras constantes con los futuristas. Acertar el «qué» es factible; acertar el «cuándo» choca con una sociedad formada por sistemas complejos anidados que producen comportamientos emergentes solo legibles a posteriori. Por eso no recomienda ningún libro mágico sobre el ETA: todo lo que sabe lo ha aprendido a golpes y leyendo a Clayton Christensen."
+    ],
+    "origin": "Aeronáutica / Adaptado a la anticipación en CPS por Javier G. Recuenco",
+    "aliases": [
+      "ETA",
+      "Estimated Time of Arrival",
+      "cálculo del cuándo",
+      "timing de adopción"
+    ],
+    "related": [
+      "aftershock",
+      "cul-de-sac",
+      "futurismo-de-frontera",
+      "hotel-de-hilbert",
+      "sindrome-del-coronel-thompson",
+      "zeitgeist"
+    ],
+    "sources": [
+      {
+        "threadId": "2009896595203018960",
+        "title": "El callejón sin salida: reinventarse para sobrevivir",
+        "url": "https://turrero.vercel.app/turra/2009896595203018960"
+      },
+      {
+        "threadId": "1867841781313769674",
+        "title": "Sobre la dificultad y recompensa de emprender",
+        "url": "https://turrero.vercel.app/turra/1867841781313769674"
+      },
+      {
+        "threadId": "1406126552463470593",
+        "title": "Me parece fascinante reflexionar sobre qué hace que algo triunfe o no",
+        "url": "https://turrero.vercel.app/turra/1406126552463470593"
+      },
+      {
+        "threadId": "1378251639639920641",
+        "title": "Data Driven Companies",
+        "url": "https://turrero.vercel.app/turra/1378251639639920641"
+      },
+      {
+        "threadId": "1330075571116777474",
+        "title": "La segunda parte de los libros que más me han influido a la hora de convertirme en CPSer",
+        "url": "https://turrero.vercel.app/turra/1330075571116777474"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Innovator's Dilemma: The Revolutionary Book that Will Change the Way You Do Business",
+        "author": "Clayton M. Christensen",
+        "url": "https://www.goodreads.com/book/show/2615"
+      },
+      {
+        "title": "The Toyota Way to Lean Leadership: Achieving and Sustaining Excellence Through Leadership Development",
+        "author": "Jeffrey K. Liker, Gary L. Convis",
+        "url": "https://www.goodreads.com/book/show/11722275"
+      },
+      {
+        "title": "Son of a Milkman: My Crazy Life with Tesla",
+        "author": "Brian Wheat",
+        "url": "https://www.goodreads.com/book/show/53317882-son-of-a-milkman"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2009896595203018960",
+    "isPillar": false
+  },
+  {
+    "slug": "all-models-are-wrong",
+    "term": "All models are wrong",
+    "familyId": "incertidumbre",
+    "tier": "deep",
+    "short": "Aforismo de George Box ampliado por Recuenco («All models are wrong, context is king»): ningún marco captura la realidad entera y solo el contexto decide cuándo sirve y cuándo te estrella.",
+    "analogy": "Un mapa de carreteras es útil para orientarte, pero si lo tomas por la realidad y sigues recto donde anoche se derrumbó el puente, acabas en el barranco.",
+    "howToApply": "Usa los modelos y frameworks como pedalera base para pensar más rápido, pero contrástalos siempre contra tu contexto concreto y descártalos sin apego en cuanto choquen con la realidad.",
+    "antiPattern": "Caer en la idolatría del framework y seguir consignas universales tipo «nunca te rindas» o recetas cerradas sin distinguir si estás en un bache temporal o en un callejón sin salida.",
+    "paragraphs": [
+      "Recuenco parte de la máxima de George Box («todos los modelos están equivocados, algunos son útiles») y la convierte en brújula de CPS con su añadido: «context is king». La aplica desde decisiones vitales —saber cuándo tirar la toalla y cuándo apretar los dientes frente a clichés como el de Vince Lombardi o los límites de «The Dip» de Seth Godin— hasta la crítica de sus propias metáforas, como la caja de diez cerrojos de Mortadelo y Filemón. Cuando un modelo se toma como dogma determinista, degenera en cientificismo y ceguera; cuando además es un modelo débil de incentivos, resulta letal."
+    ],
+    "origin": "George E. P. Box (1976) / «Context is king» por Javier G. Recuenco",
+    "aliases": [
+      "all models are wrong, context is king",
+      "todos los modelos están equivocados",
+      "idolatria del framework",
+      "modelos débiles"
+    ],
+    "related": [
+      "centauro",
+      "cienciarte",
+      "contexto",
+      "cul-de-sac",
+      "incertidumbre",
+      "vaca-esferica"
+    ],
+    "sources": [
+      {
+        "threadId": "1408725781291876353",
+        "title": "Saber cuando tirar la toalla y cuando apretar los dientes. All models are wrong, context is king",
+        "url": "https://turrero.vercel.app/turra/1408725781291876353"
+      },
+      {
+        "threadId": "1741006814873821551",
+        "title": "El CPS y su rol en la Resolución de Problemas Complejos",
+        "url": "https://turrero.vercel.app/turra/1741006814873821551"
+      },
+      {
+        "threadId": "1728306256585101618",
+        "title": "Finalizando la serie sobre IA y CPS: reflexiones y experiencias",
+        "url": "https://turrero.vercel.app/turra/1728306256585101618"
+      },
+      {
+        "threadId": "1654727164086960130",
+        "title": "Continúa la trilogía sobre incentivos: impacto en la dinámica corporativa",
+        "url": "https://turrero.vercel.app/turra/1654727164086960130"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Dip: A Little Book That Teaches You When to Quit (and When to Stick)",
+        "author": "Seth Godin",
+        "url": "https://goodreads.com/book/show/324748.The_Dip"
+      },
+      {
+        "title": "Proof: The Science of Booze",
+        "author": "Adam Rogers",
+        "url": "https://www.goodreads.com/book/show/18222694-proof"
+      },
+      {
+        "title": "Kitchen Confidential: Adventures in the Culinary Underbelly",
+        "author": "Anthony Bourdain",
+        "url": "https://www.goodreads.com/book/show/33313.Kitchen_Confidential"
+      },
+      {
+        "title": "A History of Food in 100 Recipes",
+        "author": "William Sitwell",
+        "url": "https://www.goodreads.com/book/show/13613646-a-history-of-food-in-100-recipes"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1408725781291876353",
+    "isPillar": false
+  },
+  {
     "slug": "altas-capacidades",
     "term": "Altas capacidades (AACC)",
     "familyId": "mente",
@@ -2566,8 +3506,10 @@ export const CONCEPTS: Concept[] = [
       "altas capacidades intelectuales"
     ],
     "related": [
+      "alta-agencia",
       "cps",
       "equipo-apolo",
+      "homework-apocalypse",
       "neurodivergencia",
       "sensemaking",
       "xavier-o-magneto"
@@ -2618,6 +3560,9 @@ export const CONCEPTS: Concept[] = [
       "disonancia"
     ],
     "related": [
+      "autoengano",
+      "colapso-cognitivo",
+      "matriz-de-compra-de-pescado",
       "pantomima",
       "sesgo",
       "truth-coping"
@@ -2679,7 +3624,10 @@ export const CONCEPTS: Concept[] = [
       "neurodivergentes"
     ],
     "related": [
+      "alta-agencia",
       "altas-capacidades",
+      "homework-apocalypse",
+      "neuroestetica",
       "xavier-o-magneto"
     ],
     "sources": [
@@ -2719,6 +3667,7 @@ export const CONCEPTS: Concept[] = [
       "sesgos cognitivos"
     ],
     "related": [
+      "autoengano",
       "disonancia-cognitiva",
       "efecto-gell-mann",
       "elefante-negro",
@@ -2782,7 +3731,11 @@ export const CONCEPTS: Concept[] = [
       "Truth Coping"
     ],
     "related": [
+      "aftershock",
       "asertividad",
+      "autoengano",
+      "colapso-cognitivo",
+      "decadencia-y-reconversion",
       "disonancia-cognitiva",
       "elefante-negro",
       "espiral-del-pa-que",
@@ -2819,6 +3772,91 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "matriz-de-compra-de-pescado",
+    "term": "Matriz de compra de pescado",
+    "familyId": "mente",
+    "tier": "core",
+    "short": "Heurístico de higiene mental que recuerda que no puedes comprarle todo el pescado a nadie: puedes aprovechar lo brillante de un autor en un ámbito sin tragarte sus disparates en otro.",
+    "analogy": "Ir a la pescadería y comprarle solo las merluzas frescas que domina, dejando en el mostrador el marisco dudoso, en lugar de llevarte el puesto entero o vetar al pescadero para siempre.",
+    "howToApply": "Separa cada idea del prestigio o la tribu de quien la emite: evalúa qué piezas son aprovechables y cuáles son ideología, ego o terreno ajeno a su dominio.",
+    "antiPattern": "Convertirte en discípulo zelote que defiende cada barbaridad de su referente, o cancelar toda la obra valiosa de alguien en cuanto dice una tontería fuera de su especialidad.",
+    "paragraphs": [
+      "Recuenco creó esta expresión para aliviar cognitivamente «esa punzada que nos da el cerebro cuando lees algo de una persona que respetas en un ámbito fumándose un Davidoff en otro». La define como un Memento Mori contra el pensamiento monocromo y el culto a la personalidad: no ser keynesiano aunque apliques dos máximas de Keynes, admirar a Taleb, Snowden o Mark Ritson sin volverse zelote, o reírse de las tesis pompistas de Piketty mientras disfrutas su cómic. Nadie es completamente idiota ni infalible; no hace falta comprarse todo el cerdo si solo quieres chuletas."
+    ],
+    "origin": "Javier G. Recuenco",
+    "aliases": [
+      "no comprarle todo el pescado a nadie",
+      "teoría del pescado",
+      "fumarse un Davidoff",
+      "no comprarse todo el cerdo"
+    ],
+    "related": [
+      "bothism",
+      "chavesnogalismo",
+      "disonancia-cognitiva",
+      "pompismo",
+      "sensemaking",
+      "zelotes"
+    ],
+    "sources": [
+      {
+        "threadId": "1804386948938699148",
+        "title": "La importancia del sensemaking en la toma de decisiones y la inteligencia humana",
+        "url": "https://turrero.vercel.app/turra/1804386948938699148"
+      },
+      {
+        "threadId": "1357937382318886913",
+        "title": "Si usted está ideologizado, no tiene por qué sufrir como yo y puede hacerme unfollow tranquilamente",
+        "url": "https://turrero.vercel.app/turra/1357937382318886913"
+      },
+      {
+        "threadId": "1365564279232028681",
+        "title": "La división clásica en el Marketing entre creatividad y estrategia",
+        "url": "https://turrero.vercel.app/turra/1365564279232028681"
+      },
+      {
+        "threadId": "1753677668996837620",
+        "title": "Tercera y última parte del pompismo: El peligro del idealismo y la obsesión",
+        "url": "https://turrero.vercel.app/turra/1753677668996837620"
+      },
+      {
+        "threadId": "1758760266068590698",
+        "title": "Explorando el cómic como expresión del pompismo",
+        "url": "https://turrero.vercel.app/turra/1758760266068590698"
+      },
+      {
+        "threadId": "2009896595203018960",
+        "title": "El callejón sin salida: reinventarse para sobrevivir",
+        "url": "https://turrero.vercel.app/turra/2009896595203018960"
+      }
+    ],
+    "books": [
+      {
+        "title": "Sensemaking in Organizations",
+        "author": "Karl E. Weick",
+        "url": "https://www.goodreads.com/book/show/818257.Sensemaking_in_Organizations"
+      },
+      {
+        "title": "Por qué creemos en mierdas: Cómo nos engañamos a nosotros mismos",
+        "author": "Ramón Nogueras",
+        "url": "https://www.goodreads.com/es/book/show/51825715"
+      },
+      {
+        "title": "Black-And-White Thinking: The Burden of a Binary Brain in a Complex World",
+        "author": "Kevin Dutton",
+        "url": "https://www.goodreads.com/book/show/53359432-black-and-white-thinking"
+      },
+      {
+        "title": "When Prophecy Fails: A Social and Psychological Study of a Modern Group that Predicted the Destruction of the World",
+        "author": "Leon Festinger, Henry W. Riecken, Stanley Schachter",
+        "url": "https://www.goodreads.com/book/show/1835405.When_Prophecy_Fails?ref=nav_sb_ss_1_10"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1804386948938699148",
+    "isPillar": false
+  },
+  {
     "slug": "bothism",
     "term": "Bothism",
     "familyId": "mente",
@@ -2837,6 +3875,7 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "chavesnogalismo",
+      "matriz-de-compra-de-pescado",
       "sweet-spot",
       "xavier-o-magneto"
     ],
@@ -2901,6 +3940,8 @@ export const CONCEPTS: Concept[] = [
       "transiciones obligadas"
     ],
     "related": [
+      "decadencia-y-reconversion",
+      "desierto-tipo-sierra",
       "fatiga-de-materiales",
       "sesgo"
     ],
@@ -2935,9 +3976,11 @@ export const CONCEPTS: Concept[] = [
       "Talento y sistema"
     ],
     "related": [
+      "alta-agencia",
       "altas-capacidades",
       "bothism",
       "cps-hispano",
+      "homework-apocalypse",
       "neurodivergencia",
       "zona-de-desarrollo-proximo"
     ],
@@ -3000,6 +4043,221 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "alta-agencia",
+    "term": "Alta agencia",
+    "familyId": "mente",
+    "tier": "deep",
+    "short": "La disposición radical a asumir el mando de un problema bajo tus propias reglas cuando compruebas que el sistema institucional no está diseñado para resolverlo.",
+    "analogy": "Como los padres de «El aceite de Lorenzo», que ante el veredicto médico de «incurable» se encerraron en bibliotecas científicas hasta entender la bioquímica y hallar una vía propia.",
+    "howToApply": "Deja de esperar validación o permiso de estructuras pensadas para la media; construye tu propio sistema de aprendizaje, rodéate de pares con ambición real y diseña un entorno a tu medida.",
+    "antiPattern": "Patologizar los perfiles atípicos de alto empuje confundiéndolos con frialdad o psicopatía, o delegar pasivamente tu futuro en un sistema que ya demostró que no encaja contigo.",
+    "paragraphs": [
+      "En el universo CPS, la alta agencia (high agency) aparece en dos territorios complementarios: el aprendizaje y la crianza fuera del molde —como la historia de Elena creando un entorno a medida para Adrián o los padres de Lorenzo Odone— y el auge de perfiles neurodivergentes de doble excepcionalidad (autismo funcional y altas capacidades) que no negocian con la mediocridad social.",
+      "Recuenco destaca su potencia creativa —«Fear the Autist»— pero añade una cautela crucial: sin propósito ético ni orquestación cognitiva, esa misma fuerza puede descarrilar o volverse destructiva."
+    ],
+    "origin": "Javier G. Recuenco (en diálogo con la literatura de High Agency y el arco educativo)",
+    "aliases": [
+      "alta agencia",
+      "high agency",
+      "Fear the Autist",
+      "agencia alta"
+    ],
+    "related": [
+      "altas-capacidades",
+      "autosegmentacion",
+      "homework-apocalypse",
+      "man-on-a-mission",
+      "neurodivergencia",
+      "orquestacion-cognitiva",
+      "xavier-o-magneto"
+    ],
+    "sources": [
+      {
+        "threadId": "2027648364364312699",
+        "title": "Autismo funcional, agencia alta y poder en la era digital",
+        "url": "https://turrero.vercel.app/turra/2027648364364312699"
+      },
+      {
+        "threadId": "2073294311634973165",
+        "title": "Autonomía, aprendizaje y agencia frente a un sistema que no encaja",
+        "url": "https://turrero.vercel.app/turra/2073294311634973165"
+      },
+      {
+        "threadId": "1771432938288107757",
+        "title": "Estrategias y formación en CPS destacadas por venir",
+        "url": "https://turrero.vercel.app/turra/1771432938288107757"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Power of Agency: The 7 Principles to Conquer Obstacles, Make Effective Decisions, and Create a Life on Your Own Terms",
+        "author": "Paul Napper & Anthony Rao",
+        "url": "https://www.goodreads.com/book/show/39863462-the-power-of-agency"
+      },
+      {
+        "title": "Antifragile: Things That Gain from Disorder",
+        "author": "Nassim Nicholas Taleb",
+        "url": "https://www.goodreads.com/search?q=Antifragile+Nassim+Nicholas+Taleb"
+      },
+      {
+        "title": "Mindset: The New Psychology of Success",
+        "author": "Carol S. Dweck",
+        "url": "https://www.goodreads.com/search?q=Mindset+Carol+Dweck"
+      },
+      {
+        "title": "Drive: The Surprising Truth About What Motivates Us",
+        "author": "Daniel H. Pink",
+        "url": "https://www.goodreads.com/search?q=Drive+Daniel+Pink"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2027648364364312699",
+    "isPillar": false
+  },
+  {
+    "slug": "homework-apocalypse",
+    "term": "Homework Apocalypse",
+    "familyId": "mente",
+    "tier": "deep",
+    "short": "El colapso de las tareas escolares y la evaluación tradicional ante una IA que resuelve el 80–90 % de los deberes, sometiendo la educación a un filtro darwiniano existencial.",
+    "analogy": "Seguir evaluando la forma física de un gimnasio por cuántos kilos suben hasta la barra cuando casi todos los alumnos han traído una carretilla elevadora escondida.",
+    "howToApply": "Rediseña la evaluación en torno al proceso, el juicio y la defensa oral; prohíbe usar la IA como muleta pasiva e intégrala desde primaria como tutor socrático que exija razonar y explicar.",
+    "antiPattern": "Fingir que no pasa nada, perseguir el plagio con detectores inútiles o dejar que los alumnos deleguen el pensamiento en ChatGPT hasta hundir su aprendizaje real.",
+    "paragraphs": [
+      "Recuenco retoma el diagnóstico de Ethan Mollick en su gran arco educativo de mayo y junio de 2026: el Homework Apocalypse no es una amenaza futura, ya ocurrió. La IA resuelve entre el 80 y el 90 % de las tareas clásicas, y la evidencia empírica —como el ensayo aleatorizado en institutos de Turquía con GPT-4— demuestra que usarla sin guía como muleta sube la nota de los deberes pero hunde un 17 % el rendimiento en el examen final.",
+      "Lejos de ser un problema técnico de plagio, la IA somete al tramo de 0 a 18 años y a la universidad a la mayor presión sistémica en dos siglos. Ante el tren bala que ya viene, se abre una bifurcación brutal entre la vía Magneto —dejar que el sistema actúe como filtro darwiniano y cosechar solo a los mutantes con agencia— y la vía Xavier: construir desde infantil centros capaces de formar juicio, detectar neurodivergencia y usar la IA como tutor socrático."
+    ],
+    "origin": "Ethan Mollick (co-inteligencia y Homework Apocalypse), integrado por Javier G. Recuenco junto con el marco universitario de José Sepúlveda",
+    "aliases": [
+      "Homework Apocalypse",
+      "apocalipsis de las tareas",
+      "filtro darwiniano educativo",
+      "co-inteligencia en educación"
+    ],
+    "related": [
+      "alta-agencia",
+      "altas-capacidades",
+      "centauro",
+      "ia-chasm",
+      "neurodivergencia",
+      "xavier-o-magneto"
+    ],
+    "sources": [
+      {
+        "threadId": "2063143047357931689",
+        "title": "Infantil, primaria y secundaria ante la IA y el filtro darwiniano",
+        "url": "https://turrero.vercel.app/turra/2063143047357931689"
+      },
+      {
+        "threadId": "2065676893144134027",
+        "title": "Un colegio para neurodivergentes y neurotípicos en convivencia real",
+        "url": "https://turrero.vercel.app/turra/2065676893144134027"
+      },
+      {
+        "threadId": "2060639447427727568",
+        "title": "La IA y el futuro de la universidad: estrategia, misión y gobierno",
+        "url": "https://turrero.vercel.app/turra/2060639447427727568"
+      }
+    ],
+    "books": [
+      {
+        "title": "Ender's Game",
+        "author": "Orson Scott Card",
+        "url": "https://www.goodreads.com/book/show/375802.Ender_s_Game"
+      },
+      {
+        "title": "The Neurodiversity Edge: The Essential Guide to Embracing Autism, ADHD, Dyslexia, and Other Neurological Differences for Any Organization",
+        "author": "Maureen Dunne",
+        "url": "https://www.goodreads.com/en/book/show/210900283-the-neurodiversity-edge"
+      },
+      {
+        "title": "Robot-Proof, Revised and Updated Edition: Higher Education in the Age of Artificial Intelligence",
+        "author": "Joseph E. Aoun",
+        "url": "https://www.goodreads.com/book/show/205435216-robot-proof-revised-and-updated-edition"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2063143047357931689",
+    "isPillar": false
+  },
+  {
+    "slug": "autoengano",
+    "term": "Autoengaño",
+    "familyId": "mente",
+    "tier": "deep",
+    "short": "Mecanismo psicológico y evolutivo por el que una persona se convence de una creencia distorsionada para proteger su ego, su estatus o su estabilidad emocional ante una realidad dolorosa.",
+    "analogy": "Bajar el volumen de la alarma de incendios y convencerse de que solo es humo de la tostadora porque salir del edificio obligaría a admitir que tu casa está ardiendo.",
+    "howToApply": "Separa la claridad brutal de tu diagnóstico interno de cómo dosificas la verdad ante tu equipo o cliente, sin cruzar nunca la línea que te obliga a validar decisiones con las que disientes de raíz.",
+    "antiPattern": "Creer que soltar verdades crudas sin gestionar el truth coping convencerá a nadie —o, al revés, tolerar la mentira estructural hasta volverte cómplice del desastre.",
+    "paragraphs": [
+      "En su reflexión sobre el deseo de no saber y la ética práctica del solucionador, Recuenco analiza por qué los humanos somos máquinas diseñadas para proteger la identidad y el estatus antes que la verdad objetiva. Apoyándose en el biólogo evolutivo Robert Trivers, subraya que el autoengaño incluso evolucionó como ventaja social: quien cree sinceramente su propia distorsión resulta mucho más convincente al engañar a los demás.",
+      "Para un profesional del CPS, esto abre una tensión incómoda: no basta con oponerse frontalmente a toda mentira por sistema, porque el cerebro está comprometido con la supervivencia y a veces hay que dosificar el impacto de realidades insoportables para evitar el colapso. Pero gestionar el truth coping jamás equivale a rendirse al delirio («delulu is not the solulu»): en ciertos momentos toca clavar tacón y rechazar acuerdos falsos que acabarán pasándote factura."
+    ],
+    "origin": "Psicología evolutiva (Robert Trivers, The Folly of Fools) aplicada por Javier G. Recuenco a la ética de la verdad y el truth coping en CPS",
+    "aliases": [
+      "autoengaño",
+      "auto-mentira",
+      "deseo de no saber",
+      "mentira táctica",
+      "self-deception"
+    ],
+    "related": [
+      "asertividad",
+      "disonancia-cognitiva",
+      "pantomima",
+      "pompismo",
+      "sesgo",
+      "truth-coping"
+    ],
+    "sources": [
+      {
+        "threadId": "1981980820278591851",
+        "title": "El autoengaño: la doble cara de la verdad en la toma de decisiones",
+        "url": "https://turrero.vercel.app/turra/1981980820278591851"
+      },
+      {
+        "threadId": "1928694865052741791",
+        "title": "Truth coping: cómo sobrevivir a verdades incómodas en empresas y personas",
+        "url": "https://turrero.vercel.app/turra/1928694865052741791"
+      },
+      {
+        "threadId": "1761287914493796842",
+        "title": "La multidimensional del pompismo",
+        "url": "https://turrero.vercel.app/turra/1761287914493796842"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Folly of Fools: The Logic of Deceit and Self-Deception in Human Life",
+        "author": "Robert Trivers",
+        "url": "https://www.goodreads.com/book/show/13033022-the-folly-of-fools"
+      },
+      {
+        "title": "The Gaslight Effect: How to Spot and Survive the Hidden Manipulation Others Use to Control Your Life",
+        "author": "Robin Stern",
+        "url": "https://www.goodreads.com/es/book/show/36520721-the-gaslight-effect"
+      },
+      {
+        "title": "The Status Game: On Human Life and How to Play It",
+        "author": "Will Storr",
+        "url": "https://www.goodreads.com/book/show/58642436-the-status-game"
+      },
+      {
+        "title": "When Breath Becomes Air",
+        "author": "Paul Kalanithi",
+        "url": "https://www.goodreads.com/book/show/25899336-when-breath-becomes-air"
+      },
+      {
+        "title": "Siddhartha",
+        "author": "Hermann Hesse",
+        "url": "https://www.goodreads.com/book/show/52036.Siddhartha"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1981980820278591851",
+    "isPillar": false
+  },
+  {
     "slug": "cienciarte",
     "term": "Cienciarte",
     "familyId": "oficio",
@@ -3018,11 +4276,14 @@ export const CONCEPTS: Concept[] = [
       "CienciArtes"
     ],
     "related": [
+      "all-models-are-wrong",
       "aporia",
       "cps",
       "cultura-luterana",
       "factor-x",
       "liminalidad",
+      "neuroestetica",
+      "optimizacion-luterana-y-feijoada",
       "roguelike-de-mazos",
       "sweet-spot"
     ],
@@ -3076,20 +4337,25 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "altas-capacidades",
       "cienciarte",
+      "companias-problem-centric",
       "consultoria",
       "cps-hispano",
+      "critica-al-design-thinking",
       "cynefin",
       "diagnostico",
       "dr-house",
       "factor-x",
+      "futurismo-de-frontera",
       "javier-g-recuenco",
       "orquestacion-cognitiva",
       "pensamiento-lateral",
       "personotecnia",
       "recoger-cable",
       "roguelike-de-mazos",
+      "santuario-humano",
       "singular-solving",
       "solvers-academy",
+      "taylorismo",
       "turra"
     ],
     "sources": [
@@ -3143,6 +4409,7 @@ export const CONCEPTS: Concept[] = [
       "proceso de diagnóstico"
     ],
     "related": [
+      "companias-problem-centric",
       "cps",
       "sensemaking",
       "singular-solving"
@@ -3212,6 +4479,8 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "abrochador-liminal",
       "cienciarte",
+      "critica-al-design-thinking",
+      "neuroestetica",
       "orquestacion-cognitiva",
       "pensamiento-lateral",
       "rabbit-hole",
@@ -3259,13 +4528,18 @@ export const CONCEPTS: Concept[] = [
       "orquestador cognitivo"
     ],
     "related": [
+      "alta-agencia",
+      "companias-problem-centric",
       "corrientes-subterraneas",
       "cps",
+      "critica-al-design-thinking",
       "dr-house",
       "emulsificador-de-equipo",
       "equipo-apolo",
       "liminalidad",
-      "procesos-de-alta-variabilidad"
+      "procesos-de-alta-variabilidad",
+      "resolutivas-invisibles",
+      "sincronizacion-de-pedalada"
     ],
     "sources": [
       {
@@ -3316,8 +4590,11 @@ export const CONCEPTS: Concept[] = [
       "cps",
       "cultura-luterana",
       "incertidumbre",
+      "optimizacion-luterana-y-feijoada",
       "pensamiento-lateral",
       "personotecnia",
+      "post-pe-y-cfu",
+      "resolutivas-invisibles",
       "xavier-o-magneto"
     ],
     "sources": [
@@ -3481,6 +4758,7 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "cps",
       "cps-hispano",
+      "futurismo-de-frontera",
       "liminalidad"
     ],
     "sources": [
@@ -3544,6 +4822,7 @@ export const CONCEPTS: Concept[] = [
       "@SingularSolving"
     ],
     "related": [
+      "companias-problem-centric",
       "cps",
       "diagnostico",
       "javier-g-recuenco",
@@ -3607,8 +4886,10 @@ export const CONCEPTS: Concept[] = [
       "soluciones de mierda a problemas complejos"
     ],
     "related": [
+      "critica-al-design-thinking",
       "estrategia",
-      "sindrome-del-coronel-thompson"
+      "sindrome-del-coronel-thompson",
+      "taylorismo"
     ],
     "sources": [
       {
@@ -3752,6 +5033,143 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "companias-problem-centric",
+    "term": "Compañías Problem-centric",
+    "familyId": "oficio",
+    "tier": "deep",
+    "short": "Organizaciones construidas alrededor del problema real —que dicta las herramientas, vehículos y talentos a orquestar— en lugar de vender una plantilla fija buscando problemas donde encajarla.",
+    "analogy": "Como el rodaje de «El Padrino» en «The Offer», donde cada decisión se somete a «lo que necesita la película», frente a los rodajes «by the book» donde todo el mundo cobra su sueldo mientras la película se hunde.",
+    "howToApply": "Mantén un núcleo ligero de sensemakers y ensambla los vehículos, socios y especialistas que exija cada causa raíz, alineando incentivos con la resolución y no con las horas facturadas.",
+    "antiPattern": "Comportarse como un martillo buscando clavos: vender frameworks enlatados (Agile, Design Thinking o marcas vacías) o facturar plantilla mientras el problema de fondo sigue intacto.",
+    "paragraphs": [
+      "Para Recuenco, ser problem-centric significa literalmente que el problema determina la actuación. En lugar de ofrecer soluciones prefabricadas buscando cliente —«nadie compra CPS, igual que nadie compra electromagnetismo»—, estas compañías envuelven la complejidad en vehículos operables como hizo Nobel con la dinamita.",
+      "Apoyándose en «The Offer» (con Bettye McCartt como CPSer en la sombra y Al Ruddy como orquestador obsesionado con sacar la película adelante) y en casos de Singular Solving como el Insight Lab o el fraude publicitario, contrapone este modelo a las organizaciones parasitadas por el statu quo y las horas facturables."
+    ],
+    "origin": "Javier G. Recuenco (Singular Solving / serie sobre «The Offer»)",
+    "aliases": [
+      "compañías problem-centric",
+      "problem-centric",
+      "organizaciones problem-centric",
+      "The Offer"
+    ],
+    "related": [
+      "consultoria",
+      "cps",
+      "critica-al-design-thinking",
+      "diagnostico",
+      "orquestacion-cognitiva",
+      "resolutivas-invisibles",
+      "singular-solving"
+    ],
+    "sources": [
+      {
+        "threadId": "1779018888203608064",
+        "title": "The Offer: Las compañías problem-centric y el CPS sistemático",
+        "url": "https://turrero.vercel.app/turra/1779018888203608064"
+      },
+      {
+        "threadId": "1791716794312318984",
+        "title": "Reflexión sobre los desafíos y el futuro del CPS en la comunidad de innovación",
+        "url": "https://turrero.vercel.app/turra/1791716794312318984"
+      },
+      {
+        "threadId": "1943924463415820480",
+        "title": "CPS y el Insight Lab: Soluciones creativas para el marketing complejo",
+        "url": "https://turrero.vercel.app/turra/1943924463415820480"
+      },
+      {
+        "threadId": "2014969801395814716",
+        "title": "El poder silencioso de las resolutivas invisibles",
+        "url": "https://turrero.vercel.app/turra/2014969801395814716"
+      }
+    ],
+    "books": [
+      {
+        "title": "Leave the Gun, Take the Cannoli: The Epic Story of the Making of The Godfather",
+        "author": "Mark Seal",
+        "url": "https://www.goodreads.com/search?q=Leave+the+Gun+Take+the+Cannoli+Mark+Seal"
+      },
+      {
+        "title": "Corleone Business School",
+        "author": "Guillermo de Haro",
+        "url": "https://www.goodreads.com/search?q=Corleone+Business+School+Guillermo+de+Haro"
+      },
+      {
+        "title": "Marketing 6.0: The Future Is Immersive",
+        "author": "Philip Kotler, Hermawan Kartajaya & Iwan Setiawan",
+        "url": "https://www.goodreads.com/es/book/show/140691008-marketing-6-0"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1779018888203608064",
+    "isPillar": false
+  },
+  {
+    "slug": "critica-al-design-thinking",
+    "term": "Crítica al Design Thinking",
+    "familyId": "oficio",
+    "tier": "deep",
+    "short": "Cuestionamiento de la deriva del Design Thinking cuando pasa de ser una guarnición valiosa en un entorno liminal a imponerse como plato fuerte y solución universal.",
+    "analogy": "Un estudio lleno de Pro Tools, efectos y muestras digitales de última generación intentando disimular que no hay canción: sin melodía que conecte con la época, las capas de producción no salvan nada.",
+    "howToApply": "Integra el diseño y la experiencia de usuario como un instrumento más dentro de una orquesta multidisciplinar —junto a estrategia, negocio y tecnología— subordinado siempre al problema real.",
+    "antiPattern": "Entregar la estrategia entera de la compañía a talleres de post-its y capas estéticas impecables mientras la propuesta de valor hace aguas y la cuenta de resultados se desangra.",
+    "paragraphs": [
+      "En una de las turras más citadas de todo su archivo —«por qué decimos cordero con patatas y no patatas con cordero»—, Recuenco desmonta la doble narrativa mágica de IDEO y Apple legitimada por Stanford. No ataca la existencia del diseño ni el valor de los buenos arreglos, sino que un instrumento concebido para operar en liminalidad acabara dominando como plato principal: empresas tomadas por el Design Thinking lucen aplicaciones y logos impecables, pero arrastran propuestas de valor dudosas. Como Agile o Lean Startup, colapsó por ser una «solución buscando un problema» en lugar de una disciplina problem-centric."
+    ],
+    "origin": "Javier G. Recuenco",
+    "aliases": [
+      "cordero con patatas",
+      "Design Thinking",
+      "guarnición y plato fuerte",
+      "soluciones buscando un problema"
+    ],
+    "related": [
+      "companias-problem-centric",
+      "cps",
+      "liminalidad",
+      "orquestacion-cognitiva",
+      "pantomima",
+      "soluciones-de-mierda"
+    ],
+    "sources": [
+      {
+        "threadId": "1297462657503694848",
+        "title": "Mi relación con el Design Thinking",
+        "url": "https://turrero.vercel.app/turra/1297462657503694848"
+      },
+      {
+        "threadId": "1992135396793200730",
+        "title": "El poder subestimado de los actores secundarios en el Private Equity",
+        "url": "https://turrero.vercel.app/turra/1992135396793200730"
+      },
+      {
+        "threadId": "1943924463415820480",
+        "title": "CPS y el Insight Lab: Soluciones creativas para el marketing complejo",
+        "url": "https://turrero.vercel.app/turra/1943924463415820480"
+      },
+      {
+        "threadId": "1857680297443164321",
+        "title": "El CPS como disciplina integradora y motor de cambio humano",
+        "url": "https://turrero.vercel.app/turra/1857680297443164321"
+      }
+    ],
+    "books": [
+      {
+        "title": "Marketing 6.0: The Future Is Immersive",
+        "author": "Philip Kotler, Hermawan Kartajaya, Iwan Setiawan",
+        "url": "https://www.goodreads.com/es/book/show/140691008-marketing-6-0"
+      },
+      {
+        "title": "The Goal: A Process of Ongoing Improvement",
+        "author": "Eliyahu M. Goldratt",
+        "url": "https://www.goodreads.com/book/show/113934.The_Goal"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1297462657503694848",
+    "isPillar": false
+  },
+  {
     "slug": "ciencias-de-la-complejidad",
     "term": "Ciencias de la complejidad",
     "familyId": "sistemas",
@@ -3845,6 +5263,7 @@ export const CONCEPTS: Concept[] = [
       "consultoria",
       "cps",
       "dr-house",
+      "futurismo-de-frontera",
       "incertidumbre",
       "niebla-de-guerra",
       "sensemaking",
@@ -3988,10 +5407,14 @@ export const CONCEPTS: Concept[] = [
       "altas-capacidades",
       "aporia",
       "ciencias-de-la-complejidad",
+      "colapso-cognitivo",
       "corrientes-subterraneas",
       "cynefin",
       "diagnostico",
       "enactacion",
+      "futurismo-de-frontera",
+      "matriz-de-compra-de-pescado",
+      "neuroestetica",
       "rabbit-hole"
     ],
     "sources": [
@@ -4059,6 +5482,7 @@ export const CONCEPTS: Concept[] = [
       "ciencias-de-la-complejidad",
       "contexto",
       "cynefin",
+      "efecto-cobra",
       "emergencia",
       "factor-x",
       "homeostasis",
@@ -4160,6 +5584,7 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "homeostasis",
       "hormesis",
+      "sincronizacion-de-pedalada",
       "sistemas-complejos",
       "sweet-spot"
     ],
@@ -4211,6 +5636,7 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "orquestacion-cognitiva",
+      "santuario-humano",
       "sensemaking",
       "zeitgeist"
     ],
@@ -4266,6 +5692,7 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "acoplamiento-suelto",
+      "colapso-cognitivo",
       "sensemaking",
       "skin-in-the-game"
     ],
@@ -4304,6 +5731,7 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "autopoiesis",
       "hormesis",
+      "sincronizacion-de-pedalada",
       "sistemas-complejos",
       "sweet-spot"
     ],
@@ -4368,10 +5796,13 @@ export const CONCEPTS: Concept[] = [
       "vacas esféricas"
     ],
     "related": [
+      "all-models-are-wrong",
+      "colapso-cognitivo",
       "factor-x",
       "falacia-de-mcnamara",
       "procesos-de-alta-variabilidad",
       "sistemas-complejos",
+      "taylorismo",
       "test-astudillo"
     ],
     "sources": [
@@ -4413,6 +5844,122 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "colapso-cognitivo",
+    "term": "Colapso cognitivo",
+    "familyId": "sistemas",
+    "tier": "deep",
+    "short": "El bloqueo o cortocircuito mental que sufre una persona o colectivo cuando la complejidad o la sobrecarga informativa superan su capacidad de procesarla, empujándola a huir del sensemaking.",
+    "analogy": "Como abrir una bolsa mágica infinita creyendo que tu intelecto puede abarcarla y perder el juicio al instante, o taparte los ojos en medio de una tormenta porque mirar el mapa te paraliza.",
+    "howToApply": "Entrena la tolerancia a la ambigüedad, apoya el análisis en sensemaking metódico —y en la IA para filtrar inundaciones de datos— y acepta decisiones suficientemente buenas en vez de refugios ideológicos.",
+    "antiPattern": "Escapar de la complejidad abrazando consignas sin matices, modelos de «vaca esférica» o sensemaking partisano que niega lo que tienes delante de los ojos.",
+    "paragraphs": [
+      "Recuenco parte de una premisa brutal: el cerebro está comprometido con la supervivencia, no con la realidad. Cuando un fenómeno hipercomplejo amenaza con provocar un colapso cognitivo —o una «estenosis cognitiva»—, la mente prefiere el contorsionismo intelectual, la simplificación extrema o el dogma tribal antes que sostener la incertidumbre del sensemaking.",
+      "Desde tropos de cómic como Smart Alec mirando en la bolsa de Shaman hasta la esclerosis partisana durante catástrofes o las inundaciones cognitivas de la paradoja de la elección, el CPS busca conservar la flexibilidad cognitiva y apoyarse en Karl E. Weick y el enactment para leer el mundo sin quebrarse."
+    ],
+    "origin": "Javier G. Recuenco (en diálogo con Karl E. Weick y el sensemaking)",
+    "aliases": [
+      "colapso cognitivo",
+      "pánico al sensemaking",
+      "estenosis cognitiva",
+      "esclerosis cognitiva",
+      "inundación cognitiva"
+    ],
+    "related": [
+      "disonancia-cognitiva",
+      "enactacion",
+      "enshittification",
+      "facciones-lanares",
+      "niebla-de-guerra",
+      "sensemaking",
+      "truth-coping",
+      "vaca-esferica"
+    ],
+    "sources": [
+      {
+        "threadId": "1852267188519854245",
+        "title": "Los colapsos cognitivos, sentido común y figuras heroicas en tiempos complejos",
+        "url": "https://turrero.vercel.app/turra/1852267188519854245"
+      },
+      {
+        "threadId": "1796796569829687349",
+        "title": "El desafío del sensemaking y el colapso cognitivo: explorando fenómenos y ejemplos en la cultura popular y la literatura",
+        "url": "https://turrero.vercel.app/turra/1796796569829687349"
+      },
+      {
+        "threadId": "1784107483444687237",
+        "title": "Sobre la inexactitud de la medicina y las complejidades científicas en TEDxMálaga",
+        "url": "https://turrero.vercel.app/turra/1784107483444687237"
+      },
+      {
+        "threadId": "1725782327131885653",
+        "title": "Continuación de la tetralogía sobre CPS e IA: Explorando el moat humano y la sobrecarga cognitiva",
+        "url": "https://turrero.vercel.app/turra/1725782327131885653"
+      }
+    ],
+    "books": [
+      {
+        "title": "My Share of the Task: A Memoir",
+        "author": "Stanley McChrystal",
+        "url": "https://www.goodreads.com/book/show/13588403-my-share-of-the-task"
+      },
+      {
+        "title": "Managing the Unexpected: Resilient Performance in an Age of Uncertainty",
+        "author": "Karl E. Weick & Kathleen M. Sutcliffe",
+        "url": "https://www.goodreads.com/search?q=Managing+the+Unexpected+Karl+Weick"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1852267188519854245",
+    "isPillar": false
+  },
+  {
+    "slug": "neuroestetica",
+    "term": "Neuroestética",
+    "familyId": "sistemas",
+    "tier": "deep",
+    "short": "Disciplina científica y «cienciarte encarnado» que estudia las bases neuronales de la experiencia estética y cómo distintos cerebros construyen la belleza y el sentido.",
+    "analogy": "Como el fósforo en la naturaleza, que nunca aparece puro sino combinado: la neuroestética muestra que dar sentido al mundo nunca es solo cálculo frío, sino una reacción viva entre cerebro, cuerpo, emoción y arte.",
+    "howToApply": "Incorpora perfiles creativos y sensibilidades sensoriales diversas en tus procesos de diagnóstico y experiencia de usuario, entendiendo que cada cerebro percibe y construye sentido de manera distinta.",
+    "antiPattern": "Diseñar experiencias, entornos o productos asumiendo un usuario promedio idéntico, o encerrar el sensemaking y la ciencia en laboratorios aislados de la sensibilidad artística.",
+    "paragraphs": [
+      "Definida formalmente en 2002 como el estudio científico de los procesos neuronales que subyacen a la contemplación y creación artística, la neuroestética cruza neurociencia, psicología de la percepción, biología evolutiva, filosofía e historia del arte para explicar desde la música o el cine hasta fenómenos como el síndrome de Stendhal.",
+      "En el cierre de su saga sobre sensemaking, Recuenco la rescata a raíz de la obra multidisciplinar impulsada por el Dr. James Hutson porque condensa una hibridación extraordinaria: une sensemaking, neurodivergencia («neurotribus»), perfiles sensoriales personotécnicos, procesos de alta variabilidad y neuroarte. Una prueba viva de que la creatividad y la ciencia aplicada convergen en la frontera del diagnóstico CPS."
+    ],
+    "origin": "Neurociencia cognitiva y estética experimental (definida formalmente en 2002), conectada por Javier G. Recuenco con el trabajo de James Hutson, el sensemaking y la Personotecnia",
+    "aliases": [
+      "neuroestética",
+      "neuroaesthetics",
+      "neuroarte",
+      "neurotribus",
+      "perfiles sensoriales"
+    ],
+    "related": [
+      "cienciarte",
+      "liminalidad",
+      "neurodivergencia",
+      "personotecnia",
+      "procesos-de-alta-variabilidad",
+      "sensemaking"
+    ],
+    "sources": [
+      {
+        "threadId": "1806938762129101276",
+        "title": "Exploración de la neuroestética y su impacto en el arte y la ciencia",
+        "url": "https://turrero.vercel.app/turra/1806938762129101276"
+      }
+    ],
+    "books": [
+      {
+        "title": "Newburn #1",
+        "author": "Chip Zdarsky & Jacob Phillips",
+        "url": "https://goodreads.com/book/show/59535315-newburn-1"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1806938762129101276",
+    "isPillar": false
+  },
+  {
     "slug": "cultura-luterana",
     "term": "Cultura luterana",
     "familyId": "sociedad",
@@ -4438,7 +5985,9 @@ export const CONCEPTS: Concept[] = [
       "cps-hispano",
       "falacia-de-mcnamara",
       "incertidumbre",
-      "private-equity"
+      "optimizacion-luterana-y-feijoada",
+      "private-equity",
+      "taylorismo"
     ],
     "sources": [
       {
@@ -4551,9 +6100,12 @@ export const CONCEPTS: Concept[] = [
       "pantomimas"
     ],
     "related": [
+      "autoengano",
+      "critica-al-design-thinking",
       "disonancia-cognitiva",
       "efecto-gell-mann",
       "espiral-del-pa-que",
+      "metaincentivos",
       "truth-coping"
     ],
     "sources": [
@@ -4609,10 +6161,12 @@ export const CONCEPTS: Concept[] = [
       "pompi"
     ],
     "related": [
+      "autoengano",
       "chavesnogalismo",
       "facciones-lanares",
       "game-awareness",
       "man-on-a-mission",
+      "matriz-de-compra-de-pescado",
       "sweet-spot",
       "zelotes"
     ],
@@ -4679,6 +6233,8 @@ export const CONCEPTS: Concept[] = [
       "abrochador-liminal",
       "atractores",
       "corrientes-subterraneas",
+      "eta",
+      "harbingers-of-doom",
       "sindrome-del-coronel-thompson",
       "test-astudillo"
     ],
@@ -4746,6 +6302,7 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "bothism",
       "facciones-lanares",
+      "matriz-de-compra-de-pescado",
       "pompismo"
     ],
     "sources": [
@@ -4889,6 +6446,8 @@ export const CONCEPTS: Concept[] = [
     ],
     "related": [
       "chavesnogalismo",
+      "colapso-cognitivo",
+      "enshittification",
       "espiral-del-silencio",
       "pompismo",
       "zelotes"
@@ -4937,6 +6496,7 @@ export const CONCEPTS: Concept[] = [
       "asertividad",
       "espiral-del-silencio",
       "facciones-lanares",
+      "matriz-de-compra-de-pescado",
       "pompismo"
     ],
     "sources": [
@@ -4983,6 +6543,113 @@ export const CONCEPTS: Concept[] = [
     "isPillar": false
   },
   {
+    "slug": "optimizacion-luterana-y-feijoada",
+    "term": "Feijoada y optimización luterana",
+    "familyId": "sociedad",
+    "tier": "deep",
+    "short": "Metáfora gastronómica y cultural que opone la creación de valor a fuego lento, mestiza y comunitaria (feijoada y CPS Hispano) al agotamiento del recorte obsesivo y el fast food corporativo (optimización luterana).",
+    "analogy": "Intentar replicar en tres minutos de microondas un guiso que exige desalar dos días y cocer cuatro horas a fuego lento en olla de barro: sale caliente, pero has destruido todo lo que le daba sentido.",
+    "howToApply": "Combina la disciplina estructural luterana con la paciencia, el ingenio y la autenticidad del chup-chup: invierte en construir propuestas de valor irreplicables en vez de pasar eternamente la lija a lo que ya muere.",
+    "antiPattern": "Exprimir cada proceso con la mentalidad de «garlopa y lija» del Private Equity clásico creyendo que reducir costes y tiempos sustituye a crear valor real.",
+    "paragraphs": [
+      "Recuenco presenta este cruce como su «teoría unificada» entre el Post-PE y el CPS Hispano: frente a la cultura del «sándwich de pepino» y la optimización luterana —donde el Private Equity tradicional exprimía modelos maduros a golpe de recorte y eficiencia predecible—, la feijoada brasileña encarna la lógica del plato lento, nacido de la escasez, el mestizaje cultural y la cocción paciente en comunidad.",
+      "La tesis no celebra el desorden ni romantiza defectos hispanos: defiende sintetizar lo mejor de ambos mundos. Como Salieri ante el genio caótico de Mozart en «Amadeus», el CPS consiste en embotellar esa chispa creativa y mezclarla con suficiente hormigón y estructura para crear valor duradero cuando la mera optimización ya no salva a las compañías en problemas."
+    ],
+    "origin": "Javier G. Recuenco (síntesis de Post-PE, CPS Hispano y crítica a la era luterana, con referencias a Luís da Câmara Cascudo, Eugenio d'Ors y Adriano Olivetti)",
+    "aliases": [
+      "feijoada",
+      "optimización luterana",
+      "era post-luterana",
+      "platos lentos y chup-chup",
+      "sándwiches de pepino"
+    ],
+    "related": [
+      "cienciarte",
+      "cps-hispano",
+      "cultura-luterana",
+      "post-pe-y-cfu",
+      "private-equity",
+      "taylorismo"
+    ],
+    "sources": [
+      {
+        "threadId": "2025116934572843338",
+        "title": "Feijoada, post-PE y CPS: crítica a la optimización luterana",
+        "url": "https://turrero.vercel.app/turra/2025116934572843338"
+      },
+      {
+        "threadId": "1971825115165028522",
+        "title": "CPS Hispano: la nueva estrategia de creatividad y rebeldía",
+        "url": "https://turrero.vercel.app/turra/1971825115165028522"
+      }
+    ],
+    "books": [
+      {
+        "title": "Lo Barroco",
+        "author": "Eugenio d'Ors",
+        "url": "https://www.goodreads.com/book/show/39715965-lo-barroco"
+      },
+      {
+        "title": "L'impresa responsabile: Un'intervista su Adriano Olivetti",
+        "author": "Luciano Gallino",
+        "url": "https://www.goodreads.com/book/show/23273468-l-impresa-responsabile"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2025116934572843338",
+    "isPillar": false
+  },
+  {
+    "slug": "enshittification",
+    "term": "Enshittification",
+    "familyId": "sociedad",
+    "tier": "deep",
+    "short": "Degradación sistemática de plataformas, industrias y espacios públicos cuando sus incentivos viran de servir al usuario o ciudadano hacia la extracción, la opacidad y el sectarismo.",
+    "analogy": "Un restaurante de barrio que primero te conquista con producto impecable, luego abarata ingredientes para exprimir margen y acaba cobrándote el doble por comida recalentada porque sabe que ya no tienes otro sitio cerca.",
+    "howToApply": "No intentes reformar desde dentro un sistema podrido por incentivos cómplices: diseña alternativas desde fuera (outsider) con transparencia radical y skin in the game, y separa el valor de una disciplina de la moda comercial que la parasita.",
+    "antiPattern": "Confiar en que el statu quo de una industria opaca se autorregule o permitir que la esclerosis partidista pudra incluso la respuesta ante una catástrofe real.",
+    "paragraphs": [
+      "Acuñado por Cory Doctorow para describir la decadencia programada de las plataformas digitales («mierdificación»), Recuenco extiende el concepto a tres frentes decisivos: el marketing digital capturado por el fraude y los datos basura, la degradación de la vida política y el debate público ante catástrofes como la DANA, y la erosión comercial que amenaza a cualquier movimiento o disciplina de éxito.",
+      "Su diagnóstico es tajante: un sistema degradado casi nunca se regenera desde dentro porque todos sus actores dependen de los mismos incentivos perversos. Frente a la «enshittification» publicitaria plantea post-agencias ajenas al ecosistema cómplice (como MPFG); frente a la esclerosis cognitiva en la vida pública, reivindica el sentido común, la flexibilidad de Karl Weick y el foco en quienes actúan con decencia."
+    ],
+    "origin": "Cory Doctorow (enshittification / mierdificación), ampliado por Javier G. Recuenco a la publicidad digital, el debate público y las comunidades de innovación",
+    "aliases": [
+      "enshittification",
+      "mierdificación",
+      "degradación de plataformas",
+      "post-agencia"
+    ],
+    "related": [
+      "capitalismo-de-vigilancia",
+      "colapso-cognitivo",
+      "facciones-lanares",
+      "hotel-de-hilbert",
+      "incentivo-perverso",
+      "s4-nightmare"
+    ],
+    "sources": [
+      {
+        "threadId": "1852267188519854245",
+        "title": "Los colapsos cognitivos, sentido común y figuras heroicas en tiempos complejos",
+        "url": "https://turrero.vercel.app/turra/1852267188519854245"
+      },
+      {
+        "threadId": "1842453861094609097",
+        "title": "Modelos extractivos de datos ponen en riesgo la privacidad y el control de los anunciantes",
+        "url": "https://turrero.vercel.app/turra/1842453861094609097"
+      },
+      {
+        "threadId": "1791716794312318984",
+        "title": "Reflexión sobre los desafíos y el futuro del CPS en la comunidad de innovación",
+        "url": "https://turrero.vercel.app/turra/1791716794312318984"
+      }
+    ],
+    "books": [],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/1852267188519854245",
+    "isPillar": false
+  },
+  {
     "slug": "centauro",
     "term": "Centauro",
     "familyId": "tecnologia",
@@ -5004,9 +6671,12 @@ export const CONCEPTS: Concept[] = [
       "centauro inverso"
     ],
     "related": [
+      "all-models-are-wrong",
+      "homework-apocalypse",
       "ia-chasm",
       "lujo-humano",
-      "moat"
+      "moat",
+      "santuario-humano"
     ],
     "sources": [
       {
@@ -5070,8 +6740,11 @@ export const CONCEPTS: Concept[] = [
       "capitalismo-de-vigilancia",
       "ciencias-de-la-complejidad",
       "decision-makers",
+      "desierto-tipo-sierra",
       "factor-x",
-      "ia-chasm"
+      "ia-chasm",
+      "reshuffle",
+      "s4-nightmare"
     ],
     "sources": [
       {
@@ -5121,9 +6794,13 @@ export const CONCEPTS: Concept[] = [
       "dos relojes"
     ],
     "related": [
+      "aftershock",
       "centauro",
+      "desierto-tipo-sierra",
       "ecosistemas-tecnologicos",
-      "personotecnia"
+      "homework-apocalypse",
+      "personotecnia",
+      "reshuffle"
     ],
     "sources": [
       {
@@ -5168,7 +6845,10 @@ export const CONCEPTS: Concept[] = [
       "blitzscaling",
       "capitalismo-de-vigilancia",
       "centauro",
-      "moat"
+      "moat",
+      "personotecnia-ia",
+      "resolutivas-invisibles",
+      "santuario-humano"
     ],
     "sources": [
       {
@@ -5196,6 +6876,136 @@ export const CONCEPTS: Concept[] = [
     ],
     "domains": null,
     "glossaryUrl": "https://turrero.vercel.app/glosario#lujo-humano",
+    "isPillar": false
+  },
+  {
+    "slug": "reshuffle",
+    "term": "Reshuffle",
+    "familyId": "tecnologia",
+    "tier": "core",
+    "short": "Reordenación estructural de la jerarquía intelectual, los roles y la economía del conocimiento provocada por la irrupción de la IA.",
+    "analogy": "No es cambiar las cartas que tienes en la mano, sino barajar de nuevo toda la mesa y cambiar qué jugadas valen más y cuáles dejan de puntuar.",
+    "howToApply": "Dejar de sumar herramientas de IA sobre un organigrama intacto y rediseñar qué tareas absorbe la máquina, dónde sigue habiendo prima humana y cómo reconfigurar equipos y formación.",
+    "antiPattern": "Creer que tu profesión es «la excepción mágica» que la automatización no tocará mientras ves claramente cómo arrasa todos los oficios vecinos.",
+    "paragraphs": [
+      "Inspirado en el libro «Reshuffle» de Sangeet Paul Choudary —el «último clavo» que Recuenco necesitó para reformular sus Cinco Atractores en versión 2026—, nombra uno de los grandes atractores de fondo de la nueva década: el reshuffling de la jerarquía intelectual, con implicaciones laborales y educativas directas.",
+      "Para Recuenco, adoptar la IA no consiste en encadenar quick wins ni añadir copilotos cosméticos, sino en sobrevivir al reajuste profundo del organigrama y de la economía del conocimiento que exige pasar de pilotos aislados a operaciones realmente preparadas para un entorno IA-first."
+    ],
+    "origin": "Sangeet Paul Choudary, «Reshuffle» / Javier G. Recuenco (Atractores 2026)",
+    "aliases": [
+      "reshuffle",
+      "reshuffling",
+      "reshuffling de la jerarquía intelectual",
+      "reshuffle de la economía del conocimiento"
+    ],
+    "related": [
+      "aftershock",
+      "atractores",
+      "desierto-tipo-sierra",
+      "ecosistemas-tecnologicos",
+      "hotel-de-hilbert",
+      "ia-chasm",
+      "santuario-humano"
+    ],
+    "sources": [
+      {
+        "threadId": "2004624575837958361",
+        "title": "Nuevos atractores 2026 redefinen el futuro tecnológico",
+        "url": "https://turrero.vercel.app/turra/2004624575837958361"
+      },
+      {
+        "threadId": "2080919569976185336",
+        "title": "La adopción real de la IA en empresas es un desierto tipo Sierra",
+        "url": "https://turrero.vercel.app/turra/2080919569976185336"
+      },
+      {
+        "threadId": "2075812328566562908",
+        "title": "IA Chasm: la brecha entre pilotos y adopción real de IA",
+        "url": "https://turrero.vercel.app/turra/2075812328566562908"
+      }
+    ],
+    "books": [
+      {
+        "title": "Reshuffle: Who Wins When AI Restacks the Knowledge Economy",
+        "author": "Sangeet Paul Choudary",
+        "url": "https://www.goodreads.com/search?q=Reshuffle+Sangeet+Paul+Choudary"
+      },
+      {
+        "title": "Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers",
+        "author": "Geoffrey A. Moore",
+        "url": "https://www.goodreads.com/book/show/61329.Crossing_the_Chasm"
+      },
+      {
+        "title": "Not All Fairy Tales Have Happy Endings: The Rise and Fall of Sierra On-Line",
+        "author": "Ken Williams",
+        "url": "https://www.goodreads.com/book/show/55530234-not-all-fairy-tales-have-happy-endings"
+      },
+      {
+        "title": "The AI Revolution in Book Publishing: A Concise Guide to Navigating the Future",
+        "author": "Thad McIlroy",
+        "url": "https://www.goodreads.com/book/show/216788633-the-ai-revolution-in-book-publishing"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2004624575837958361",
+    "isPillar": false
+  },
+  {
+    "slug": "santuario-humano",
+    "term": "Santuario humano",
+    "familyId": "tecnologia",
+    "tier": "core",
+    "short": "El territorio que permanece genuinamente humano cuando la IA encapsula todo lo determinista: gestionar la incertidumbre con información incompleta y crear cultura con raíces vivas.",
+    "analogy": "Como la música nacida de la fricción, el error y el zeitgeist frente a una pista sintética impecable pero sin raíces: podemos fabricar sonidos perfectos en serie, pero seguimos buscando lo que está conectado a la tierra.",
+    "howToApply": "Deja que la IA encapsule y automatice lo repetible y determinista, y concentra tu ventaja y la de tu equipo en el juicio bajo incertidumbre, el CPS y las experiencias con autenticidad irrenunciable.",
+    "antiPattern": "Nadar contra la corriente intentando prohibir el avance de la IA en tareas sistematizables, o creer que lo sintético puede sustituir el arraigo cultural y emocional humano.",
+    "paragraphs": [
+      "La tesis del santuario humano une dos hilos capitales de Recuenco: por un lado, la ley evolutiva según la cual todo proceso intelectual modelable de forma determinista terminará encapsulado por la IA, dejando al ser humano la gestión de la incertidumbre y la acción con información incompleta.",
+      "Por otro, en su análisis de la música a partir de «Undercurrents» de Rob Young, sostiene que el arte y el sentido humano nacen del diálogo con el zeitgeist, el ritual y el error; como «ex nihilo nihil fit», la síntesis sin raíces provocará una reacción cultural estilo «No machines» en defensa de lo orgánico."
+    ],
+    "origin": "Javier G. Recuenco",
+    "aliases": [
+      "santuario humano",
+      "human sanctuary",
+      "encapsulación de procesos por IA",
+      "reacción No machines"
+    ],
+    "related": [
+      "centauro",
+      "corrientes-subterraneas",
+      "cps",
+      "factor-x",
+      "futurismo-de-frontera",
+      "incertidumbre",
+      "lujo-humano",
+      "reshuffle"
+    ],
+    "sources": [
+      {
+        "threadId": "2124047138002764060",
+        "title": "Música, IA y el santuario humano",
+        "url": "https://turrero.vercel.app/turra/2124047138002764060"
+      },
+      {
+        "threadId": "2118979141928104262",
+        "title": "El CPS como puente entre lo incremental y el moonshot",
+        "url": "https://turrero.vercel.app/turra/2118979141928104262"
+      },
+      {
+        "threadId": "1966774475191435728",
+        "title": "IA encapsula procesos complejos y redefine el CPS",
+        "url": "https://turrero.vercel.app/turra/1966774475191435728"
+      }
+    ],
+    "books": [
+      {
+        "title": "Undercurrents: The Hidden Wiring of Modern Music",
+        "author": "Rob Young (ed.)",
+        "url": "https://www.goodreads.com/book/show/146225.Undercurrents"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2124047138002764060",
     "isPillar": false
   },
   {
@@ -5261,8 +7071,11 @@ export const CONCEPTS: Concept[] = [
     "related": [
       "autosegmentacion",
       "ecosistemas-tecnologicos",
+      "enshittification",
       "lujo-humano",
-      "personotecnia"
+      "personotecnia",
+      "personotecnia-ia",
+      "s4-nightmare"
     ],
     "sources": [
       {
@@ -5344,6 +7157,223 @@ export const CONCEPTS: Concept[] = [
     ],
     "domains": null,
     "glossaryUrl": "https://turrero.vercel.app/turra/1766352097409134910",
+    "isPillar": false
+  },
+  {
+    "slug": "desierto-tipo-sierra",
+    "term": "Desierto tipo Sierra",
+    "familyId": "tecnologia",
+    "tier": "deep",
+    "short": "Entorno de transformación hostil y letal —como el Endless Desert de King's Quest V— donde los errores de transición matan a la empresa o la dejan atrapada en dead ends sin vuelta atrás.",
+    "analogy": "Cruzar un desierto en una aventura de los 90 donde caminar seis pantallas sin oasis te mata de sed y haber gastado un pastel horas antes te impide terminar la partida para siempre.",
+    "howToApply": "Cartografía con disciplina extrema los puntos críticos de la transición antes de adentrarte en ella, mide si tu estructura aguanta el coste real de mutar o si conviene lanzar un vehículo nuevo.",
+    "antiPattern": "Afrontar la adopción estructural de la IA creyendo que estás en una aventura amable tipo LucasArts donde experimentar sin mapa nunca tiene consecuencias mortales.",
+    "paragraphs": [
+      "Recuenco contrapone la crueldad implacable de las aventuras gráficas de Sierra On-Line (Ken y Roberta Williams) frente al diseño indulgente de LucasArts (Ron Gilbert): Sierra te mataba por curioso y te condenaba a estados imposibles de ganar, mientras LucasArts premiaba el ensayo sin muerte.",
+      "Al aplicar la metáfora al IA Chasm, sostiene que el 90 % de las grandes corporaciones disfrutan de sus primeros quick wins antes de entrar en el desierto real; cuando toca rediseñar procesos, incentivos y organigrama, solo sobreviven quienes aceptan «mutaciones Fremen» dignas de Dune, porque la naturaleza es definitivamente más Sierra que LucasArts."
+    ],
+    "origin": "Javier G. Recuenco (a partir de Sierra On-Line / King's Quest V y Dune)",
+    "aliases": [
+      "desierto tipo Sierra",
+      "Endless Desert",
+      "Sierra vs LucasArts",
+      "mutaciones Fremen"
+    ],
+    "related": [
+      "aftershock",
+      "cul-de-sac",
+      "ecosistemas-tecnologicos",
+      "hormesis",
+      "ia-chasm",
+      "reshuffle",
+      "transicion-obligada"
+    ],
+    "sources": [
+      {
+        "threadId": "2080919569976185336",
+        "title": "La adopción real de la IA en empresas es un desierto tipo Sierra",
+        "url": "https://turrero.vercel.app/turra/2080919569976185336"
+      },
+      {
+        "threadId": "2078375621047042415",
+        "title": "Project Everest y el choque entre auditoría y consultoría en EY",
+        "url": "https://turrero.vercel.app/turra/2078375621047042415"
+      },
+      {
+        "threadId": "2075812328566562908",
+        "title": "IA Chasm: la brecha entre pilotos y adopción real de IA",
+        "url": "https://turrero.vercel.app/turra/2075812328566562908"
+      }
+    ],
+    "books": [
+      {
+        "title": "Not All Fairy Tales Have Happy Endings: The Rise and Fall of Sierra On-Line",
+        "author": "Ken Williams",
+        "url": "https://www.goodreads.com/book/show/55530234-not-all-fairy-tales-have-happy-endings"
+      },
+      {
+        "title": "Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers",
+        "author": "Geoffrey A. Moore",
+        "url": "https://www.goodreads.com/book/show/61329.Crossing_the_Chasm"
+      },
+      {
+        "title": "The AI Revolution in Book Publishing: A Concise Guide to Navigating the Future",
+        "author": "Thad McIlroy",
+        "url": "https://www.goodreads.com/book/show/216788633-the-ai-revolution-in-book-publishing"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2080919569976185336",
+    "isPillar": false
+  },
+  {
+    "slug": "personotecnia-ia",
+    "term": "PersonotecnIA",
+    "familyId": "tecnologia",
+    "tier": "deep",
+    "short": "Convergencia entre la Personotecnia y la inteligencia artificial para lograr relevancia real y trato de persona a persona a gran escala sin caer en la cosificación ni el spam algorítmico.",
+    "analogy": "Conseguir que una organización con millones de clientes recupere la sensibilidad del frutero de barrio —que conoce tu contexto y sabe cuándo hablar y cuándo callar— usando la IA para gestionar miles de variables sin convertirte en un número.",
+    "howToApply": "Diseña primero qué relación honesta y recíproca quieres construir, modela contextos cambiantes en lugar de buyer personas planos y usa la IA para elevar la relevancia y reducir la fricción, nunca para multiplicar el ruido.",
+    "antiPattern": "Llamar «personalización» a poner el nombre del cliente en un correo masivo o usar la IA para bombardear mil veces más rápido con anuncios de algo que ya compró.",
+    "paragraphs": [
+      "Fruto del megaarco de septiembre-octubre de 2026 y del libro homónimo escrito junto a Miguel Ángel Uriondo, la PersonotecnIA actualiza una disciplina que Recuenco formuló hace más de veinte años y que, como el bosón de Higgs esperando al LHC, necesitaba que la IA la alcanzara para desplegar su potencial.",
+      "Frente a la crisis de la atención y la inmunidad generacional causada por décadas de «Gran Hermano de baja calidad» y cosificación por «kilo de data», propone usar las capacidades contextuales de la IA para merecer la atención, vender sin tomar a la gente por idiota y no tratar a las personas como cosas."
+    ],
+    "origin": "Javier G. Recuenco y Miguel Ángel Uriondo, «PersonotecnIA» (2026)",
+    "aliases": [
+      "PersonotecnIA",
+      "personotecnia 26",
+      "relevancia a gran escala",
+      "personalización sin cosificación"
+    ],
+    "related": [
+      "autosegmentacion",
+      "capitalismo-de-vigilancia",
+      "contexto",
+      "factor-x",
+      "lujo-humano",
+      "personotecnia",
+      "procesos-de-alta-variabilidad",
+      "s4-nightmare"
+    ],
+    "sources": [
+      {
+        "threadId": "2113880928653119826",
+        "title": "Cierre del arco de Personotecnia y salto a la personotecnIA",
+        "url": "https://turrero.vercel.app/turra/2113880928653119826"
+      },
+      {
+        "threadId": "2111348056851460582",
+        "title": "Personotecnia e IA para personalizar sin tratar a las personas como cosas",
+        "url": "https://turrero.vercel.app/turra/2111348056851460582"
+      },
+      {
+        "threadId": "2103744346142966174",
+        "title": "Personotecnia, IA y la promesa de vender sin tomarte por idiota",
+        "url": "https://turrero.vercel.app/turra/2103744346142966174"
+      },
+      {
+        "threadId": "2101155734700405039",
+        "title": "Personotecnia y economía de la atención: relevancia, contexto e inmunidad",
+        "url": "https://turrero.vercel.app/turra/2101155734700405039"
+      },
+      {
+        "threadId": "2098670392902557988",
+        "title": "Personotecnia, atención y relevancia en la economía digital",
+        "url": "https://turrero.vercel.app/turra/2098670392902557988"
+      }
+    ],
+    "books": [
+      {
+        "title": "The Attention Economy: Understanding the New Currency of Business",
+        "author": "Thomas H. Davenport & John C. Beck",
+        "url": "https://www.goodreads.com/book/show/475876.The_Attention_Economy"
+      },
+      {
+        "title": "Relevance: Communication and Cognition",
+        "author": "Dan Sperber & Deirdre Wilson",
+        "url": "https://www.goodreads.com/es/book/show/947633.Relevance"
+      },
+      {
+        "title": "Attention Span: A Groundbreaking Way to Restore Balance, Happiness and Productivity",
+        "author": "Gloria Mark",
+        "url": "https://www.goodreads.com/es/book/show/60795084-attention-span"
+      },
+      {
+        "title": "The Attention Merchants: The Epic Scramble to Get Inside Our Heads",
+        "author": "Tim Wu",
+        "url": "https://www.goodreads.com/book/show/28503628-the-attention-merchants"
+      },
+      {
+        "title": "How to Do Nothing: Resisting the Attention Economy",
+        "author": "Jenny Odell",
+        "url": "https://www.goodreads.com/book/show/42771901-how-to-do-nothing"
+      },
+      {
+        "title": "Freemium Economics: Leveraging Analytics and User Segmentation to Drive Revenue",
+        "author": "Eric Benjamin Seufert",
+        "url": "https://www.goodreads.com/book/show/18607052-freemium-economics"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2113880928653119826",
+    "isPillar": false
+  },
+  {
+    "slug": "s4-nightmare",
+    "term": "S4 Nightmare",
+    "familyId": "tecnologia",
+    "tier": "deep",
+    "short": "La pesadilla extractiva del adtech y el capitalismo de vigilancia —Sniff, Store, Shake, Sell— que secuestró durante más de veinte años el sentido real de la personalización.",
+    "analogy": "Un vendedor que te sigue en secreto por toda la ciudad apuntando dónde entras y qué tiras a la basura para gritarte anuncios con un megáfono, y todavía tiene la desfachatez de llamarlo «trato personalizado».",
+    "howToApply": "Audita tus flujos de datos y marketing: sustituye la captura opaca sin reciprocidad por intercambio explícito de valor, contexto real y relevancia ganada (Personotecnia).",
+    "antiPattern": "Acumular datos íntimos de usuarios sin contraprestación para revender atención a la publicidad —o repetir el mismo esquema extractivo encima de la IA bajo el mantra «Everything is an ad network».",
+    "paragraphs": [
+      "La fórmula Sniff, Store, Shake, Sell (S4 Nightmare, acuñada por Ben Kunz en su crítica al gran espejismo de la publicidad digital) condensa lo que Recuenco bautizó en 2020 como los «años perdidos» de la personalización: más de dos décadas desviadas por atajos arquitectónicos hacia la captura opaca de datos aleatorios revendidos a anunciantes, lo que él denomina sin anestesia «sonda anal» o «Gran Hermano de baja calidad».",
+      "Conectado con la genealogía del panóptico de Bentham, Foucault, Snowden y el capitalismo de vigilancia de Shoshana Zuboff, este modelo convirtió la experiencia humana en materia prima gratuita para mercados de futuros conductuales, degradó la atención hasta el biohackeo y provocó que cada generación desarrolle un sistema inmunitario más feroz contra la publicidad no deseada."
+    ],
+    "origin": "Ben Kunz (S4 Nightmare: Sniff, Store, Shake, Sell), integrado por Javier G. Recuenco en su crítica de los años perdidos de la personalización y el capitalismo de vigilancia",
+    "aliases": [
+      "S4 Nightmare",
+      "Sniff Store Shake Sell",
+      "sonda anal",
+      "años perdidos de la personalización",
+      "Great Pumpkin"
+    ],
+    "related": [
+      "autosegmentacion",
+      "capitalismo-de-vigilancia",
+      "ecosistemas-tecnologicos",
+      "enshittification",
+      "personotecnia",
+      "personotecnia-ia"
+    ],
+    "sources": [
+      {
+        "threadId": "2106277152895189177",
+        "title": "Capitalismo de vigilancia y los años perdidos de la personalización",
+        "url": "https://turrero.vercel.app/turra/2106277152895189177"
+      },
+      {
+        "threadId": "2113880928653119826",
+        "title": "Cierre del arco de Personotecnia y salto a la personotecnIA",
+        "url": "https://turrero.vercel.app/turra/2113880928653119826"
+      }
+    ],
+    "books": [
+      {
+        "title": "Surveillance After Snowden",
+        "author": "David Lyon",
+        "url": "https://www.goodreads.com/book/show/23745299-surveillance-after-snowden"
+      },
+      {
+        "title": "Careless People: A Cautionary Tale of Power, Greed, and Lost Idealism",
+        "author": "Sarah Wynn-Williams",
+        "url": "https://www.goodreads.com/book/show/223436601-careless-people"
+      }
+    ],
+    "domains": null,
+    "glossaryUrl": "https://turrero.vercel.app/turra/2106277152895189177",
     "isPillar": false
   }
 ];

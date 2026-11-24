@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import {
   CheckCircle2,
   Compass,
+  ExternalLink,
   Filter,
   Flame,
   Search,
@@ -393,6 +394,28 @@ export const IndexView: React.FC<IndexViewProps> = ({
             })}
           </div>
         )}
+
+        {/* Discreet footer with suggest-a-concept link (visible on mobile & desktop) */}
+        <footer className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-5 text-[11px] text-slate-400">
+          <a
+            href="https://turrero.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 transition hover:text-amber-200"
+          >
+            <span>{t.basedOnAttribution}</span>
+            <ExternalLink className="h-3 w-3 opacity-70" />
+          </a>
+          <a
+            href="https://github.com/marcmonf/entendiendo-cps/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-slate-300 transition hover:border-cyan-400/35 hover:text-cyan-200"
+          >
+            <span>{t.suggestConcept}</span>
+            <ExternalLink className="h-3 w-3 opacity-70" />
+          </a>
+        </footer>
       </div>
     </div>
   );

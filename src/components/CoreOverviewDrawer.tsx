@@ -186,6 +186,17 @@ export const CoreOverviewDrawer: React.FC<CoreOverviewDrawerProps> = ({
             </a>
             {t.coreCreditPost}
           </p>
+          <div className="pt-1 border-t border-white/6">
+            <a
+              href="https://github.com/marcmonf/entendiendo-cps/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[11px] text-slate-400 transition hover:text-cyan-300"
+            >
+              <span>{t.suggestConcept}</span>
+              <ExternalLink className="h-3 w-3 opacity-70" />
+            </a>
+          </div>
         </div>
       </div>
     </aside>

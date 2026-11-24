@@ -67,6 +67,7 @@ export interface UIStrings {
   expandAll: string;
   collapseAll: string;
   basedOnAttribution: string;
+  suggestConcept: string;
   onboardingWhisperPrefix: string;
   onboardingWhisperStrong: string;
   onboardingWhisperMid: string;
