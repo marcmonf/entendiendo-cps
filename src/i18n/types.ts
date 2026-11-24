@@ -14,7 +14,7 @@ export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { code: 'es', shortLabel: 'ES', nativeName: 'Español', ready: true },
   { code: 'en', shortLabel: 'EN', nativeName: 'English', ready: true },
   { code: 'fr', shortLabel: 'FR', nativeName: 'Français', ready: false },
-  { code: 'pt', shortLabel: 'PT', nativeName: 'Português', ready: false },
+  { code: 'pt', shortLabel: 'PT', nativeName: 'Português', ready: true },
   { code: 'de', shortLabel: 'DE', nativeName: 'Deutsch', ready: false },
   { code: 'ja', shortLabel: 'JA', nativeName: '日本語', ready: false },
   { code: 'zh', shortLabel: 'ZH', nativeName: '中文', ready: false },
