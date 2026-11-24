@@ -44,10 +44,20 @@ const TOUR_STORAGE_KEY = 'observatorio_cps_tour_done_v1';
 
 type ViewMode = 'constellation' | 'index';
 
+function isMobileViewport(): boolean {
+  return typeof window !== 'undefined' && window.innerWidth < 768;
+}
+
 function getInitialScale(): number {
   if (typeof window === 'undefined') return 0.84;
-  const minDim = Math.min(window.innerWidth, window.innerHeight);
-  return Math.max(0.52, Math.min(0.92, minDim / 860));
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  // On portrait phones, fit all 9 constellations + short labels cleanly inside screen width
+  if (w < 768) {
+    return Math.max(0.37, Math.min(0.62, Math.min(w / 870, h / 940)));
+  }
+  const minDim = Math.min(w, h);
+  return Math.max(0.54, Math.min(0.92, minDim / 860));
 }
 
 export function App() {
@@ -56,10 +66,19 @@ export function App() {
     []
   );
 
-  // Desktop starts on Constellation; mobile starts on Constellation too with 1-tap switch to Index
-  const [viewMode, setViewMode] = useState<ViewMode>('constellation');
+  const [isMobile, setIsMobile] = useState<boolean>(() => isMobileViewport());
 
-  // Progressive disclosure: start calm with all 9 constellations neatly folded around CPS
+  useEffect(() => {
+    const onResize = () => setIsMobile(isMobileViewport());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  // Mobile starts in clean card Index view; Desktop starts in full Constellation view
+  const [viewMode, setViewMode] = useState<ViewMode>(() =>
+    isMobileViewport() ? 'index' : 'constellation'
+  );
+
   const [expandedFamilies, setExpandedFamilies] = useState<Set<string>>(
     () => new Set<string>()
   );
@@ -116,7 +135,7 @@ export function App() {
   const [activeRoute, setActiveRoute] = useState<GuidedRoute | null>(null);
   const [activeRouteStep, setActiveRouteStep] = useState<number>(0);
 
-  // Modals & gentle onboarding hint
+  // Modals & gentle onboarding
   const [searchOpen, setSearchOpen] = useState(false);
   const [routesOpen, setRoutesOpen] = useState(false);
   const [progressOpen, setProgressOpen] = useState(false);
@@ -124,7 +143,6 @@ export function App() {
   const [showOnboardingHint, setShowOnboardingHint] = useState(true);
   const [tourOpen, setTourOpen] = useState<boolean>(() => {
     try {
-      // Do not interrupt visitors arriving directly via a shared concept/route hash (#cynefin)
       if (window.location.hash && window.location.hash.length > 1) return false;
       return localStorage.getItem(TOUR_STORAGE_KEY) !== '1';
     } catch {
@@ -144,7 +162,7 @@ export function App() {
   // Camera state + smooth RAF flight
   const [camera, setCamera] = useState<CameraState>(() => ({
     tx: 0,
-    ty: 12,
+    ty: 8,
     scale: getInitialScale(),
   }));
   const cameraRef = useRef<CameraState>(camera);
@@ -198,7 +216,6 @@ export function App() {
   const getDrawerOffsetX = () =>
     typeof window !== 'undefined' && window.innerWidth >= 1024 ? -225 : 0;
 
-  // Sync URL hash cleanly without jarring scroll jumps
   const setUrlHash = useCallback((hashValue: string) => {
     try {
       const nextHash = hashValue ? `#${hashValue}` : '';
@@ -214,7 +231,6 @@ export function App() {
     }
   }, []);
 
-  // Fly smoothly to a specific concept (auto-expanding its constellation!)
   const handleSelectConcept = useCallback(
     (slug: string, updateHash = true) => {
       const layout = conceptPositions[slug];
@@ -232,10 +248,15 @@ export function App() {
         return next;
       });
 
-      const targetScale = Math.max(
-        0.86,
-        Math.min(1.06, cameraRef.current.scale < 0.78 ? 0.92 : cameraRef.current.scale)
-      );
+      const targetScale = isMobileViewport()
+        ? 0.72
+        : Math.max(
+            0.86,
+            Math.min(
+              1.06,
+              cameraRef.current.scale < 0.78 ? 0.92 : cameraRef.current.scale
+            )
+          );
       const offsetX = getDrawerOffsetX();
       animateCameraTo({
         scale: targetScale,
@@ -246,7 +267,6 @@ export function App() {
     [conceptPositions, animateCameraTo, setUrlHash]
   );
 
-  // Toggle expanding/collapsing a family constellation
   const handleToggleFamily = useCallback(
     (familyId: string) => {
       setShowOnboardingHint(false);
@@ -266,14 +286,17 @@ export function App() {
           }
         } else {
           next.add(familyId);
-          const targetScale = Math.min(0.84, Math.max(0.62, getInitialScale() * 0.92));
+          const targetScale = isMobileViewport()
+            ? 0.56
+            : Math.min(0.84, Math.max(0.62, getInitialScale() * 0.92));
           const focusX = fl.x * 1.48;
           const focusY = fl.y * 1.48;
-          const offsetX = selectedConceptSlug || selectedCore ? getDrawerOffsetX() : 0;
+          const offsetX =
+            selectedConceptSlug || selectedCore ? getDrawerOffsetX() : 0;
           animateCameraTo({
             scale: targetScale,
             tx: -focusX * targetScale + offsetX,
-            ty: -focusY * targetScale + 12,
+            ty: -focusY * targetScale + 8,
           });
         }
         return next;
@@ -303,11 +326,13 @@ export function App() {
         next.add(familyId);
         return next;
       });
-      const targetScale = Math.min(0.86, Math.max(0.64, getInitialScale() * 0.94));
+      const targetScale = isMobileViewport()
+        ? 0.56
+        : Math.min(0.86, Math.max(0.64, getInitialScale() * 0.94));
       animateCameraTo({
         scale: targetScale,
         tx: -fl.x * 1.5 * targetScale,
-        ty: -fl.y * 1.5 * targetScale + 12,
+        ty: -fl.y * 1.5 * targetScale + 8,
       });
     },
     [familyPositions, animateCameraTo, setUrlHash]
@@ -321,7 +346,7 @@ export function App() {
       const next = !prev;
       if (next) {
         const s = getInitialScale();
-        animateCameraTo({ scale: s, tx: getDrawerOffsetX() * 0.65, ty: 12 });
+        animateCameraTo({ scale: s, tx: getDrawerOffsetX() * 0.65, ty: 8 });
       }
       return next;
     });
@@ -334,17 +359,20 @@ export function App() {
       setExpandedFamilies(new Set());
       setSelectedConceptSlug(null);
       setUrlHash('');
-      animateCameraTo({ tx: 0, ty: 12, scale: getInitialScale() });
+      animateCameraTo({ tx: 0, ty: 8, scale: getInitialScale() });
     } else {
       setExpandedFamilies(new Set(FAMILIES.map((f) => f.id)));
       const fitAllScale =
         typeof window !== 'undefined'
           ? Math.max(
-              0.38,
-              Math.min(0.56, Math.min(window.innerWidth, window.innerHeight) / 1780)
+              0.24,
+              Math.min(
+                0.56,
+                Math.min(window.innerWidth, window.innerHeight) / 1780
+              )
             )
           : 0.46;
-      animateCameraTo({ tx: 0, ty: 14, scale: fitAllScale }, 680);
+      animateCameraTo({ tx: 0, ty: 8, scale: fitAllScale }, 680);
     }
   }, [expandedFamilies.size, animateCameraTo, setUrlHash]);
 
@@ -353,13 +381,13 @@ export function App() {
     const hasDrawer = Boolean(selectedConceptSlug || selectedCore);
     const targetScale = anyOpen
       ? Math.max(
-          0.38,
+          0.26,
           Math.min(0.56, Math.min(window.innerWidth, window.innerHeight) / 1780)
         )
       : getInitialScale();
     animateCameraTo({
       tx: hasDrawer ? getDrawerOffsetX() : 0,
-      ty: 16,
+      ty: 8,
       scale: targetScale,
     });
   }, [expandedFamilies.size, selectedConceptSlug, selectedCore, animateCameraTo]);
@@ -367,7 +395,9 @@ export function App() {
   const handleStartRoute = useCallback(
     (route: GuidedRoute, updateHash = true) => {
       setShowOnboardingHint(false);
-      setViewMode('constellation');
+      if (!isMobileViewport()) {
+        setViewMode('constellation');
+      }
       setActiveRoute(route);
       setActiveRouteStep(0);
       setSelectedCore(false);
@@ -385,7 +415,7 @@ export function App() {
         const layout = conceptPositions[firstSlug];
         setSelectedConceptSlug(firstSlug);
         if (layout) {
-          const targetScale = 0.88;
+          const targetScale = isMobileViewport() ? 0.62 : 0.88;
           animateCameraTo({
             scale: targetScale,
             tx: -layout.x * targetScale + getDrawerOffsetX(),
@@ -400,7 +430,10 @@ export function App() {
   const handleRouteStepChange = useCallback(
     (nextStep: number) => {
       if (!activeRoute) return;
-      const clamped = Math.max(0, Math.min(activeRoute.steps.length - 1, nextStep));
+      const clamped = Math.max(
+        0,
+        Math.min(activeRoute.steps.length - 1, nextStep)
+      );
       setActiveRouteStep(clamped);
       const slug = activeRoute.steps[clamped]?.slug;
       if (slug) handleSelectConcept(slug, false);
@@ -424,7 +457,9 @@ export function App() {
   // Deep-linking: read initial URL hash (#cynefin or #ruta/empieza-aqui) + respond to hashchange
   useEffect(() => {
     const applyHash = () => {
-      const raw = decodeURIComponent(window.location.hash.replace(/^#/, '').trim());
+      const raw = decodeURIComponent(
+        window.location.hash.replace(/^#/, '').trim()
+      );
       if (!raw) return;
       if (raw.startsWith('ruta/')) {
         const routeId = raw.slice(5);
@@ -442,7 +477,7 @@ export function App() {
     return () => window.removeEventListener('hashchange', applyHash);
   }, [handleSelectConcept, handleStartRoute]);
 
-  // Keyboard shortcuts: Cmd/Ctrl+K search, Esc close, Left/Right guided route
+  // Keyboard shortcuts
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -469,7 +504,9 @@ export function App() {
         const tag = (document.activeElement?.tagName || '').toLowerCase();
         if (tag === 'textarea' || tag === 'input') return;
         e.preventDefault();
-        handleRouteStepChange(activeRouteStep + (e.key === 'ArrowRight' ? 1 : -1));
+        handleRouteStepChange(
+          activeRouteStep + (e.key === 'ArrowRight' ? 1 : -1)
+        );
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -492,7 +529,7 @@ export function App() {
   const masteredPct = Math.round((masteredSlugs.size / CONCEPTS.length) * 100);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-[#06080f] text-slate-100">
+    <div className="relative h-[100dvh] w-screen overflow-hidden bg-[#06080f] text-slate-100">
       {/* Main Surface: Constellation OR Index View */}
       {viewMode === 'constellation' ? (
         <ConstellationCanvas
@@ -506,6 +543,7 @@ export function App() {
           activeRoute={activeRoute}
           activeRouteStep={activeRouteStep}
           camera={camera}
+          isCompactMobile={isMobile}
           onCameraChange={handleManualCameraChange}
           onToggleFamily={handleToggleFamily}
           onSelectConcept={(slug) => handleSelectConcept(slug, true)}
@@ -522,22 +560,25 @@ export function App() {
           notesBySlug={notesBySlug}
           onSelectConcept={(slug) => handleSelectConcept(slug, true)}
           onJumpToConstellation={handleFocusFamily}
+          onStartIntroRoute={() => handleStartRoute(GUIDED_ROUTES[0], true)}
+          onOpenProblems={() => setProblemsOpen(true)}
+          onSelectCore={handleSelectCore}
         />
       )}
 
       {/* Top Floating Glassmorphism HUD */}
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-2 px-3 py-3 sm:px-5">
-        {/* Left: Brand Emblem + View Mode Switcher */}
-        <div className="pointer-events-auto flex items-center gap-2">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-2 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2 sm:px-5 md:py-3">
+        {/* Left: Brand Emblem + Desktop View Mode Switcher */}
+        <div className="pointer-events-auto flex items-center gap-2 min-w-0">
           <button
             onClick={handleSelectCore}
-            className="group flex shrink-0 items-center gap-2.5 rounded-2xl border border-white/10 bg-[#090e1a]/85 px-3 py-2 backdrop-blur-xl transition hover:border-amber-400/35 hover:bg-[#0d1426]/90 whitespace-nowrap"
+            className="group flex shrink-0 items-center gap-2.5 rounded-2xl border border-white/10 bg-[#090e1a]/88 px-3 py-2 backdrop-blur-xl transition hover:border-amber-400/35 hover:bg-[#0d1426]/90 whitespace-nowrap"
           >
             <span className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-400/15 border border-amber-400/40">
               <Sparkles className="h-3.5 w-3.5 text-amber-300" />
             </span>
             <div className="text-left">
-              <h1 className="font-editorial text-lg sm:text-xl leading-none tracking-tight text-white">
+              <h1 className="font-editorial text-[19px] sm:text-xl leading-none tracking-tight text-white">
                 Observatorio CPS
               </h1>
               <p className="mt-0.5 hidden sm:block text-[10px] font-mono-meta uppercase tracking-widest text-slate-400 group-hover:text-amber-200/80 transition">
@@ -546,13 +587,16 @@ export function App() {
             </div>
           </button>
 
-          {/* Constellation / Index Switcher */}
+          {/* Desktop/Tablet Switcher (on mobile this lives in the thumb bottom bar!) */}
           <div
             data-tour="view-switcher"
-            className="flex items-center rounded-2xl border border-white/10 bg-[#090e1a]/85 p-1 backdrop-blur-xl"
+            className="hidden md:flex items-center rounded-2xl border border-white/10 bg-[#090e1a]/85 p-1 backdrop-blur-xl"
           >
             <button
-              onClick={() => setViewMode('constellation')}
+              onClick={() => {
+                setViewMode('constellation');
+                animateCameraTo({ tx: 0, ty: 8, scale: getInitialScale() }, 420);
+              }}
               className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 text-xs font-medium transition ${
                 viewMode === 'constellation'
                   ? 'bg-white/14 text-white'
@@ -561,7 +605,7 @@ export function App() {
               title="Vista Constelación"
             >
               <Orbit className="h-3.5 w-3.5 text-amber-300" />
-              <span className="hidden md:inline">Constelación</span>
+              <span>Constelación</span>
             </button>
             <button
               onClick={() => setViewMode('index')}
@@ -570,10 +614,10 @@ export function App() {
                   ? 'bg-white/14 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
-              title="Vista Índice / Móvil"
+              title="Vista Índice"
             >
               <LayoutGrid className="h-3.5 w-3.5 text-cyan-300" />
-              <span className="hidden md:inline">Índice</span>
+              <span>Índice</span>
             </button>
           </div>
         </div>
@@ -593,19 +637,20 @@ export function App() {
           </kbd>
         </button>
 
-        {/* Right Action Pills */}
+        {/* Right Action Pills (ultra-clean on mobile, full set on desktop) */}
         <div className="pointer-events-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
             data-tour="search"
             onClick={() => setSearchOpen(true)}
-            className="flex xl:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/85 p-2.5 text-slate-300 backdrop-blur-xl hover:bg-white/10"
+            className="flex xl:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/88 p-2.5 text-slate-200 backdrop-blur-xl hover:bg-white/10"
             aria-label="Buscar"
             title="Buscar (⌘K)"
           >
             <Search className="h-4 w-4" />
           </button>
 
-          <div data-tour="guides" className="flex items-center gap-1.5 sm:gap-2">
+          {/* Desktop-only Problems & Routes pills (on mobile they live cleanly in the bottom dock) */}
+          <div data-tour="guides" className="hidden md:flex items-center gap-2">
             <button
               onClick={() => setProblemsOpen(true)}
               className="flex items-center gap-1.5 whitespace-nowrap rounded-2xl border border-white/12 bg-[#090e1a]/85 px-3 py-2.5 text-xs font-medium text-slate-200 backdrop-blur-xl transition hover:border-rose-400/40 hover:text-white"
@@ -625,16 +670,14 @@ export function App() {
               title="Rutas guiadas paso a paso"
             >
               <Compass className="h-3.5 w-3.5 shrink-0 text-amber-300" />
-              <span className="hidden sm:inline">
-                {activeRoute ? 'Ruta activa' : 'Rutas'}
-              </span>
+              <span>{activeRoute ? 'Ruta activa' : 'Rutas'}</span>
             </button>
           </div>
 
           <button
             data-tour="progress"
             onClick={() => setProgressOpen(true)}
-            className="flex items-center gap-1.5 whitespace-nowrap rounded-2xl border border-white/12 bg-[#090e1a]/85 px-3 py-2.5 text-xs font-medium text-slate-200 backdrop-blur-xl transition hover:border-emerald-400/35 hover:text-white"
+            className="flex items-center gap-1.5 whitespace-nowrap rounded-2xl border border-white/12 bg-[#090e1a]/88 px-2.5 sm:px-3 py-2.5 text-xs font-medium text-slate-200 backdrop-blur-xl transition hover:border-emerald-400/35 hover:text-white"
             title="Tu progreso y notas exportables"
           >
             <Award className="h-3.5 w-3.5 shrink-0 text-emerald-300" />
@@ -647,14 +690,28 @@ export function App() {
               </span>
             )}
           </button>
+
+          {/* Mobile quick Help (?) replay tour button */}
+          <button
+            onClick={() => {
+              setSelectedConceptSlug(null);
+              setSelectedCore(false);
+              setTourOpen(true);
+            }}
+            className="flex md:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/88 p-2.5 text-slate-400 backdrop-blur-xl hover:text-amber-300"
+            aria-label="Ver guía rápida"
+            title="Ver guía rápida"
+          >
+            <HelpCircle className="h-4 w-4" />
+          </button>
         </div>
       </header>
 
-      {/* Bottom-Left Constellation & Camera Controls (Constellation mode only) */}
+      {/* Bottom-Left Constellation & Camera Controls (sits above mobile dock on phones!) */}
       {viewMode === 'constellation' && (
         <div
           data-tour="controls"
-          className="fixed bottom-4 left-4 z-20 flex items-center gap-1.5 rounded-2xl border border-white/10 bg-[#090e1a]/86 p-1.5 shadow-xl backdrop-blur-xl"
+          className="fixed bottom-20 left-3 md:bottom-4 md:left-4 z-20 flex items-center gap-1 rounded-2xl border border-white/10 bg-[#090e1a]/88 p-1.5 shadow-xl backdrop-blur-xl"
         >
           <button
             onClick={() =>
@@ -677,7 +734,7 @@ export function App() {
               animateCameraTo(
                 {
                   ...cameraRef.current,
-                  scale: Math.max(0.38, cameraRef.current.scale * 0.8),
+                  scale: Math.max(0.24, cameraRef.current.scale * 0.8),
                 },
                 260
               )
@@ -699,7 +756,9 @@ export function App() {
           <div className="mx-0.5 h-5 w-px bg-white/10" />
           <button
             onClick={handleToggleAllFamilies}
-            className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition ${
+            aria-label={allExpanded ? 'Contraer todo' : 'Desplegar todo'}
+            title={allExpanded ? 'Contraer todo' : 'Desplegar todo'}
+            className={`flex items-center gap-1.5 rounded-xl px-2.5 sm:px-3 py-2 text-xs font-medium transition ${
               allExpanded
                 ? 'bg-amber-400/18 text-amber-200 hover:bg-amber-400/25'
                 : 'text-slate-300 hover:bg-white/10 hover:text-white'
@@ -710,14 +769,14 @@ export function App() {
               {allExpanded ? 'Contraer todo' : 'Desplegar todo'}
             </span>
           </button>
-          <div className="mx-0.5 h-5 w-px bg-white/10" />
+          <div className="hidden md:block mx-0.5 h-5 w-px bg-white/10" />
           <button
             onClick={() => {
               setSelectedConceptSlug(null);
               setSelectedCore(false);
               setTourOpen(true);
             }}
-            className="rounded-xl p-2 text-slate-400 transition hover:bg-white/10 hover:text-amber-300"
+            className="hidden md:inline-flex rounded-xl p-2 text-slate-400 transition hover:bg-white/10 hover:text-amber-300"
             title="Ver guía rápida de navegación"
             aria-label="Ver guía rápida de navegación"
           >
@@ -726,22 +785,88 @@ export function App() {
         </div>
       )}
 
-      {/* Discreet Source Attribution Pill (bottom-right when no drawer is open) */}
+      {/* Floating iOS-style Mobile Bottom Navigation Dock (mobile only, hidden when drawer is full-screen) */}
+      {!selectedConcept && !selectedCore && (
+        <nav
+          aria-label="Navegación móvil"
+          className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] inset-x-3 z-30 grid grid-cols-4 gap-1 rounded-2xl border border-white/12 bg-[#0a0f1c]/94 p-1.5 shadow-[0_14px_45px_rgba(0,0,0,0.75)] backdrop-blur-2xl md:hidden"
+        >
+          <button
+            onClick={() => setViewMode('index')}
+            className={`flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-[10px] font-medium transition ${
+              viewMode === 'index'
+                ? 'bg-white/12 text-white'
+                : 'text-slate-400 active:bg-white/8'
+            }`}
+          >
+            <LayoutGrid
+              className={`h-4 w-4 ${
+                viewMode === 'index' ? 'text-cyan-300' : 'text-slate-400'
+              }`}
+            />
+            <span>Índice</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setViewMode('constellation');
+              animateCameraTo({ tx: 0, ty: 8, scale: getInitialScale() }, 420);
+            }}
+            className={`flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-[10px] font-medium transition ${
+              viewMode === 'constellation'
+                ? 'bg-white/12 text-white'
+                : 'text-slate-400 active:bg-white/8'
+            }`}
+          >
+            <Orbit
+              className={`h-4 w-4 ${
+                viewMode === 'constellation'
+                  ? 'text-amber-300'
+                  : 'text-slate-400'
+              }`}
+            />
+            <span>Mapa</span>
+          </button>
+
+          <button
+            onClick={() => setRoutesOpen(true)}
+            className={`flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-[10px] font-medium transition ${
+              activeRoute
+                ? 'bg-amber-400/18 text-amber-200'
+                : 'text-slate-400 active:bg-white/8'
+            }`}
+          >
+            <Compass className="h-4 w-4 text-amber-300" />
+            <span>{activeRoute ? 'Ruta' : 'Rutas'}</span>
+          </button>
+
+          <button
+            onClick={() => setProblemsOpen(true)}
+            className="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-[10px] font-medium text-slate-400 transition active:bg-white/8 hover:text-white"
+          >
+            <Flame className="h-4 w-4 text-rose-400" />
+            <span>Problema</span>
+          </button>
+        </nav>
+      )}
+
+      {/* Discreet Source Attribution Pill (desktop bottom-right) */}
       {!selectedConcept && !selectedCore && (
         <a
           href="https://turrero.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-4 right-4 z-20 hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-amber-400/30 hover:text-amber-200"
+          className="fixed bottom-4 right-4 z-20 hidden md:inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-amber-400/30 hover:text-amber-200"
         >
           <span>Basado en El Turrero Post · @Recuenco</span>
           <ExternalLink className="h-3 w-3 opacity-70" />
         </a>
       )}
 
-      {/* Gentle First-Visit Onboarding Whisper Pill */}
+      {/* Gentle First-Visit Onboarding Whisper Pill (desktop) */}
       {viewMode === 'constellation' &&
         showOnboardingHint &&
+        !tourOpen &&
         !activeRoute &&
         !selectedConcept &&
         !selectedCore && (
@@ -768,8 +893,8 @@ export function App() {
         )}
 
       {/* Active Guided Route Floating Dock */}
-      {viewMode === 'constellation' && activeRoute && !selectedConcept && (
-        <div className="fixed bottom-4 left-1/2 z-20 -translate-x-1/2 flex items-center gap-3 rounded-2xl border border-amber-400/30 bg-[#0b101d]/92 px-4 py-2.5 text-xs shadow-2xl backdrop-blur-xl animate-fade-up">
+      {activeRoute && !selectedConcept && (
+        <div className="fixed bottom-20 md:bottom-4 left-1/2 z-20 -translate-x-1/2 flex items-center gap-3 rounded-2xl border border-amber-400/30 bg-[#0b101d]/92 px-4 py-2.5 text-xs shadow-2xl backdrop-blur-xl animate-fade-up max-w-[calc(100vw-1.5rem)]">
           <button
             disabled={activeRouteStep <= 0}
             onClick={() => handleRouteStepChange(activeRouteStep - 1)}
@@ -781,12 +906,13 @@ export function App() {
             onClick={() =>
               handleSelectConcept(activeRoute.steps[activeRouteStep].slug, false)
             }
-            className="text-left"
+            className="text-left min-w-0"
           >
-            <p className="text-[10px] font-mono-meta uppercase tracking-wider text-amber-300">
-              {activeRoute.title} · {activeRouteStep + 1}/{activeRoute.steps.length}
+            <p className="truncate text-[10px] font-mono-meta uppercase tracking-wider text-amber-300">
+              {activeRoute.title} · {activeRouteStep + 1}/
+              {activeRoute.steps.length}
             </p>
-            <p className="font-medium text-white">
+            <p className="truncate font-medium text-white">
               {CONCEPT_MAP[activeRoute.steps[activeRouteStep].slug]?.term}
             </p>
           </button>
@@ -811,7 +937,7 @@ export function App() {
         </div>
       )}
 
-      {/* Right Slide-Over Panels */}
+      {/* Right Slide-Over Panels (Full-Screen Sheet on Mobile!) */}
       {selectedConcept && (
         <ConceptDrawer
           concept={selectedConcept}

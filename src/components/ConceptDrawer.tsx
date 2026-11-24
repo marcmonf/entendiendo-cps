@@ -109,8 +109,8 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
   return (
     <aside
-      className={`fixed right-3 top-20 bottom-3 z-30 flex w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-3xl border border-white/12 bg-[#0a0f1c]/94 shadow-[0_24px_80px_rgba(0,0,0,0.78)] backdrop-blur-2xl animate-drawer-in transition-[max-width] duration-300 ${
-        wideReading ? 'max-w-[680px]' : 'max-w-[480px]'
+      className={`fixed inset-0 z-40 flex h-[100dvh] w-full flex-col overflow-hidden bg-[#0a0f1c]/97 shadow-[0_24px_80px_rgba(0,0,0,0.78)] backdrop-blur-2xl animate-drawer-in transition-[max-width] duration-300 md:inset-auto md:right-3 md:top-20 md:bottom-3 md:h-auto md:w-[calc(100vw-1.5rem)] md:rounded-3xl md:border md:border-white/12 md:bg-[#0a0f1c]/94 ${
+        wideReading ? 'md:max-w-[680px]' : 'md:max-w-[480px]'
       }`}
       aria-label={`Detalles de ${concept.term}`}
     >
@@ -123,7 +123,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
       />
 
       {/* Header */}
-      <div className="shrink-0 px-6 pt-5 pb-4 border-b border-white/8">
+      <div className="shrink-0 px-4 sm:px-6 pt-[max(1rem,env(safe-area-inset-top))] md:pt-5 pb-3.5 sm:pb-4 border-b border-white/8">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <span
@@ -195,7 +195,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
           </div>
         </div>
 
-        <h2 className="mt-3 font-editorial text-[34px] leading-[1.06] tracking-tight text-white">
+        <h2 className="mt-2.5 sm:mt-3 font-editorial text-[28px] sm:text-[34px] leading-[1.06] tracking-tight text-white">
           {concept.term}
         </h2>
 
@@ -228,11 +228,11 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
           </div>
         )}
 
-        {/* 4-Level Progressive Depth Switcher */}
-        <div className="mt-4 grid grid-cols-4 gap-1 rounded-2xl bg-white/[0.04] p-1 border border-white/8">
+        {/* 4-Level Progressive Depth Switcher (stacks icon neatly on <400px phones) */}
+        <div className="mt-3.5 sm:mt-4 grid grid-cols-4 gap-1 rounded-2xl bg-white/[0.04] p-1 border border-white/8">
           <button
             onClick={() => setTab('plain')}
-            className={`flex items-center justify-center gap-1 rounded-xl py-2 px-1 text-[11px] font-medium transition whitespace-nowrap ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 rounded-xl py-1.5 sm:py-2 px-1 text-[10px] sm:text-[11px] font-medium transition whitespace-nowrap ${
               tab === 'plain'
                 ? 'bg-white/13 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
@@ -244,7 +244,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
           <button
             onClick={() => setTab('practice')}
-            className={`flex items-center justify-center gap-1 rounded-xl py-2 px-1 text-[11px] font-medium transition whitespace-nowrap ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 rounded-xl py-1.5 sm:py-2 px-1 text-[10px] sm:text-[11px] font-medium transition whitespace-nowrap ${
               tab === 'practice'
                 ? 'bg-white/13 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
@@ -256,7 +256,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
           <button
             onClick={() => setTab('deep')}
-            className={`flex items-center justify-center gap-1 rounded-xl py-2 px-1 text-[11px] font-medium transition whitespace-nowrap ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 rounded-xl py-1.5 sm:py-2 px-1 text-[10px] sm:text-[11px] font-medium transition whitespace-nowrap ${
               tab === 'deep'
                 ? 'bg-violet-400/20 text-violet-100 shadow-sm ring-1 ring-violet-400/35'
                 : 'text-slate-400 hover:text-slate-200'
@@ -268,7 +268,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
           <button
             onClick={() => setTab('sources')}
-            className={`flex items-center justify-center gap-1 rounded-xl py-2 px-1 text-[11px] font-medium transition whitespace-nowrap ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 rounded-xl py-1.5 sm:py-2 px-1 text-[10px] sm:text-[11px] font-medium transition whitespace-nowrap ${
               tab === 'sources'
                 ? 'bg-white/13 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
@@ -290,7 +290,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
       {/* Scrollable Body */}
       <div
         ref={scrollRef}
-        className="custom-scroll flex-1 overflow-y-auto px-6 py-5 space-y-5"
+        className="custom-scroll flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5 space-y-5"
       >
         {/* NIVEL 1: EN LLANO */}
         {tab === 'plain' && (
@@ -679,7 +679,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
       )}
 
       {/* Sticky Footer */}
-      <div className="shrink-0 border-t border-white/8 bg-[#070b15]/90 px-5 py-3.5">
+      <div className="shrink-0 border-t border-white/8 bg-[#070b15]/95 px-4 sm:px-5 pt-3 pb-[max(0.85rem,env(safe-area-inset-bottom))]">
         <div className="flex items-center justify-between gap-2">
           <button
             onClick={() => onToggleMastered(concept.slug)}

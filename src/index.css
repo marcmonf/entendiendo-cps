@@ -44,6 +44,15 @@
   background: rgba(148, 163, 184, 0.4);
 }
 
+/* Hide scrollbars cleanly for horizontal touch pill strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Celestial animations */
 @keyframes pulseSlow {
   0%, 100% {

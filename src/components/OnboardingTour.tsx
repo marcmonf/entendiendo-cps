@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import {
   ArrowLeft,
   ArrowRight,
+  Award,
   Check,
   Compass,
   Flame,
   LayoutGrid,
+  Orbit,
   Search,
   Sparkles,
   Trees,
-  Award,
   X,
 } from 'lucide-react';
 
@@ -22,7 +23,7 @@ export interface TourStep {
   icon: React.ReactNode;
 }
 
-const TOUR_STEPS: TourStep[] = [
+const DESKTOP_STEPS: TourStep[] = [
   {
     id: 'welcome',
     title: 'Bienvenido al Observatorio CPS',
@@ -78,6 +79,33 @@ const TOUR_STEPS: TourStep[] = [
   },
 ];
 
+const MOBILE_STEPS: TourStep[] = [
+  {
+    id: 'm-welcome',
+    title: 'Bienvenido al Observatorio CPS',
+    description:
+      'Tienes 94 conceptos de Complex Problem Solving de Javier G. Recuenco organizados en 9 constelaciones. Toca cualquier tarjeta para abrir sus 4 niveles: En llano, Práctica, A fondo (131 turras) y Fuentes.',
+    tip: 'Puedes empezar por la ruta guiada «Empieza aquí» o filtrar por familia.',
+    icon: <Sparkles className="h-4 w-4 text-amber-300" />,
+  },
+  {
+    id: 'm-nav',
+    title: 'Navegación rápida abajo',
+    description:
+      'En la barra inferior puedes saltar en un toque entre el Índice, el Mapa de constelaciones interactivo, las 5 Rutas guiadas paso a paso y «¿Tu problema?» para buscar por situaciones reales.',
+    tip: 'En la vista Mapa puedes arrastrar con un dedo y hacer zoom pellizcando con dos dedos.',
+    icon: <Orbit className="h-4 w-4 text-cyan-300" />,
+  },
+  {
+    id: 'm-search-notes',
+    title: 'Buscador, progreso y notas',
+    description:
+      'Arriba tienes la lupa para buscar cualquier término al instante y tu contador de progreso. Dentro de cada ficha puedes marcar «Entendido», guardar tus notas y copiar el enlace directo.',
+    tip: 'Puedes repetir esta guía cuando quieras tocando el icono ? arriba.',
+    icon: <Award className="h-4 w-4 text-emerald-300" />,
+  },
+];
+
 interface Rect {
   top: number;
   left: number;
@@ -121,17 +149,22 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
     h: typeof window !== 'undefined' ? window.innerHeight : 800,
   }));
 
+  const isMobile = viewport.w < 768;
+  const steps = isMobile ? MOBILE_STEPS : DESKTOP_STEPS;
+  const safeIdx = Math.min(stepIdx, steps.length - 1);
+  const step = steps[safeIdx];
+
   useEffect(() => {
     if (open) setStepIdx(0);
   }, [open]);
 
-  const step = TOUR_STEPS[stepIdx];
-
   useEffect(() => {
     if (!open) return;
     const update = () => {
-      setViewport({ w: window.innerWidth, h: window.innerHeight });
-      setRect(findVisibleTargetRect(step.target));
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      setViewport({ w, h });
+      setRect(w < 768 ? null : findVisibleTargetRect(step.target));
     };
     update();
     window.addEventListener('resize', update);
@@ -146,47 +179,149 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
         onFinish();
       } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
         e.preventDefault();
-        if (stepIdx < TOUR_STEPS.length - 1) setStepIdx((i) => i + 1);
+        if (safeIdx < steps.length - 1) setStepIdx((i) => i + 1);
         else onFinish();
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        if (stepIdx > 0) setStepIdx((i) => i - 1);
+        if (safeIdx > 0) setStepIdx((i) => i - 1);
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open, stepIdx, onFinish]);
+  }, [open, safeIdx, steps.length, onFinish]);
 
   if (!open) return null;
 
-  const isFirst = stepIdx === 0;
-  const isLast = stepIdx === TOUR_STEPS.length - 1;
+  const isFirst = safeIdx === 0;
+  const isLast = safeIdx === steps.length - 1;
 
-  // Smart card placement so the tooltip never clips off-screen on desktop or mobile
-  const cardWidth = Math.min(392, viewport.w - 24);
-  let cardStyle: React.CSSProperties;
+  const cardWidth = Math.min(392, viewport.w - 28);
+  const positionedStyle: React.CSSProperties | undefined = rect
+    ? (() => {
+        const spaceBelow = viewport.h - (rect.top + rect.height);
+        const placeBelow = spaceBelow >= 270;
+        const top = placeBelow
+          ? Math.min(viewport.h - 260, rect.top + rect.height + 16)
+          : Math.max(16, rect.top - 255);
+        const idealLeft = rect.left + rect.width / 2 - cardWidth / 2;
+        const left = Math.max(12, Math.min(viewport.w - cardWidth - 12, idealLeft));
+        return {
+          top,
+          left,
+          width: cardWidth,
+        };
+      })()
+    : undefined;
 
-  if (!rect) {
-    cardStyle = {
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: cardWidth,
-    };
-  } else {
-    const spaceBelow = viewport.h - (rect.top + rect.height);
-    const placeBelow = spaceBelow >= 270;
-    const top = placeBelow
-      ? Math.min(viewport.h - 260, rect.top + rect.height + 16)
-      : Math.max(16, rect.top - 255);
-    const idealLeft = rect.left + rect.width / 2 - cardWidth / 2;
-    const left = Math.max(12, Math.min(viewport.w - cardWidth - 12, idealLeft));
-    cardStyle = {
-      top,
-      left,
-      width: cardWidth,
-    };
-  }
+  const cardInner = (
+    <div
+      className={`${
+        positionedStyle ? 'fixed z-10' : 'pointer-events-auto w-full max-w-[392px]'
+      } overflow-hidden rounded-3xl border border-amber-400/28 bg-[#0b1121]/97 shadow-[0_28px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl transition-all duration-300 ease-out animate-fade-up`}
+      style={positionedStyle}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div
+        className="h-[2px] w-full"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent 0%, #F59E0B 50%, transparent 100%)',
+        }}
+      />
+
+      <div className="p-5">
+        <div className="flex items-center justify-between gap-2">
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/25 bg-amber-400/10 px-2.5 py-1 text-[10px] font-mono-meta uppercase tracking-widest text-amber-200">
+            {step.icon}
+            <span>
+              Guía rápida · {safeIdx + 1} / {steps.length}
+            </span>
+          </div>
+          <button
+            onClick={onFinish}
+            className="rounded-full p-1 text-slate-400 transition hover:bg-white/10 hover:text-white"
+            aria-label="Cerrar guía"
+            title="Saltar guía (Esc)"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <h3 className="mt-3 font-editorial text-2xl leading-tight text-white">
+          {step.title}
+        </h3>
+
+        <p className="mt-2 text-xs sm:text-[13px] leading-relaxed text-slate-300">
+          {step.description}
+        </p>
+
+        {step.tip && (
+          <div className="mt-3 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.035] px-3 py-2 text-[11px] leading-relaxed text-amber-100/90">
+            <Flame className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" />
+            <span>{step.tip}</span>
+          </div>
+        )}
+
+        <div className="mt-4 flex items-center justify-between gap-3 pt-3 border-t border-white/8">
+          <div className="flex items-center gap-1.5">
+            {steps.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => setStepIdx(idx)}
+                aria-label={`Ir al paso ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all ${
+                  idx === safeIdx
+                    ? 'w-5 bg-amber-400'
+                    : idx < safeIdx
+                      ? 'w-1.5 bg-amber-400/50'
+                      : 'w-1.5 bg-white/15 hover:bg-white/30'
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            {isFirst ? (
+              <button
+                onClick={onFinish}
+                className="rounded-xl px-2.5 py-2 text-xs text-slate-400 transition hover:text-slate-200"
+              >
+                Saltar
+              </button>
+            ) : (
+              <button
+                onClick={() => setStepIdx((i) => Math.max(0, i - 1))}
+                className="inline-flex items-center gap-1 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200 transition hover:bg-white/10"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span>Atrás</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => {
+                if (isLast) onFinish();
+                else setStepIdx((i) => i + 1);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-semibold text-slate-950 transition hover:bg-amber-300"
+            >
+              {isLast ? (
+                <>
+                  <Check className="h-3.5 w-3.5" />
+                  <span>¡A explorar!</span>
+                </>
+              ) : (
+                <>
+                  <span>Siguiente</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div
@@ -195,7 +330,6 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
       aria-modal="true"
       aria-label="Guía rápida de navegación"
     >
-      {/* Dimmed backdrop with real spotlight cutout around the highlighted button */}
       {rect ? (
         <>
           <div
@@ -213,122 +347,19 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
                 '0 0 0 9999px rgba(4, 6, 14, 0.74), 0 0 28px rgba(245, 158, 11, 0.45)',
             }}
           />
+          {cardInner}
         </>
       ) : (
-        <div
-          className="fixed inset-0 bg-[#04060e]/75 backdrop-blur-[2px] transition-opacity duration-300"
-          onClick={onFinish}
-        />
+        <>
+          <div
+            className="fixed inset-0 bg-[#04060e]/78 backdrop-blur-[3px] transition-opacity duration-300"
+            onClick={onFinish}
+          />
+          <div className="pointer-events-none fixed inset-0 z-10 flex items-center justify-center p-4">
+            {cardInner}
+          </div>
+        </>
       )}
-
-      {/* Floating Guide Card */}
-      <div
-        className="fixed z-10 overflow-hidden rounded-3xl border border-amber-400/28 bg-[#0b1121]/96 shadow-[0_28px_90px_rgba(0,0,0,0.85)] backdrop-blur-2xl transition-all duration-300 ease-out animate-fade-up"
-        style={cardStyle}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div
-          className="h-[2px] w-full"
-          style={{
-            background:
-              'linear-gradient(90deg, transparent 0%, #F59E0B 50%, transparent 100%)',
-          }}
-        />
-
-        <div className="p-5">
-          {/* Header row */}
-          <div className="flex items-center justify-between gap-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/25 bg-amber-400/10 px-2.5 py-1 text-[10px] font-mono-meta uppercase tracking-widest text-amber-200">
-              {step.icon}
-              <span>
-                Guía rápida · {stepIdx + 1} / {TOUR_STEPS.length}
-              </span>
-            </div>
-            <button
-              onClick={onFinish}
-              className="rounded-full p-1 text-slate-400 transition hover:bg-white/10 hover:text-white"
-              aria-label="Cerrar guía"
-              title="Saltar guía (Esc)"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-
-          <h3 className="mt-3 font-editorial text-2xl leading-tight text-white">
-            {step.title}
-          </h3>
-
-          <p className="mt-2 text-xs sm:text-[13px] leading-relaxed text-slate-300">
-            {step.description}
-          </p>
-
-          {step.tip && (
-            <div className="mt-3 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.035] px-3 py-2 text-[11px] leading-relaxed text-amber-100/90">
-              <Flame className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-300" />
-              <span>{step.tip}</span>
-            </div>
-          )}
-
-          {/* Step progress dots */}
-          <div className="mt-4 flex items-center justify-between gap-3 pt-3 border-t border-white/8">
-            <div className="flex items-center gap-1.5">
-              {TOUR_STEPS.map((s, idx) => (
-                <button
-                  key={s.id}
-                  onClick={() => setStepIdx(idx)}
-                  aria-label={`Ir al paso ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    idx === stepIdx
-                      ? 'w-5 bg-amber-400'
-                      : idx < stepIdx
-                        ? 'w-1.5 bg-amber-400/50'
-                        : 'w-1.5 bg-white/15 hover:bg-white/30'
-                  }`}
-                />
-              ))}
-            </div>
-
-            <div className="flex items-center gap-1.5">
-              {isFirst ? (
-                <button
-                  onClick={onFinish}
-                  className="rounded-xl px-2.5 py-2 text-xs text-slate-400 transition hover:text-slate-200"
-                >
-                  Saltar
-                </button>
-              ) : (
-                <button
-                  onClick={() => setStepIdx((i) => Math.max(0, i - 1))}
-                  className="inline-flex items-center gap-1 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200 transition hover:bg-white/10"
-                >
-                  <ArrowLeft className="h-3.5 w-3.5" />
-                  <span>Atrás</span>
-                </button>
-              )}
-
-              <button
-                onClick={() => {
-                  if (isLast) onFinish();
-                  else setStepIdx((i) => i + 1);
-                }}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-semibold text-slate-950 transition hover:bg-amber-300"
-              >
-                {isLast ? (
-                  <>
-                    <Check className="h-3.5 w-3.5" />
-                    <span>¡A explorar!</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Siguiente</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

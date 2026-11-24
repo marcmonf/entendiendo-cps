@@ -29,7 +29,7 @@ export const CoreOverviewDrawer: React.FC<CoreOverviewDrawerProps> = ({
 }) => {
   return (
     <aside
-      className="fixed right-3 top-20 bottom-3 z-30 flex w-[calc(100vw-1.5rem)] max-w-[468px] flex-col overflow-hidden rounded-3xl border border-amber-400/20 bg-[#0a0f1c]/92 shadow-[0_24px_80px_rgba(0,0,0,0.75)] backdrop-blur-2xl animate-drawer-in"
+      className="fixed inset-0 z-40 flex h-[100dvh] w-full flex-col overflow-hidden bg-[#0a0f1c]/97 shadow-[0_24px_80px_rgba(0,0,0,0.75)] backdrop-blur-2xl animate-drawer-in md:inset-auto md:right-3 md:top-20 md:bottom-3 md:h-auto md:w-[calc(100vw-1.5rem)] md:max-w-[468px] md:rounded-3xl md:border md:border-amber-400/20 md:bg-[#0a0f1c]/92"
       aria-label="Núcleo Complex Problem Solving"
     >
       <div
@@ -40,7 +40,7 @@ export const CoreOverviewDrawer: React.FC<CoreOverviewDrawerProps> = ({
         }}
       />
 
-      <div className="shrink-0 px-6 pt-5 pb-4 border-b border-white/8">
+      <div className="shrink-0 px-5 sm:px-6 pt-[max(1rem,env(safe-area-inset-top))] md:pt-5 pb-4 border-b border-white/8">
         <div className="flex items-start justify-between gap-3">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/35 bg-amber-400/12 px-2.5 py-1 text-[11px] font-medium text-amber-200">
             <Sparkles className="h-3 w-3" />

@@ -33,6 +33,7 @@ interface ConstellationCanvasProps {
   activeRoute: GuidedRoute | null;
   activeRouteStep: number;
   camera: CameraState;
+  isCompactMobile?: boolean;
   onCameraChange: (next: CameraState) => void;
   onToggleFamily: (familyId: string) => void;
   onSelectConcept: (slug: string) => void;
@@ -51,6 +52,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
   activeRoute,
   activeRouteStep,
   camera,
+  isCompactMobile = false,
   onCameraChange,
   onToggleFamily,
   onSelectConcept,
@@ -947,7 +949,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                   <text
                     textAnchor={anchor}
                     fill="#F8FAFC"
-                    fontSize={isExpanded ? 12.8 : 14}
+                    fontSize={isExpanded || isCompactMobile ? 13 : 14}
                     fontWeight={700}
                     style={{
                       paintOrder: 'stroke',
@@ -956,9 +958,9 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                       strokeLinejoin: 'round',
                     }}
                   >
-                    {isExpanded ? fl.family.shortName : fl.family.name}
+                    {isExpanded || isCompactMobile ? fl.family.shortName : fl.family.name}
                   </text>
-                  {!isExpanded && (
+                  {!isExpanded && !isCompactMobile && (
                     <text
                       y={16}
                       textAnchor={anchor}
@@ -975,7 +977,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                     </text>
                   )}
                   <text
-                    y={isExpanded ? 14 : 31}
+                    y={isExpanded || isCompactMobile ? 15 : 31}
                     textAnchor={anchor}
                     fill={fl.family.color}
                     fontSize={10}
@@ -1060,11 +1062,11 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
         </g>
       </svg>
 
-      {/* Whisper Hover Preview Card (bottom-left above controls) */}
-      {(hoveredConcept || hoveredFamily) && (
+      {/* Whisper Hover Preview Card (desktop pointer hover only) */}
+      {(hoveredConcept || hoveredFamily) && !isCompactMobile && (
         <div
           pointer-events-none="true"
-          className="pointer-events-none fixed bottom-20 left-5 z-20 max-w-sm rounded-2xl border border-white/10 bg-[#0b101d]/88 px-4 py-3 shadow-2xl backdrop-blur-xl animate-fade-up"
+          className="pointer-events-none hidden md:block fixed bottom-20 left-5 z-20 max-w-sm rounded-2xl border border-white/10 bg-[#0b101d]/88 px-4 py-3 shadow-2xl backdrop-blur-xl animate-fade-up"
         >
           {hoveredConcept ? (
             <div>
