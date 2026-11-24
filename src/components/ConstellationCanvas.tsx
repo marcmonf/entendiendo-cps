@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  CONCEPT_MAP,
-  type Concept,
-  type Family,
-  type GuidedRoute,
-} from '../data/atlasData';
+import type { Concept, Family, GuidedRoute } from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 import {
   R_CORE_BASE,
   R_DEEP_BASE,
@@ -59,6 +55,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
   onSelectCore,
   onBackgroundClick,
 }) => {
+  const { conceptMap, t, fmt } = useI18n();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
   const [hoveredFamilyId, setHoveredFamilyId] = useState<string | null>(null);
@@ -88,7 +85,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
 
   // Active focus concept (either hovered or selected) drives cross-branch arcs
   const focusSlug = hoveredSlug ?? selectedConceptSlug;
-  const focusConcept: Concept | null = focusSlug ? CONCEPT_MAP[focusSlug] ?? null : null;
+  const focusConcept: Concept | null = focusSlug ? conceptMap[focusSlug] ?? null : null;
 
   const relatedSet = useMemo(() => {
     if (!focusConcept) return new Set<string>();
@@ -339,7 +336,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
   };
 
   // Hover card preview for effortless scanning
-  const hoveredConcept = hoveredSlug ? CONCEPT_MAP[hoveredSlug] : null;
+  const hoveredConcept = hoveredSlug ? conceptMap[hoveredSlug] : null;
   const hoveredFamily: Family | null = hoveredFamilyId
     ? familyPositions[hoveredFamilyId]?.family ?? null
     : null;
@@ -464,7 +461,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
               letterSpacing="0.2em"
               className="font-mono-meta uppercase"
             >
-              9 CONSTELACIONES
+              {t.ringConstellations}
             </text>
             {hasExpandedAny && (
               <>
@@ -477,7 +474,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                   letterSpacing="0.2em"
                   className="font-mono-meta uppercase"
                 >
-                  PUERTA DE ENTRADA
+                  {t.ringGateway}
                 </text>
                 <text
                   x={-R_DEEP_BASE * 0.44}
@@ -488,7 +485,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                   letterSpacing="0.2em"
                   className="font-mono-meta uppercase"
                 >
-                  PROFUNDIZACIÓN
+                  {t.ringDeepening}
                 </text>
               </>
             )}
@@ -989,7 +986,9 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                       strokeLinejoin: 'round',
                     }}
                   >
-                    {mastered > 0 ? `${mastered}/${total} entendidos` : `${total} conceptos`}
+                    {mastered > 0
+                      ? fmt(t.understoodCount, { done: mastered, total })
+                      : fmt(t.conceptsCount, { count: total })}
                   </text>
                 </g>
               </g>
@@ -1056,7 +1055,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
               letterSpacing="0.11em"
               className="font-mono-meta uppercase"
             >
-              4 PILARES · 5 ATRACTORES
+              {t.sunSubtitle}
             </text>
           </g>
         </g>
@@ -1080,7 +1079,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                 <span>{familyPositions[hoveredConcept.familyId]?.family.shortName}</span>
                 <span>·</span>
                 <span>
-                  {hoveredConcept.tier === 'core' ? 'Puerta de entrada' : 'Profundización'}
+                  {hoveredConcept.tier === 'core' ? t.tierCore : t.tierDeep}
                 </span>
               </div>
               <p className="mt-1 font-editorial text-xl leading-tight text-white">
@@ -1090,7 +1089,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                 {hoveredConcept.short}
               </p>
               <p className="mt-2 text-[11px] text-amber-300/80">
-                {hoveredConcept.related.length} conexiones en el mapa · clic para profundizar
+                {fmt(t.hoverConnections, { count: hoveredConcept.related.length })}
               </p>
             </div>
           ) : hoveredFamily ? (
@@ -1100,7 +1099,7 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                   className="inline-block h-2 w-2 rounded-full"
                   style={{ backgroundColor: hoveredFamily.color }}
                 />
-                <span>Constelación</span>
+                <span>{t.hoverConstellation}</span>
               </div>
               <p className="mt-1 font-editorial text-xl leading-tight text-white">
                 {hoveredFamily.name}
@@ -1109,7 +1108,11 @@ export const ConstellationCanvas: React.FC<ConstellationCanvasProps> = ({
                 {hoveredFamily.description}
               </p>
               <p className="mt-2 text-[11px] text-slate-400">
-                Clic para {expandedFamilies.has(hoveredFamily.id) ? 'contraer' : 'desplegar'} sus ramas
+                {fmt(t.hoverClickToToggle, {
+                  action: expandedFamilies.has(hoveredFamily.id)
+                    ? t.hoverCollapse
+                    : t.hoverExpand,
+                })}
               </p>
             </div>
           ) : null}

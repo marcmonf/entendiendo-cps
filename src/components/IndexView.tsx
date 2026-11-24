@@ -9,12 +9,7 @@ import {
   StickyNote,
   X,
 } from 'lucide-react';
-import {
-  ALL_15_THEMES,
-  CONCEPTS,
-  FAMILIES,
-  FAMILY_MAP,
-} from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 
 interface IndexViewProps {
   masteredSlugs: Set<string>;
@@ -44,6 +39,7 @@ export const IndexView: React.FC<IndexViewProps> = ({
   onOpenProblems,
   onSelectCore,
 }) => {
+  const { concepts, families, familyMap, all15Themes, t, fmt } = useI18n();
   const [query, setQuery] = useState('');
   const [selectedFamily, setSelectedFamily] = useState<string>('all');
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
@@ -51,11 +47,11 @@ export const IndexView: React.FC<IndexViewProps> = ({
 
   const filteredByFamily = useMemo(() => {
     const q = normalize(query.trim());
-    const result: Record<string, typeof CONCEPTS> = {};
+    const result: Record<string, typeof concepts> = {};
 
-    for (const fam of FAMILIES) {
+    for (const fam of families) {
       if (selectedFamily !== 'all' && fam.id !== selectedFamily) continue;
-      const items = CONCEPTS.filter((c) => {
+      const items = concepts.filter((c) => {
         if (c.familyId !== fam.id) return false;
         if (filterMode === 'core' && c.tier !== 'core') return false;
         if (filterMode === 'pillars' && !c.isPillar) return false;
@@ -72,7 +68,7 @@ export const IndexView: React.FC<IndexViewProps> = ({
       if (items.length > 0) result[fam.id] = items;
     }
     return result;
-  }, [query, selectedFamily, filterMode, masteredSlugs, notesBySlug]);
+  }, [query, selectedFamily, filterMode, masteredSlugs, notesBySlug, families, concepts]);
 
   const totalVisible = Object.values(filteredByFamily).reduce(
     (acc, list) => acc + list.length,
@@ -91,26 +87,24 @@ export const IndexView: React.FC<IndexViewProps> = ({
       }}
     >
       <div className="mx-auto max-w-6xl space-y-5 sm:space-y-6">
-        {/* Intro Hero Header */}
         <div className="flex flex-col gap-3.5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[10px] sm:text-[11px] font-mono-meta uppercase tracking-widest text-amber-300/90">
-              El Turrero Post · 9 Constelaciones · 4 Niveles
+              {t.indexEyebrow}
             </p>
             <h2 className="mt-1 font-editorial text-3xl sm:text-4xl text-white leading-tight">
-              Atlas de Complex Problem Solving
+              {t.indexTitle}
             </h2>
             <p className="mt-1 text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed">
-              Los 94 conceptos de Javier G. Recuenco explicados en llano, con práctica,
-              lectura a fondo de las 131 turras y libros citados.
+              {t.indexSubtitle}
             </p>
           </div>
           <span className="self-start sm:self-end rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono-meta text-[11px] text-slate-300">
-            {totalVisible} de {CONCEPTS.length} conceptos
+            {fmt(t.indexCountBadge, { visible: totalVisible, total: concepts.length })}
           </span>
         </div>
 
-        {/* Mobile & Quick Entry Hero Actions */}
+        {/* Quick Entry Hero Actions */}
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           <button
             onClick={onStartIntroRoute}
@@ -121,10 +115,10 @@ export const IndexView: React.FC<IndexViewProps> = ({
             </span>
             <div className="min-w-0">
               <p className="truncate text-xs font-semibold text-amber-100">
-                Empieza aquí
+                {t.indexQuickStartTitle}
               </p>
               <p className="truncate text-[10px] text-amber-200/75">
-                Ruta de 8 paradas
+                {t.indexQuickStartSub}
               </p>
             </div>
           </button>
@@ -138,10 +132,10 @@ export const IndexView: React.FC<IndexViewProps> = ({
             </span>
             <div className="min-w-0">
               <p className="truncate text-xs font-semibold text-rose-100">
-                ¿Tu problema?
+                {t.indexQuickProblemTitle}
               </p>
               <p className="truncate text-[10px] text-rose-200/75">
-                8 situaciones reales
+                {t.indexQuickProblemSub}
               </p>
             </div>
           </button>
@@ -155,10 +149,10 @@ export const IndexView: React.FC<IndexViewProps> = ({
             </span>
             <div className="min-w-0">
               <p className="truncate text-xs font-semibold text-white">
-                4 Pilares y 5 Atractores
+                {t.indexQuickPillarsTitle}
               </p>
               <p className="truncate text-[10px] text-slate-400">
-                El núcleo del CPS
+                {t.indexQuickPillarsSub}
               </p>
             </div>
           </button>
@@ -172,7 +166,7 @@ export const IndexView: React.FC<IndexViewProps> = ({
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Buscar concepto, alias o tema..."
+                placeholder={t.indexSearchPlaceholder}
                 className="w-full rounded-2xl border border-white/10 bg-white/[0.04] py-2.5 pl-10 pr-9 text-sm text-white placeholder:text-slate-500 focus:border-amber-400/40 focus:outline-none"
               />
               {query && (
@@ -185,15 +179,14 @@ export const IndexView: React.FC<IndexViewProps> = ({
               )}
             </div>
 
-            {/* Swipeable horizontal filter pills on mobile */}
             <div className="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-0.5 sm:pb-0 sm:flex-wrap">
               {(
                 [
-                  ['all', 'Todos'],
-                  ['core', 'Puerta de entrada'],
-                  ['pillars', '4 Pilares'],
-                  ['mastered', 'Entendidos'],
-                  ['notes', 'Con notas'],
+                  ['all', t.filterAll],
+                  ['core', t.filterCore],
+                  ['pillars', t.filterPillars],
+                  ['mastered', t.filterMastered],
+                  ['notes', t.filterNotes],
                 ] as Array<[FilterMode, string]>
               ).map(([mode, label]) => (
                 <button
@@ -217,12 +210,11 @@ export const IndexView: React.FC<IndexViewProps> = ({
                 }`}
               >
                 <Filter className="h-3.5 w-3.5" />
-                <span>15 Temáticas</span>
+                <span>{t.filterThemes}</span>
               </button>
             </div>
           </div>
 
-          {/* Swipeable Family Selector Pills (horizontal strip on mobile, wrapped on desktop) */}
           <div className="no-scrollbar flex items-center gap-1.5 overflow-x-auto pb-0.5 sm:pb-0 sm:flex-wrap">
             <button
               onClick={() => setSelectedFamily('all')}
@@ -232,9 +224,9 @@ export const IndexView: React.FC<IndexViewProps> = ({
                   : 'border border-white/8 bg-white/[0.02] text-slate-400 hover:text-slate-200'
               }`}
             >
-              Todas (9)
+              {t.allFamiliesPill}
             </button>
-            {FAMILIES.map((fam) => {
+            {families.map((fam) => {
               const active = selectedFamily === fam.id;
               return (
                 <button
@@ -264,26 +256,25 @@ export const IndexView: React.FC<IndexViewProps> = ({
             })}
           </div>
 
-          {/* Optional 15 Temáticas lens */}
           {showThemes && (
             <div className="border-t border-white/8 pt-3">
               <p className="text-[10px] font-mono-meta uppercase tracking-widest text-slate-400 mb-2">
-                Filtrar por las 15 temáticas oficiales de El Turrero Post
+                {t.themesSectionHelp}
               </p>
               <div className="flex flex-wrap gap-1.5">
-                {ALL_15_THEMES.map((t) => {
-                  const fam = FAMILY_MAP[t.familyId];
+                {all15Themes.map((th) => {
+                  const fam = familyMap[th.familyId];
                   return (
                     <button
-                      key={t.name}
-                      onClick={() => setSelectedFamily(t.familyId)}
+                      key={th.name}
+                      onClick={() => setSelectedFamily(th.familyId)}
                       className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-slate-300 hover:border-white/25 hover:text-white transition"
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
                         style={{ backgroundColor: fam.color }}
                       />
-                      <span>{t.name}</span>
+                      <span>{th.name}</span>
                     </button>
                   );
                 })}
@@ -292,12 +283,9 @@ export const IndexView: React.FC<IndexViewProps> = ({
           )}
         </div>
 
-        {/* Grouped Family Sections */}
         {totalVisible === 0 ? (
           <div className="rounded-3xl border border-white/8 bg-white/[0.02] py-16 text-center">
-            <p className="text-sm text-slate-400">
-              No hay conceptos que coincidan con ese filtro.
-            </p>
+            <p className="text-sm text-slate-400">{t.noFilterResults}</p>
             <button
               onClick={() => {
                 setQuery('');
@@ -306,12 +294,12 @@ export const IndexView: React.FC<IndexViewProps> = ({
               }}
               className="mt-3 rounded-xl border border-white/12 bg-white/6 px-4 py-2 text-xs text-white hover:bg-white/12 transition"
             >
-              Limpiar filtros
+              {t.clearFilters}
             </button>
           </div>
         ) : (
           <div className="space-y-8">
-            {FAMILIES.map((fam) => {
+            {families.map((fam) => {
               const items = filteredByFamily[fam.id];
               if (!items || items.length === 0) return null;
               const masteredCount = items.filter((c) =>
@@ -347,7 +335,7 @@ export const IndexView: React.FC<IndexViewProps> = ({
                         onClick={() => onJumpToConstellation(fam.id)}
                         className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-slate-300 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
                       >
-                        Ver en mapa ↗
+                        {t.viewOnMap}
                       </button>
                     </div>
                   </div>
@@ -386,14 +374,14 @@ export const IndexView: React.FC<IndexViewProps> = ({
 
                           <div className="mt-3 flex items-center justify-between pt-2.5 border-t border-white/6 text-[10px] font-mono-meta text-slate-500">
                             <span>
-                              {c.tier === 'core'
-                                ? 'Puerta de entrada'
-                                : 'Profundización'}
+                              {c.tier === 'core' ? t.tierCore : t.tierDeep}
                             </span>
                             <span className="text-slate-400">
                               {c.sources.length}{' '}
-                              {c.sources.length === 1 ? 'turra' : 'turras'} · 4
-                              niveles →
+                              {c.sources.length === 1
+                                ? t.turraSingular
+                                : t.turraPlural}{' '}
+                              · {t.fourLevelsTag}
                             </span>
                           </div>
                         </button>

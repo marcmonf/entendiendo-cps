@@ -23,13 +23,8 @@ import {
   Wrench,
   X,
 } from 'lucide-react';
-import {
-  CONCEPT_MAP,
-  FAMILY_MAP,
-  type Concept,
-  type GuidedRoute,
-} from '../data/atlasData';
-import { DEEP_DIVES } from '../data/deepDives';
+import type { Concept, GuidedRoute } from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 
 type DepthTab = 'plain' | 'practice' | 'deep' | 'sources';
 
@@ -58,20 +53,26 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
   onSelectConcept,
   onRouteStepChange,
 }) => {
+  const { conceptMap, familyMap, deepDives, t, fmt } = useI18n();
   const [tab, setTab] = useState<DepthTab>('plain');
   const [wideReading, setWideReading] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const family = FAMILY_MAP[concept.familyId];
-  const deepDive = DEEP_DIVES[concept.slug];
+  const family = familyMap[concept.familyId];
+  const deepDive = deepDives[concept.slug];
 
-  // Reset to Level 1 ("En llano") when navigating to a new concept
   useEffect(() => {
     setTab('plain');
     setCopiedLink(false);
     setNotesOpen(false);
   }, [concept.slug]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [tab, concept.slug]);
 
   const handleCopyShareLink = async () => {
     const shareUrl = `${window.location.origin}${window.location.pathname}#${concept.slug}`;
@@ -83,13 +84,6 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   };
-
-  // Smoothly scroll back to top whenever tab or concept changes
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [tab, concept.slug]);
 
   const currentRouteNote =
     activeRoute && activeRoute.steps[activeRouteStep]?.slug === concept.slug
@@ -109,12 +103,11 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
   return (
     <aside
-      className={`fixed inset-0 z-40 flex h-[100dvh] w-full flex-col overflow-hidden bg-[#0a0f1c]/97 shadow-[0_24px_80px_rgba(0,0,0,0.78)] backdrop-blur-2xl animate-drawer-in transition-[max-width] duration-300 md:inset-auto md:right-3 md:top-20 md:bottom-3 md:h-auto md:w-[calc(100vw-1.5rem)] md:rounded-3xl md:border md:border-white/12 md:bg-[#0a0f1c]/94 ${
+      className={`fixed inset-0 z-40 md:z-30 flex h-[100dvh] w-full flex-col overflow-hidden bg-[#0a0f1c]/97 shadow-[0_24px_80px_rgba(0,0,0,0.78)] backdrop-blur-2xl animate-drawer-in transition-[max-width] duration-300 md:inset-auto md:right-3 md:top-20 md:bottom-3 md:h-auto md:w-[calc(100vw-1.5rem)] md:rounded-3xl md:border md:border-white/12 md:bg-[#0a0f1c]/94 ${
         wideReading ? 'md:max-w-[680px]' : 'md:max-w-[480px]'
       }`}
-      aria-label={`Detalles de ${concept.term}`}
+      aria-label={concept.term}
     >
-      {/* Top accent hairline */}
       <div
         className="h-[2px] w-full shrink-0"
         style={{
@@ -142,13 +135,13 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             </span>
 
             <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-mono-meta text-slate-300">
-              {concept.tier === 'core' ? 'Puerta de entrada' : 'Profundización'}
+              {concept.tier === 'core' ? t.tierCore : t.tierDeep}
             </span>
 
             {concept.isPillar && (
               <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/35 bg-amber-400/12 px-2.5 py-1 text-[11px] font-medium text-amber-200">
                 <Sparkles className="h-3 w-3" />
-                Pilar CPS
+                {t.pillarBadge}
               </span>
             )}
           </div>
@@ -161,13 +154,13 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                   ? 'bg-emerald-500/20 text-emerald-200'
                   : 'text-slate-400 hover:bg-white/10 hover:text-white'
               }`}
-              title="Copiar enlace directo a este concepto"
-              aria-label="Copiar enlace directo a este concepto"
+              title={t.copyLinkTooltip}
+              aria-label={t.copyLinkTooltip}
             >
               {copiedLink ? (
                 <>
                   <Check className="h-3.5 w-3.5" />
-                  <span className="hidden sm:inline">Copiado</span>
+                  <span className="hidden sm:inline">{t.copied}</span>
                 </>
               ) : (
                 <Share2 className="h-3.5 w-3.5" />
@@ -176,8 +169,10 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             <button
               onClick={() => setWideReading((v) => !v)}
               className="hidden sm:inline-flex rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
-              title={wideReading ? 'Vista compacta' : 'Ampliar panel de lectura'}
-              aria-label={wideReading ? 'Vista compacta' : 'Ampliar panel de lectura'}
+              title={wideReading ? t.compactReadingTooltip : t.expandReadingTooltip}
+              aria-label={
+                wideReading ? t.compactReadingTooltip : t.expandReadingTooltip
+              }
             >
               {wideReading ? (
                 <Minimize2 className="h-4 w-4" />
@@ -188,7 +183,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             <button
               onClick={onClose}
               className="rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
-              aria-label="Cerrar panel"
+              aria-label={t.closePanel}
             >
               <X className="h-4 w-4" />
             </button>
@@ -201,12 +196,11 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
         {cleanAliases.length > 0 && (
           <p className="mt-1.5 text-xs text-slate-400">
-            También llamado:{' '}
+            {t.alsoCalled}{' '}
             <span className="text-slate-300">{cleanAliases.join(' · ')}</span>
           </p>
         )}
 
-        {/* Active Guided Route Banner */}
         {isInRoute && activeRoute && (
           <div
             className="mt-3.5 rounded-xl border px-3.5 py-2.5 text-xs"
@@ -221,14 +215,17 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                 {activeRoute.title}
               </span>
               <span>
-                Parada {activeRouteStep + 1} / {activeRoute.steps.length}
+                {fmt(t.routeStopCounter, {
+                  current: activeRouteStep + 1,
+                  total: activeRoute.steps.length,
+                })}
               </span>
             </div>
             <p className="mt-1 leading-relaxed text-slate-100">{currentRouteNote}</p>
           </div>
         )}
 
-        {/* 4-Level Progressive Depth Switcher (stacks icon neatly on <400px phones) */}
+        {/* 4-Level Progressive Depth Switcher */}
         <div className="mt-3.5 sm:mt-4 grid grid-cols-4 gap-1 rounded-2xl bg-white/[0.04] p-1 border border-white/8">
           <button
             onClick={() => setTab('plain')}
@@ -239,7 +236,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             }`}
           >
             <Lightbulb className="h-3.5 w-3.5 shrink-0 text-amber-300" />
-            <span>1 · Llano</span>
+            <span>{t.tabPlain}</span>
           </button>
 
           <button
@@ -251,7 +248,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             }`}
           >
             <Wrench className="h-3.5 w-3.5 shrink-0 text-emerald-300" />
-            <span>2 · Práctica</span>
+            <span>{t.tabPractice}</span>
           </button>
 
           <button
@@ -263,7 +260,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             }`}
           >
             <Layers className="h-3.5 w-3.5 shrink-0 text-violet-300" />
-            <span>3 · A fondo</span>
+            <span>{t.tabDeep}</span>
           </button>
 
           <button
@@ -276,7 +273,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
           >
             <BookOpen className="h-3.5 w-3.5 shrink-0 text-sky-300" />
             <span>
-              4 · Fuentes
+              {t.tabSources}
               {sourcesTotal > 0 && (
                 <span className="ml-0.5 hidden sm:inline opacity-65">
                   ({sourcesTotal})
@@ -292,41 +289,38 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
         ref={scrollRef}
         className="custom-scroll flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5 space-y-5"
       >
-        {/* NIVEL 1: EN LLANO */}
         {tab === 'plain' && (
           <div className="space-y-4 animate-fade-up">
             <div>
               <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                La idea en una frase
+                {t.oneSentenceTitle}
               </p>
               <p className="mt-2 text-[15px] leading-relaxed text-slate-100 font-medium">
                 {concept.short}
               </p>
             </div>
 
-            {/* Everyday Analogy */}
             <div className="rounded-2xl border border-amber-300/18 bg-gradient-to-br from-amber-400/[0.08] via-amber-500/[0.03] to-transparent p-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-amber-200">
                 <Lightbulb className="h-4 w-4 text-amber-300" />
-                <span>Imagínalo así (analogía cotidiana)</span>
+                <span>{t.analogyTitle}</span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-slate-200">
                 {concept.analogy}
               </p>
             </div>
 
-            {/* Special Cynefin 5-Domains Visual Mini-Explorer */}
             {concept.domains && concept.domains.length > 0 && (
               <div className="space-y-2.5">
                 <p className="text-[11px] font-mono-meta uppercase tracking-widest text-cyan-300/90">
-                  Los 5 dominios de Cynefin
+                  {t.cynefinDomainsTitle}
                 </p>
                 <div className="grid grid-cols-1 gap-2">
-                  {concept.domains.map((d) => (
+                  {concept.domains.map((d, idx) => (
                     <div
                       key={d.name}
                       className={`rounded-xl border p-3 ${
-                        d.name === 'Complejo'
+                        idx === 2
                           ? 'border-cyan-400/40 bg-cyan-400/10'
                           : 'border-white/8 bg-white/[0.03]'
                       }`}
@@ -335,9 +329,9 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                         <span className="text-xs font-semibold text-white">
                           {d.name}
                         </span>
-                        {d.name === 'Complejo' && (
+                        {idx === 2 && (
                           <span className="rounded-full bg-cyan-400/20 px-2 py-0.5 text-[10px] font-mono-meta text-cyan-200">
-                            Terreno CPS
+                            {t.cynefinCpsBadge}
                           </span>
                         )}
                       </div>
@@ -350,18 +344,19 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               </div>
             )}
 
-            {/* Cross-Branch Connections */}
             {concept.related.length > 0 && (
               <div className="pt-1">
                 <div className="flex items-center gap-2 text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
                   <Network className="h-3.5 w-3.5" />
-                  <span>Conecta en la constelación con ({concept.related.length})</span>
+                  <span>
+                    {fmt(t.connectsWithTitle, { count: concept.related.length })}
+                  </span>
                 </div>
                 <div className="mt-2.5 flex flex-wrap gap-2">
                   {concept.related.map((relSlug) => {
-                    const rel = CONCEPT_MAP[relSlug];
+                    const rel = conceptMap[relSlug];
                     if (!rel) return null;
-                    const relFam = FAMILY_MAP[rel.familyId];
+                    const relFam = familyMap[rel.familyId];
                     const isCrossFamily = rel.familyId !== concept.familyId;
                     return (
                       <button
@@ -390,19 +385,18 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               onClick={() => setTab('practice')}
               className="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left text-xs text-slate-300 transition hover:border-emerald-400/30 hover:bg-emerald-400/[0.06] hover:text-white"
             >
-              <span>Nivel 2 · Cómo aplicarlo y trampas típicas</span>
+              <span>{t.ctaToPractice}</span>
               <ArrowRight className="h-4 w-4 text-emerald-300" />
             </button>
           </div>
         )}
 
-        {/* NIVEL 2: PRÁCTICA */}
         {tab === 'practice' && (
           <div className="space-y-4 animate-fade-up">
             <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/[0.07] p-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-200">
                 <Wrench className="h-4 w-4 text-emerald-300" />
-                <span>Cómo usarlo en tu día a día</span>
+                <span>{t.howToApplyTitle}</span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-slate-200">
                 {concept.howToApply}
@@ -412,7 +406,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             <div className="rounded-2xl border border-rose-400/22 bg-rose-500/[0.07] p-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-rose-200">
                 <AlertTriangle className="h-4 w-4 text-rose-300" />
-                <span>La trampa típica (anti-patrón)</span>
+                <span>{t.antiPatternTitle}</span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-slate-200">
                 {concept.antiPattern}
@@ -421,7 +415,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
 
             <div className="space-y-3 pt-1">
               <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                Síntesis del glosario · El Turrero Post
+                {t.glossarySynthesisTitle}
               </p>
               {concept.paragraphs.map((p, i) => (
                 <p key={i} className="text-sm leading-relaxed text-slate-200/95">
@@ -433,7 +427,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             {concept.origin && (
               <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
                 <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                  De dónde viene
+                  {t.originTitle}
                 </p>
                 <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
                   {concept.origin}
@@ -447,31 +441,28 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             >
               <span className="flex items-center gap-2">
                 <Layers className="h-4 w-4 text-violet-300" />
-                <span>Nivel 3 · Profundizando (lectura a fondo de las turras)</span>
+                <span>{t.ctaToDeep}</span>
               </span>
               <ArrowRight className="h-4 w-4 text-violet-300" />
             </button>
           </div>
         )}
 
-        {/* NIVEL 3: PROFUNDIZANDO (LECTURA DE LAS TURRAS ORIGINALES) */}
         {tab === 'deep' && deepDive && (
           <div className="space-y-5 animate-fade-up">
-            {/* Editorial Thesis Callout */}
             <div className="rounded-2xl border border-violet-400/25 bg-gradient-to-br from-violet-500/[0.12] via-indigo-500/[0.05] to-transparent p-4.5">
               <div className="flex items-center gap-2 text-[10px] font-mono-meta uppercase tracking-widest text-violet-300">
                 <Layers className="h-3.5 w-3.5" />
-                <span>Tesis de fondo en las turras</span>
+                <span>{t.deepThesisLabel}</span>
               </div>
               <p className="mt-2 font-editorial text-[22px] leading-[1.24] text-white">
                 {deepDive.thesis}
               </p>
             </div>
 
-            {/* Deep Essay (3 substantive paragraphs from the actual threads) */}
             <div className="space-y-3.5">
               <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                Lectura en profundidad
+                {t.deepReadingLabel}
               </p>
               {deepDive.essay.map((paragraph, idx) => (
                 <p
@@ -483,7 +474,6 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               ))}
             </div>
 
-            {/* Literal Quote from the Turra */}
             {deepDive.quote?.text && (
               <blockquote className="relative overflow-hidden rounded-2xl border border-amber-300/20 bg-white/[0.03] px-5 py-4">
                 <Quote className="h-4 w-4 text-amber-300/75" />
@@ -492,7 +482,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                 </p>
                 {deepDive.quote.sourceTitle && (
                   <footer className="mt-2.5 text-[11px] text-slate-400">
-                    — Javier G. Recuenco, en{' '}
+                    {t.quoteAuthorPrefix}{' '}
                     <span className="text-slate-300">
                       {deepDive.quote.sourceTitle}
                     </span>
@@ -501,11 +491,10 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               </blockquote>
             )}
 
-            {/* Key Insights extracted directly from threads */}
             <div className="space-y-2.5">
               <div className="flex items-center gap-2 text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
                 <Flame className="h-3.5 w-3.5 text-amber-300" />
-                <span>Ideas fuerza de los hilos</span>
+                <span>{t.keyInsightsTitle}</span>
               </div>
               <div className="space-y-2">
                 {deepDive.keyInsights.map((insight, idx) => (
@@ -524,11 +513,10 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               </div>
             </div>
 
-            {/* Concrete Examples & Stories cited by Recuenco */}
             {deepDive.threadExamples.length > 0 && (
               <div className="space-y-2.5">
                 <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                  Casos y referencias reales de las turras
+                  {t.realExamplesTitle}
                 </p>
                 <div className="space-y-2.5">
                   {deepDive.threadExamples.map((ex, idx) => (
@@ -548,12 +536,11 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               </div>
             )}
 
-            {/* Diagnostic Reflection Questions */}
             {deepDive.reflectionQuestions.length > 0 && (
               <div className="rounded-2xl border border-cyan-400/20 bg-cyan-500/[0.06] p-4 space-y-2.5">
                 <div className="flex items-center gap-2 text-xs font-semibold text-cyan-200">
                   <HelpCircle className="h-4 w-4 text-cyan-300" />
-                  <span>Preguntas diagnósticas para tu terreno</span>
+                  <span>{t.reflectionQuestionsTitle}</span>
                 </div>
                 <ul className="space-y-2">
                   {deepDive.reflectionQuestions.map((q, idx) => (
@@ -573,19 +560,23 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               onClick={() => setTab('sources')}
               className="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left text-xs text-slate-300 transition hover:border-sky-400/35 hover:bg-sky-400/[0.07] hover:text-white"
             >
-              <span>Nivel 4 · Ir a las turras originales y libros citados</span>
+              <span>{t.ctaToSources}</span>
               <ArrowRight className="h-4 w-4 text-sky-300" />
             </button>
           </div>
         )}
 
-        {/* NIVEL 4: FUENTES */}
         {tab === 'sources' && (
           <div className="space-y-5 animate-fade-up">
             <div>
               <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                Turras originales donde se desarrolla ({concept.sources.length})
+                {fmt(t.sourcesTurrasTitle, { count: concept.sources.length })}
               </p>
+              {t.sourcesOriginalSpanishNote && (
+                <p className="mt-1 text-[11px] text-slate-500">
+                  {t.sourcesOriginalSpanishNote}
+                </p>
+              )}
               <div className="mt-2.5 space-y-2">
                 {concept.sources.map((src) => (
                   <a
@@ -612,7 +603,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             {concept.books.length > 0 && (
               <div>
                 <p className="text-[11px] font-mono-meta uppercase tracking-widest text-slate-400">
-                  Libros citados en estas turras ({concept.books.length})
+                  {fmt(t.sourcesBooksTitle, { count: concept.books.length })}
                 </p>
                 <div className="mt-2.5 space-y-2">
                   {concept.books.map((book) => (
@@ -649,7 +640,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
               rel="noopener noreferrer"
               className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-xs text-slate-300 transition hover:border-white/25 hover:bg-white/[0.07] hover:text-white"
             >
-              <span>Abrir ficha en El Turrero Post</span>
+              <span>{t.openInTurrero}</span>
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -662,17 +653,17 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
           <div className="flex items-center justify-between mb-1.5">
             <span className="flex items-center gap-1.5 text-[11px] font-medium text-sky-200">
               <StickyNote className="h-3.5 w-3.5 text-sky-300" />
-              Tus notas sobre «{concept.term}»
+              {fmt(t.notesHeader, { term: concept.term })}
             </span>
             <span className="text-[10px] font-mono-meta text-slate-500">
-              Guardado en este navegador
+              {t.notesSavedLocally}
             </span>
           </div>
           <textarea
             value={note}
             onChange={(e) => onNoteChange(concept.slug, e.target.value)}
             rows={3}
-            placeholder="Anota cómo aplica esto en tu proyecto, una idea clave o una duda para revisar luego..."
+            placeholder={t.notesPlaceholder}
             className="custom-scroll w-full resize-none rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs leading-relaxed text-slate-100 placeholder:text-slate-500 focus:border-sky-400/40 focus:outline-none"
           />
         </div>
@@ -692,12 +683,12 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
             {isMastered ? (
               <>
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-                <span>Entendido</span>
+                <span>{t.understood}</span>
               </>
             ) : (
               <>
                 <Circle className="h-4 w-4 text-slate-400" />
-                <span>Marcar entendido</span>
+                <span>{t.markUnderstood}</span>
               </>
             )}
           </button>
@@ -709,11 +700,10 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                 ? 'border-sky-400/35 bg-sky-500/15 text-sky-200 hover:bg-sky-500/22'
                 : 'border-white/10 bg-white/[0.04] text-slate-300 hover:bg-white/10 hover:text-white'
             }`}
-            title="Añadir o ver tus notas personales"
           >
             <StickyNote className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">
-              {note.trim() ? 'Nota' : 'Notas'}
+              {note.trim() ? t.noteSingular : t.notesLabel}
             </span>
           </button>
 
@@ -723,7 +713,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                 disabled={!canPrev}
                 onClick={() => onRouteStepChange(activeRouteStep - 1)}
                 className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-slate-200 transition hover:bg-white/12 disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Parada anterior"
+                aria-label={t.prevStop}
               >
                 <ArrowLeft className="h-4 w-4" />
               </button>
@@ -732,7 +722,7 @@ export const ConceptDrawer: React.FC<ConceptDrawerProps> = ({
                 onClick={() => onRouteStepChange(activeRouteStep + 1)}
                 className="flex items-center gap-1.5 rounded-xl bg-amber-400 px-3.5 py-2.5 text-xs font-semibold text-slate-950 transition hover:bg-amber-300 disabled:opacity-30 disabled:cursor-not-allowed"
               >
-                <span>Siguiente</span>
+                <span>{t.nextStop}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>

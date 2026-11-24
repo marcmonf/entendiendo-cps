@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { CheckCircle2, Search, Sparkles, X } from 'lucide-react';
-import { CONCEPTS, FAMILY_MAP, type Concept } from '../data/atlasData';
+import type { Concept } from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 
 interface SearchModalProps {
   open: boolean;
@@ -22,6 +23,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onClose,
   onSelectConcept,
 }) => {
+  const { concepts, familyMap, t, fmt } = useI18n();
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -37,34 +39,32 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const results: Concept[] = useMemo(() => {
     const q = normalize(query.trim());
     if (!q) {
-      // Show essential pillars & gateway concepts first when empty
-      return CONCEPTS.filter((c) => c.tier === 'core').slice(0, 14);
+      return concepts.filter((c) => c.tier === 'core').slice(0, 14);
     }
-    const scored = CONCEPTS.map((c) => {
-      const fam = FAMILY_MAP[c.familyId];
-      const termN = normalize(c.term);
-      const aliasesN = normalize(c.aliases.join(' '));
-      const shortN = normalize(c.short);
-      const famN = normalize(`${fam.name} ${fam.themes.join(' ')}`);
+    return concepts
+      .map((c) => {
+        const fam = familyMap[c.familyId];
+        const termN = normalize(c.term);
+        const aliasesN = normalize(c.aliases.join(' '));
+        const shortN = normalize(c.short);
+        const famN = normalize(`${fam.name} ${fam.themes.join(' ')}`);
 
-      let score = 0;
-      if (termN === q) score += 120;
-      else if (termN.startsWith(q)) score += 90;
-      else if (termN.includes(q)) score += 65;
+        let score = 0;
+        if (termN === q) score += 120;
+        else if (termN.startsWith(q)) score += 90;
+        else if (termN.includes(q)) score += 65;
 
-      if (aliasesN.includes(q)) score += 50;
-      if (famN.includes(q)) score += 25;
-      if (shortN.includes(q)) score += 18;
+        if (aliasesN.includes(q)) score += 50;
+        if (famN.includes(q)) score += 25;
+        if (shortN.includes(q)) score += 18;
 
-      return { c, score };
-    })
+        return { c, score };
+      })
       .filter((x) => x.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, 18)
       .map((x) => x.c);
-
-    return scored;
-  }, [query]);
+  }, [query, concepts, familyMap]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -98,14 +98,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
-        {/* Search Input */}
         <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
           <Search className="h-4.5 w-4.5 text-slate-400 shrink-0" />
           <input
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Busca un concepto, autor, alias o tema (ej. Cynefin, Personotecnia, IA, AACC)..."
+            placeholder={t.searchModalPlaceholder}
             className="w-full bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none"
           />
           {query && (
@@ -121,23 +120,21 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </kbd>
         </div>
 
-        {/* Results */}
         <div className="custom-scroll max-h-[56vh] overflow-y-auto p-2">
           <p className="px-3 py-1.5 text-[10px] font-mono-meta uppercase tracking-widest text-slate-500">
             {query.trim()
-              ? `${results.length} resultados encontrados`
-              : 'Puertas de entrada recomendadas (94 conceptos en total)'}
+              ? fmt(t.searchResultsFound, { count: results.length })
+              : fmt(t.searchRecommendedHeader, { count: concepts.length })}
           </p>
 
           {results.length === 0 ? (
             <div className="py-10 text-center text-sm text-slate-400">
-              No hay coincidencias para «{query}». Prueba con Cynefin, estrategia,
-              equipos o sesgo.
+              {fmt(t.searchNoMatches, { query })}
             </div>
           ) : (
             <div className="space-y-1">
               {results.map((concept, idx) => {
-                const fam = FAMILY_MAP[concept.familyId];
+                const fam = familyMap[concept.familyId];
                 const active = idx === activeIndex;
                 const mastered = masteredSlugs.has(concept.slug);
                 return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Compass, X } from 'lucide-react';
-import { CONCEPT_MAP, GUIDED_ROUTES, type GuidedRoute } from '../data/atlasData';
+import type { GuidedRoute } from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 
 interface RoutesModalProps {
   open: boolean;
@@ -17,6 +18,7 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
   onSelectRoute,
   onClearRoute,
 }) => {
+  const { guidedRoutes, conceptMap, t } = useI18n();
   if (!open) return null;
 
   return (
@@ -32,15 +34,12 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
           <div>
             <div className="flex items-center gap-2 text-[11px] font-mono-meta uppercase tracking-widest text-amber-300">
               <Compass className="h-3.5 w-3.5" />
-              <span>Recorridos Guiados</span>
+              <span>{t.routesEyebrow}</span>
             </div>
             <h2 className="mt-1 font-editorial text-3xl text-white">
-              Explora el universo CPS paso a paso
+              {t.routesTitle}
             </h2>
-            <p className="mt-1 text-xs text-slate-400">
-              Cada ruta ilumina una trayectoria numerada sobre la constelación y te
-              guía de lo más sencillo a lo más profundo.
-            </p>
+            <p className="mt-1 text-xs text-slate-400">{t.routesSubtitle}</p>
           </div>
           <button
             onClick={onClose}
@@ -51,7 +50,7 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
         </div>
 
         <div className="custom-scroll max-h-[65vh] overflow-y-auto p-5 space-y-3">
-          {GUIDED_ROUTES.map((route) => {
+          {guidedRoutes.map((route) => {
             const isActive = route.id === activeRouteId;
             return (
               <button
@@ -81,7 +80,7 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
                       </h3>
                       {isActive && (
                         <span className="rounded-full bg-amber-400/20 px-2 py-0.5 text-[10px] font-mono-meta text-amber-200">
-                          Activa
+                          {t.routeActiveBadge}
                         </span>
                       )}
                     </div>
@@ -97,10 +96,9 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
                   </div>
                 </div>
 
-                {/* Preview of stops */}
                 <div className="flex flex-wrap items-center gap-1.5">
                   {route.steps.map((st, idx) => {
-                    const c = CONCEPT_MAP[st.slug];
+                    const c = conceptMap[st.slug];
                     if (!c) return null;
                     return (
                       <span
@@ -132,7 +130,7 @@ export const RoutesModal: React.FC<RoutesModalProps> = ({
               }}
               className="text-xs text-slate-400 hover:text-rose-300 transition"
             >
-              Salir de la ruta activa y explorar libremente
+              {t.routeExitFree}
             </button>
           </div>
         )}

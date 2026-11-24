@@ -45,7 +45,10 @@ function degToRad(deg: number): number {
   return (deg * Math.PI) / 180;
 }
 
-export function computeAtlasLayout(): {
+export function computeAtlasLayout(
+  familiesList: Family[] = FAMILIES,
+  conceptsList: Concept[] = CONCEPTS
+): {
   familyLayouts: FamilyLayout[];
   conceptPositions: Record<string, ConceptLayout>;
   familyPositions: Record<string, FamilyLayout>;
@@ -54,12 +57,12 @@ export function computeAtlasLayout(): {
   const conceptPositions: Record<string, ConceptLayout> = {};
   const familyPositions: Record<string, FamilyLayout> = {};
 
-  for (const family of FAMILIES) {
+  for (const family of familiesList) {
     const angleRad = degToRad(family.angleDeg);
     const fx = Math.cos(angleRad) * R_FAMILY;
     const fy = Math.sin(angleRad) * R_FAMILY;
 
-    const famConcepts = CONCEPTS.filter((c) => c.familyId === family.id);
+    const famConcepts = conceptsList.filter((c) => c.familyId === family.id);
     const coreList = famConcepts.filter((c) => c.tier === 'core');
     const deepList = famConcepts.filter((c) => c.tier === 'deep');
 

@@ -1,129 +1,6 @@
 import React from 'react';
 import { ArrowRight, Flame, X } from 'lucide-react';
-import { CONCEPT_MAP, FAMILY_MAP } from '../data/atlasData';
-
-interface RealProblem {
-  id: string;
-  question: string;
-  diagnosis: string;
-  accent: string;
-  slugs: string[];
-}
-
-const REAL_PROBLEMS: RealProblem[] = [
-  {
-    id: 'equipo-estrellas',
-    question: '«Tengo gente brillantísima, pero el equipo no rinde o choca»',
-    diagnosis:
-      'Juntar currículums estelares no suma en línea recta: suelen chocar egos, agendas y lenguajes. Necesitas orquestación y un traductor.',
-    accent: '#EC4899',
-    slugs: [
-      'equipo-apolo',
-      'orquestacion-cognitiva',
-      'emulsificador-de-equipo',
-      'asertividad',
-      'recoger-cable',
-    ],
-  },
-  {
-    id: 'estrategia-humo',
-    question: '«Nuestra estrategia suena preciosa en PowerPoint, pero no resuelve nada»',
-    diagnosis:
-      'Confundir lista de deseos con estrategia. Toca volver al diagnóstico crudo, comprobar si la propuesta de valor caducó y elegir renuncias.',
-    accent: '#10B981',
-    slugs: [
-      'estrategia',
-      'diagnostico',
-      'hotel-de-hilbert',
-      'cul-de-sac',
-      'sidestepping',
-    ],
-  },
-  {
-    id: 'ia-pilotos',
-    question: '«Hacemos mil pilotos de IA, pero nada cambia de verdad el negocio»',
-    diagnosis:
-      'Estás atrapado en el abismo entre la demo vistosa y la adopción real. Separa lo repetible de los procesos humanos de alta variabilidad.',
-    accent: '#38BDF8',
-    slugs: [
-      'ia-chasm',
-      'centauro',
-      'lujo-humano',
-      'procesos-de-alta-variabilidad',
-      'ecosistemas-tecnologicos',
-    ],
-  },
-  {
-    id: 'incentivos-kpis',
-    question: '«Ponemos KPIs y bonus, pero la gente hace justo lo contrario de lo esperado»',
-    diagnosis:
-      'Las canicas siempre ruedan hacia la pendiente real del suelo. Audita incentivos perversos, métricas engañosas y quién se juega el pellejo.',
-    accent: '#F97316',
-    slugs: [
-      'arquitectura-de-incentivos',
-      'incentivo-perverso',
-      'falacia-de-mcnamara',
-      'skin-in-the-game',
-      'huevos-de-serpiente',
-    ],
-  },
-  {
-    id: 'nadie-dice-verdad',
-    question: '«Todo el mundo sabe que algo va mal, pero nadie lo dice en la reunión»',
-    diagnosis:
-      'Conviven la pantomima corporativa, el miedo al aislamiento y la fatiga del «¿pa qué?». Hay que bajar el coste de decir la verdad.',
-    accent: '#F43F5E',
-    slugs: [
-      'pantomima',
-      'elefante-negro',
-      'espiral-del-silencio',
-      'espiral-del-pa-que',
-      'truth-coping',
-    ],
-  },
-  {
-    id: 'incertidumbre-paralisis',
-    question: '«No tenemos datos fiables y nos da vértigo decidir sin certezas»',
-    diagnosis:
-      'Bienvenido al cuadrante complejo. Aquí pedir el plan maestro perfecto paraliza: toca hacer sensemaking y experimentos pequeños con cabeza.',
-    accent: '#06B6D4',
-    slugs: [
-      'cynefin',
-      'sensemaking',
-      'niebla-de-guerra',
-      'incertidumbre',
-      'vaca-esferica',
-    ],
-  },
-  {
-    id: 'marketing-ignorado',
-    question: '«Invertimos más en marketing y datos, pero los clientes nos ignoran»',
-    diagnosis:
-      'La persecución masiva ha generado inmunidad. Deja de bombardear a desconocidos y construye relevancia real para que el cliente levante la mano.',
-    accent: '#EC4899',
-    slugs: [
-      'personotecnia',
-      'autosegmentacion',
-      'capitalismo-de-vigilancia',
-      'test-astudillo',
-      'contexto',
-    ],
-  },
-  {
-    id: 'talento-no-encaja',
-    question: '«Siento que pienso distinto (o lidero talento atípico) y el sistema ahoga»',
-    diagnosis:
-      'Las estructuras hechas para la media estadística desperdigaron el talento singular. Busca entornos liminales, mentores y convivencia real.',
-    accent: '#A855F7',
-    slugs: [
-      'altas-capacidades',
-      'neurodivergencia',
-      'xavier-o-magneto',
-      'zona-de-desarrollo-proximo',
-      'liminalidad',
-    ],
-  },
-];
+import { useI18n } from '../i18n/LanguageContext';
 
 interface ProblemsModalProps {
   open: boolean;
@@ -136,6 +13,7 @@ export const ProblemsModal: React.FC<ProblemsModalProps> = ({
   onClose,
   onSelectConcept,
 }) => {
+  const { realProblems, conceptMap, familyMap, t } = useI18n();
   if (!open) return null;
 
   return (
@@ -151,27 +29,24 @@ export const ProblemsModal: React.FC<ProblemsModalProps> = ({
           <div>
             <div className="flex items-center gap-2 text-[11px] font-mono-meta uppercase tracking-widest text-amber-300">
               <Flame className="h-3.5 w-3.5" />
-              <span>Entrada práctica · Diagnóstico rápido</span>
+              <span>{t.problemsEyebrow}</span>
             </div>
             <h2 className="mt-1 font-editorial text-3xl text-white">
-              ¿Qué problema tienes hoy sobre la mesa?
+              {t.problemsTitle}
             </h2>
-            <p className="mt-1 text-xs text-slate-400">
-              Elige la situación que más se parece a lo que estás viviendo y salta
-              directamente a las herramientas de CPS que la iluminan.
-            </p>
+            <p className="mt-1 text-xs text-slate-400">{t.problemsSubtitle}</p>
           </div>
           <button
             onClick={onClose}
             className="rounded-full p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
-            aria-label="Cerrar"
+            aria-label={t.closePanel}
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
         <div className="custom-scroll max-h-[68vh] overflow-y-auto p-5 grid grid-cols-1 gap-3 md:grid-cols-2">
-          {REAL_PROBLEMS.map((prob) => (
+          {realProblems.map((prob) => (
             <div
               key={prob.id}
               className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-white/20"
@@ -196,9 +71,9 @@ export const ProblemsModal: React.FC<ProblemsModalProps> = ({
 
               <div className="mt-3.5 pt-3 border-t border-white/8 flex flex-wrap gap-1.5">
                 {prob.slugs.map((slug) => {
-                  const c = CONCEPT_MAP[slug];
+                  const c = conceptMap[slug];
                   if (!c) return null;
-                  const fam = FAMILY_MAP[c.familyId];
+                  const fam = familyMap[c.familyId];
                   return (
                     <button
                       key={slug}

@@ -13,98 +13,7 @@ import {
   Trees,
   X,
 } from 'lucide-react';
-
-export interface TourStep {
-  id: string;
-  target?: string; // matches [data-tour="..."] on visible element
-  title: string;
-  description: string;
-  tip?: string;
-  icon: React.ReactNode;
-}
-
-const DESKTOP_STEPS: TourStep[] = [
-  {
-    id: 'welcome',
-    title: 'Bienvenido al Observatorio CPS',
-    description:
-      'Aquí tienes 94 conceptos de Complex Problem Solving organizados en 9 constelaciones y 4 niveles de profundidad (de lo más sencillo a la lectura de las 131 turras originales). Haz clic en cualquier constelación para desplegar sus ramas, o en el Sol central para ver los 4 Pilares y los 5 Atractores.',
-    tip: 'Arrastra el fondo para moverte libremente por el cielo.',
-    icon: <Sparkles className="h-4 w-4 text-amber-300" />,
-  },
-  {
-    id: 'view-switcher',
-    target: 'view-switcher',
-    title: 'Cambia entre Mapa e Índice',
-    description:
-      'Alterna cuando quieras entre la vista visual de Constelación y la vista Índice en tarjetas filtrables por las 15 temáticas de El Turrero Post.',
-    tip: 'En móvil o para buscar rápido por tema, la vista Índice es comodísima.',
-    icon: <LayoutGrid className="h-4 w-4 text-cyan-300" />,
-  },
-  {
-    id: 'search',
-    target: 'search',
-    title: 'Buscador instantáneo (⌘K)',
-    description:
-      'Introduce aquí cualquier concepto, alias, autor o palabra clave (por ejemplo «Cynefin», «Personotecnia» o «AACC») y el mapa volará directamente hasta esa estrella.',
-    tip: 'En ordenador puedes abrirlo en cualquier momento pulsando ⌘K o Ctrl+K.',
-    icon: <Search className="h-4 w-4 text-slate-200" />,
-  },
-  {
-    id: 'guides',
-    target: 'guides',
-    title: '¿Tu problema? y Rutas guiadas',
-    description:
-      '¿No sabes por dónde empezar? En «¿Tu problema?» eliges una situación real (equipos, IA, estrategia, incentivos) y te lleva a las herramientas exactas. En «Rutas» sigues recorridos numerados paso a paso.',
-    tip: 'Cada concepto tiene 4 pestañas: Llano → Práctica → A fondo → Fuentes.',
-    icon: <Compass className="h-4 w-4 text-amber-300" />,
-  },
-  {
-    id: 'progress',
-    target: 'progress',
-    title: 'Tu progreso y notas personales',
-    description:
-      'Marca conceptos como «Entendido» y escribe tus propias notas dentro de cada ficha. Aquí verás tu avance por constelación y podrás exportar todo a Markdown para Obsidian o Notion.',
-    tip: 'Todo se guarda automáticamente en tu navegador, sin cuentas ni registros.',
-    icon: <Award className="h-4 w-4 text-emerald-300" />,
-  },
-  {
-    id: 'controls',
-    target: 'controls',
-    title: 'Zoom, encuadre y desplegar todo',
-    description:
-      'Desde estos controles puedes acercar (+), alejar (−), centrar la vista o desplegar las 94 estrellas a la vez con un solo clic.',
-    tip: 'También puedes hacer zoom con la rueda del ratón o pellizcando con dos dedos en móvil y tablet.',
-    icon: <Trees className="h-4 w-4 text-amber-300" />,
-  },
-];
-
-const MOBILE_STEPS: TourStep[] = [
-  {
-    id: 'm-welcome',
-    title: 'Bienvenido al Observatorio CPS',
-    description:
-      'Tienes 94 conceptos de Complex Problem Solving de Javier G. Recuenco organizados en 9 constelaciones. Toca cualquier tarjeta para abrir sus 4 niveles: En llano, Práctica, A fondo (131 turras) y Fuentes.',
-    tip: 'Puedes empezar por la ruta guiada «Empieza aquí» o filtrar por familia.',
-    icon: <Sparkles className="h-4 w-4 text-amber-300" />,
-  },
-  {
-    id: 'm-nav',
-    title: 'Navegación rápida abajo',
-    description:
-      'En la barra inferior puedes saltar en un toque entre el Índice, el Mapa de constelaciones interactivo, las 5 Rutas guiadas paso a paso y «¿Tu problema?» para buscar por situaciones reales.',
-    tip: 'En la vista Mapa puedes arrastrar con un dedo y hacer zoom pellizcando con dos dedos.',
-    icon: <Orbit className="h-4 w-4 text-cyan-300" />,
-  },
-  {
-    id: 'm-search-notes',
-    title: 'Buscador, progreso y notas',
-    description:
-      'Arriba tienes la lupa para buscar cualquier término al instante y tu contador de progreso. Dentro de cada ficha puedes marcar «Entendido», guardar tus notas y copiar el enlace directo.',
-    tip: 'Puedes repetir esta guía cuando quieras tocando el icono ? arriba.',
-    icon: <Award className="h-4 w-4 text-emerald-300" />,
-  },
-];
+import { useI18n } from '../i18n/LanguageContext';
 
 interface Rect {
   top: number;
@@ -116,6 +25,26 @@ interface Rect {
 interface OnboardingTourProps {
   open: boolean;
   onFinish: () => void;
+}
+
+function getStepIcon(id: string): React.ReactNode {
+  switch (id) {
+    case 'view-switcher':
+      return <LayoutGrid className="h-4 w-4 text-cyan-300" />;
+    case 'search':
+      return <Search className="h-4 w-4 text-slate-200" />;
+    case 'guides':
+      return <Compass className="h-4 w-4 text-amber-300" />;
+    case 'progress':
+    case 'm-search-notes':
+      return <Award className="h-4 w-4 text-emerald-300" />;
+    case 'controls':
+      return <Trees className="h-4 w-4 text-amber-300" />;
+    case 'm-nav':
+      return <Orbit className="h-4 w-4 text-cyan-300" />;
+    default:
+      return <Sparkles className="h-4 w-4 text-amber-300" />;
+  }
 }
 
 function findVisibleTargetRect(targetName?: string): Rect | null {
@@ -142,6 +71,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
   open,
   onFinish,
 }) => {
+  const { desktopTourSteps, mobileTourSteps, t, fmt } = useI18n();
   const [stepIdx, setStepIdx] = useState(0);
   const [rect, setRect] = useState<Rect | null>(null);
   const [viewport, setViewport] = useState(() => ({
@@ -150,7 +80,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
   }));
 
   const isMobile = viewport.w < 768;
-  const steps = isMobile ? MOBILE_STEPS : DESKTOP_STEPS;
+  const steps = isMobile ? mobileTourSteps : desktopTourSteps;
   const safeIdx = Math.min(stepIdx, steps.length - 1);
   const step = steps[safeIdx];
 
@@ -205,11 +135,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
           : Math.max(16, rect.top - 255);
         const idealLeft = rect.left + rect.width / 2 - cardWidth / 2;
         const left = Math.max(12, Math.min(viewport.w - cardWidth - 12, idealLeft));
-        return {
-          top,
-          left,
-          width: cardWidth,
-        };
+        return { top, left, width: cardWidth };
       })()
     : undefined;
 
@@ -232,16 +158,15 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
       <div className="p-5">
         <div className="flex items-center justify-between gap-2">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/25 bg-amber-400/10 px-2.5 py-1 text-[10px] font-mono-meta uppercase tracking-widest text-amber-200">
-            {step.icon}
+            {getStepIcon(step.id)}
             <span>
-              Guía rápida · {safeIdx + 1} / {steps.length}
+              {fmt(t.tourBadge, { current: safeIdx + 1, total: steps.length })}
             </span>
           </div>
           <button
             onClick={onFinish}
             className="rounded-full p-1 text-slate-400 transition hover:bg-white/10 hover:text-white"
-            aria-label="Cerrar guía"
-            title="Saltar guía (Esc)"
+            aria-label={t.closePanel}
           >
             <X className="h-4 w-4" />
           </button>
@@ -268,7 +193,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
               <button
                 key={s.id}
                 onClick={() => setStepIdx(idx)}
-                aria-label={`Ir al paso ${idx + 1}`}
+                aria-label={`${idx + 1}`}
                 className={`h-1.5 rounded-full transition-all ${
                   idx === safeIdx
                     ? 'w-5 bg-amber-400'
@@ -286,7 +211,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
                 onClick={onFinish}
                 className="rounded-xl px-2.5 py-2 text-xs text-slate-400 transition hover:text-slate-200"
               >
-                Saltar
+                {t.tourSkip}
               </button>
             ) : (
               <button
@@ -294,7 +219,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
                 className="inline-flex items-center gap-1 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 py-2 text-xs text-slate-200 transition hover:bg-white/10"
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
-                <span>Atrás</span>
+                <span>{t.tourBack}</span>
               </button>
             )}
 
@@ -308,11 +233,11 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
               {isLast ? (
                 <>
                   <Check className="h-3.5 w-3.5" />
-                  <span>¡A explorar!</span>
+                  <span>{t.tourFinish}</span>
                 </>
               ) : (
                 <>
-                  <span>Siguiente</span>
+                  <span>{t.tourNext}</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </>
               )}
@@ -328,7 +253,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({
       className="fixed inset-0 z-50"
       role="dialog"
       aria-modal="true"
-      aria-label="Guía rápida de navegación"
+      aria-label={t.navGuideTooltip}
     >
       {rect ? (
         <>

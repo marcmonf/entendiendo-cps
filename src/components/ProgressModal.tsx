@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Download, RotateCcw, StickyNote, X } from 'lucide-react';
-import { CONCEPTS, FAMILIES } from '../data/atlasData';
+import { useI18n } from '../i18n/LanguageContext';
 
 interface ProgressModalProps {
   open: boolean;
@@ -19,9 +19,10 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
   onFocusFamily,
   onResetProgress,
 }) => {
+  const { concepts, families, t, fmt } = useI18n();
   if (!open) return null;
 
-  const total = CONCEPTS.length;
+  const total = concepts.length;
   const count = masteredSlugs.size;
   const pct = Math.round((count / total) * 100);
   const notesCount = Object.values(notesBySlug).filter((v) => v.trim()).length;
@@ -29,17 +30,17 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
   const handleExportMarkdown = () => {
     const today = new Date().toISOString().slice(0, 10);
     const lines: string[] = [
-      `# Observatorio CPS · Mis notas y progreso`,
+      `# ${t.mdTitle}`,
       ``,
-      `- **Fecha de exportación:** ${today}`,
-      `- **Conceptos entendidos:** ${count} / ${total} (${pct}%)`,
-      `- **Notas personales:** ${notesCount}`,
-      `- **Archivo original:** https://turrero.vercel.app/`,
+      `- **${t.mdDateLabel}:** ${today}`,
+      `- **${t.mdMasteredLabel}:** ${count} / ${total} (${pct}%)`,
+      `- **${t.mdNotesLabel}:** ${notesCount}`,
+      `- **${t.mdArchiveLabel}:** https://turrero.vercel.app/`,
       ``,
     ];
 
-    for (const fam of FAMILIES) {
-      const famConcepts = CONCEPTS.filter(
+    for (const fam of families) {
+      const famConcepts = concepts.filter(
         (c) =>
           c.familyId === fam.id &&
           (masteredSlugs.has(c.slug) || notesBySlug[c.slug]?.trim())
@@ -54,13 +55,13 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
         const note = notesBySlug[c.slug]?.trim();
         if (note) {
           lines.push(``);
-          lines.push(`**Mi nota:**`);
+          lines.push(`**${t.mdMyNoteLabel}:**`);
           lines.push(note);
         }
         if (c.sources.length > 0) {
           lines.push(``);
           lines.push(
-            `Fuentes: ${c.sources.map((s) => `[${s.title}](${s.url})`).join(' · ')}`
+            `${t.mdSourcesLabel}: ${c.sources.map((s) => `[${s.title}](${s.url})`).join(' · ')}`
           );
         }
         lines.push(``);
@@ -68,9 +69,7 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
     }
 
     if (count === 0 && notesCount === 0) {
-      lines.push(
-        `_Todavía no has marcado conceptos ni escrito notas. Marca conceptos como «Entendido» o añade tus propias notas y vuelve a exportar._`
-      );
+      lines.push(`_${t.mdEmptyMessage}_`);
     }
 
     const blob = new Blob([lines.join('\n')], {
@@ -79,7 +78,7 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `observatorio-cps-notas-${today}.md`;
+    a.download = `cps-observatory-notes-${today}.md`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -97,20 +96,22 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
           <div>
             <div className="flex items-center gap-2 text-[11px] font-mono-meta uppercase tracking-widest text-emerald-300">
               <Award className="h-3.5 w-3.5" />
-              <span>Tu mapa de aprendizaje</span>
+              <span>{t.progressEyebrow}</span>
             </div>
             <h2 className="mt-1 font-editorial text-3xl text-white">
-              {count} de {total} conceptos entendidos
+              {fmt(t.progressTitle, { count, total })}
             </h2>
             <p className="mt-1 text-xs text-slate-400">
               {notesCount > 0 ? (
                 <span className="inline-flex items-center gap-1 text-sky-300">
                   <StickyNote className="h-3 w-3" />
-                  {notesCount} {notesCount === 1 ? 'nota personal guardada' : 'notas personales guardadas'} ·{' '}
+                  {notesCount === 1
+                    ? t.progressNotesSavedSingular
+                    : fmt(t.progressNotesSavedPlural, { count: notesCount })}{' '}
+                  ·{' '}
                 </span>
               ) : null}
-              Tu progreso y notas se guardan en este navegador y puedes exportarlos a
-              Markdown (Obsidian/Notion).
+              {t.progressSubtitle}
             </p>
           </div>
           <button
@@ -121,10 +122,9 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
           </button>
         </div>
 
-        {/* Global progress bar */}
         <div className="px-6 pt-4">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-400">Dominio global del universo CPS</span>
+            <span className="text-slate-400">{t.progressGlobalLabel}</span>
             <span className="font-mono-meta font-semibold text-emerald-300">
               {pct}%
             </span>
@@ -137,10 +137,9 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
           </div>
         </div>
 
-        {/* Breakdown by family */}
         <div className="custom-scroll max-h-[46vh] overflow-y-auto px-6 py-4 space-y-2.5">
-          {FAMILIES.map((fam) => {
-            const famConcepts = CONCEPTS.filter((c) => c.familyId === fam.id);
+          {families.map((fam) => {
+            const famConcepts = concepts.filter((c) => c.familyId === fam.id);
             const famDone = famConcepts.filter((c) =>
               masteredSlugs.has(c.slug)
             ).length;
@@ -187,7 +186,7 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
             className="inline-flex items-center gap-2 rounded-xl border border-sky-400/35 bg-sky-500/14 px-3.5 py-2 text-xs font-medium text-sky-200 transition hover:bg-sky-500/22 hover:text-white"
           >
             <Download className="h-3.5 w-3.5" />
-            <span>Exportar notas (.md)</span>
+            <span>{t.progressExportMd}</span>
           </button>
 
           {count > 0 && (
@@ -196,7 +195,7 @@ export const ProgressModal: React.FC<ProgressModalProps> = ({
               className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-rose-300 transition"
             >
               <RotateCcw className="h-3.5 w-3.5" />
-              Reiniciar progreso
+              {t.progressReset}
             </button>
           )}
         </div>

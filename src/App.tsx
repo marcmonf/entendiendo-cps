@@ -17,14 +17,9 @@ import {
   Trees,
   X,
 } from 'lucide-react';
-import {
-  CONCEPTS,
-  CONCEPT_MAP,
-  FAMILIES,
-  GUIDED_ROUTES,
-  type GuidedRoute,
-} from './data/atlasData';
+import type { GuidedRoute } from './data/atlasData';
 import { computeAtlasLayout } from './utils/layout';
+import { useI18n } from './i18n/LanguageContext';
 import {
   ConstellationCanvas,
   type CameraState,
@@ -37,6 +32,7 @@ import { ProgressModal } from './components/ProgressModal';
 import { IndexView } from './components/IndexView';
 import { ProblemsModal } from './components/ProblemsModal';
 import { OnboardingTour } from './components/OnboardingTour';
+import { LanguageSelector } from './components/LanguageSelector';
 
 const STORAGE_KEY = 'observatorio_cps_mastered_v1';
 const NOTES_STORAGE_KEY = 'observatorio_cps_notes_v1';
@@ -52,7 +48,6 @@ function getInitialScale(): number {
   if (typeof window === 'undefined') return 0.84;
   const w = window.innerWidth;
   const h = window.innerHeight;
-  // On portrait phones, fit all 9 constellations + short labels cleanly inside screen width
   if (w < 768) {
     return Math.max(0.37, Math.min(0.62, Math.min(w / 870, h / 940)));
   }
@@ -61,9 +56,11 @@ function getInitialScale(): number {
 }
 
 export function App() {
+  const { families, concepts, conceptMap, guidedRoutes, t, fmt } = useI18n();
+
   const { familyLayouts, conceptPositions, familyPositions } = useMemo(
-    () => computeAtlasLayout(),
-    []
+    () => computeAtlasLayout(families, concepts),
+    [families, concepts]
   );
 
   const [isMobile, setIsMobile] = useState<boolean>(() => isMobileViewport());
@@ -74,7 +71,6 @@ export function App() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // Mobile starts in clean card Index view; Desktop starts in full Constellation view
   const [viewMode, setViewMode] = useState<ViewMode>(() =>
     isMobileViewport() ? 'index' : 'constellation'
   );
@@ -87,7 +83,6 @@ export function App() {
   );
   const [selectedCore, setSelectedCore] = useState<boolean>(false);
 
-  // Persisted learning progress
   const [masteredSlugs, setMasteredSlugs] = useState<Set<string>>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -109,7 +104,6 @@ export function App() {
     }
   }, [masteredSlugs]);
 
-  // Persisted personal notes per concept
   const [notesBySlug, setNotesBySlug] = useState<Record<string, string>>(() => {
     try {
       const raw = localStorage.getItem(NOTES_STORAGE_KEY);
@@ -131,11 +125,18 @@ export function App() {
     }
   }, [notesBySlug]);
 
-  // Active Guided Route
-  const [activeRoute, setActiveRoute] = useState<GuidedRoute | null>(null);
+  // Store active route by ID so switching language automatically updates route title/notes live!
+  const [activeRouteId, setActiveRouteId] = useState<string | null>(null);
   const [activeRouteStep, setActiveRouteStep] = useState<number>(0);
 
-  // Modals & gentle onboarding
+  const activeRoute: GuidedRoute | null = useMemo(
+    () =>
+      activeRouteId
+        ? guidedRoutes.find((r) => r.id === activeRouteId) ?? null
+        : null,
+    [activeRouteId, guidedRoutes]
+  );
+
   const [searchOpen, setSearchOpen] = useState(false);
   const [routesOpen, setRoutesOpen] = useState(false);
   const [progressOpen, setProgressOpen] = useState(false);
@@ -159,7 +160,6 @@ export function App() {
     }
   }, []);
 
-  // Camera state + smooth RAF flight
   const [camera, setCamera] = useState<CameraState>(() => ({
     tx: 0,
     ty: 8,
@@ -185,15 +185,15 @@ export function App() {
 
       const step = (now: number) => {
         const elapsed = now - startTime;
-        const t = Math.min(1, elapsed / durationMs);
-        const e = 1 - Math.pow(1 - t, 3);
+        const tVal = Math.min(1, elapsed / durationMs);
+        const e = 1 - Math.pow(1 - tVal, 3);
         const next: CameraState = {
           tx: start.tx + (target.tx - start.tx) * e,
           ty: start.ty + (target.ty - start.ty) * e,
           scale: start.scale + (target.scale - start.scale) * e,
         };
         setCamera(next);
-        if (t < 1) {
+        if (tVal < 1) {
           animFrameRef.current = requestAnimationFrame(step);
         } else {
           animFrameRef.current = null;
@@ -354,14 +354,14 @@ export function App() {
 
   const handleToggleAllFamilies = useCallback(() => {
     setShowOnboardingHint(false);
-    const allOpen = expandedFamilies.size === FAMILIES.length;
+    const allOpen = expandedFamilies.size === families.length;
     if (allOpen) {
       setExpandedFamilies(new Set());
       setSelectedConceptSlug(null);
       setUrlHash('');
       animateCameraTo({ tx: 0, ty: 8, scale: getInitialScale() });
     } else {
-      setExpandedFamilies(new Set(FAMILIES.map((f) => f.id)));
+      setExpandedFamilies(new Set(families.map((f) => f.id)));
       const fitAllScale =
         typeof window !== 'undefined'
           ? Math.max(
@@ -374,7 +374,7 @@ export function App() {
           : 0.46;
       animateCameraTo({ tx: 0, ty: 8, scale: fitAllScale }, 680);
     }
-  }, [expandedFamilies.size, animateCameraTo, setUrlHash]);
+  }, [expandedFamilies.size, families, animateCameraTo, setUrlHash]);
 
   const handleResetView = useCallback(() => {
     const anyOpen = expandedFamilies.size > 2;
@@ -398,7 +398,7 @@ export function App() {
       if (!isMobileViewport()) {
         setViewMode('constellation');
       }
-      setActiveRoute(route);
+      setActiveRouteId(route.id);
       setActiveRouteStep(0);
       setSelectedCore(false);
       if (updateHash) setUrlHash(`ruta/${route.id}`);
@@ -454,7 +454,8 @@ export function App() {
     setNotesBySlug((prev) => ({ ...prev, [slug]: text }));
   }, []);
 
-  // Deep-linking: read initial URL hash (#cynefin or #ruta/empieza-aqui) + respond to hashchange
+  // Deep-linking on initial mount + hashchange
+  const hashInitializedRef = useRef(false);
   useEffect(() => {
     const applyHash = () => {
       const raw = decodeURIComponent(
@@ -463,21 +464,23 @@ export function App() {
       if (!raw) return;
       if (raw.startsWith('ruta/')) {
         const routeId = raw.slice(5);
-        const route = GUIDED_ROUTES.find((r) => r.id === routeId);
+        const route = guidedRoutes.find((r) => r.id === routeId);
         if (route) handleStartRoute(route, false);
         return;
       }
-      if (CONCEPT_MAP[raw]) {
+      if (conceptMap[raw]) {
         handleSelectConcept(raw, false);
       }
     };
 
-    applyHash();
+    if (!hashInitializedRef.current) {
+      hashInitializedRef.current = true;
+      applyHash();
+    }
     window.addEventListener('hashchange', applyHash);
     return () => window.removeEventListener('hashchange', applyHash);
-  }, [handleSelectConcept, handleStartRoute]);
+  }, [conceptMap, guidedRoutes, handleSelectConcept, handleStartRoute]);
 
-  // Keyboard shortcuts
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -523,10 +526,10 @@ export function App() {
   ]);
 
   const selectedConcept = selectedConceptSlug
-    ? CONCEPT_MAP[selectedConceptSlug] ?? null
+    ? conceptMap[selectedConceptSlug] ?? null
     : null;
-  const allExpanded = expandedFamilies.size === FAMILIES.length;
-  const masteredPct = Math.round((masteredSlugs.size / CONCEPTS.length) * 100);
+  const allExpanded = expandedFamilies.size === families.length;
+  const masteredPct = Math.round((masteredSlugs.size / concepts.length) * 100);
 
   return (
     <div className="relative h-[100dvh] w-screen overflow-hidden bg-[#06080f] text-slate-100">
@@ -560,34 +563,33 @@ export function App() {
           notesBySlug={notesBySlug}
           onSelectConcept={(slug) => handleSelectConcept(slug, true)}
           onJumpToConstellation={handleFocusFamily}
-          onStartIntroRoute={() => handleStartRoute(GUIDED_ROUTES[0], true)}
+          onStartIntroRoute={() => handleStartRoute(guidedRoutes[0], true)}
           onOpenProblems={() => setProblemsOpen(true)}
           onSelectCore={handleSelectCore}
         />
       )}
 
       {/* Top Floating Glassmorphism HUD */}
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-2 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2 sm:px-5 md:py-3">
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-30 md:z-40 flex items-center justify-between gap-2 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2 sm:px-5 md:py-3">
         {/* Left: Brand Emblem + Desktop View Mode Switcher */}
         <div className="pointer-events-auto flex items-center gap-2 min-w-0">
           <button
             onClick={handleSelectCore}
-            className="group flex shrink-0 items-center gap-2.5 rounded-2xl border border-white/10 bg-[#090e1a]/88 px-3 py-2 backdrop-blur-xl transition hover:border-amber-400/35 hover:bg-[#0d1426]/90 whitespace-nowrap"
+            className="group flex shrink-0 items-center gap-2 rounded-2xl border border-white/10 bg-[#090e1a]/88 px-2.5 sm:px-3 py-2 backdrop-blur-xl transition hover:border-amber-400/35 hover:bg-[#0d1426]/90 whitespace-nowrap"
           >
             <span className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-400/15 border border-amber-400/40">
               <Sparkles className="h-3.5 w-3.5 text-amber-300" />
             </span>
             <div className="text-left">
-              <h1 className="font-editorial text-[19px] sm:text-xl leading-none tracking-tight text-white">
-                Observatorio CPS
+              <h1 className="font-editorial text-[18px] sm:text-xl leading-none tracking-tight text-white">
+                {t.brandTitle}
               </h1>
               <p className="mt-0.5 hidden sm:block text-[10px] font-mono-meta uppercase tracking-widest text-slate-400 group-hover:text-amber-200/80 transition">
-                El Turrero Post · {CONCEPTS.length} conceptos
+                {fmt(t.brandSubtitle, { count: concepts.length })}
               </p>
             </div>
           </button>
 
-          {/* Desktop/Tablet Switcher (on mobile this lives in the thumb bottom bar!) */}
           <div
             data-tour="view-switcher"
             className="hidden md:flex items-center rounded-2xl border border-white/10 bg-[#090e1a]/85 p-1 backdrop-blur-xl"
@@ -602,10 +604,10 @@ export function App() {
                   ? 'bg-white/14 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
-              title="Vista Constelación"
+              title={t.navConstellation}
             >
               <Orbit className="h-3.5 w-3.5 text-amber-300" />
-              <span>Constelación</span>
+              <span>{t.navConstellation}</span>
             </button>
             <button
               onClick={() => setViewMode('index')}
@@ -614,10 +616,10 @@ export function App() {
                   ? 'bg-white/14 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
-              title="Vista Índice"
+              title={t.navIndex}
             >
               <LayoutGrid className="h-3.5 w-3.5 text-cyan-300" />
-              <span>Índice</span>
+              <span>{t.navIndex}</span>
             </button>
           </div>
         </div>
@@ -626,38 +628,37 @@ export function App() {
         <button
           data-tour="search"
           onClick={() => setSearchOpen(true)}
-          className="pointer-events-auto hidden xl:flex items-center gap-3 rounded-2xl border border-white/10 bg-[#090e1a]/85 px-4 py-2.5 text-xs text-slate-400 backdrop-blur-xl transition hover:border-white/25 hover:bg-[#0f1629]/90 hover:text-slate-200 w-76 justify-between"
+          className="pointer-events-auto hidden xl:flex items-center gap-3 rounded-2xl border border-white/10 bg-[#090e1a]/85 px-4 py-2.5 text-xs text-slate-400 backdrop-blur-xl transition hover:border-white/25 hover:bg-[#0f1629]/90 hover:text-slate-200 w-72 justify-between"
         >
           <span className="flex items-center gap-2.5 truncate">
             <Search className="h-3.5 w-3.5 text-slate-400 shrink-0" />
-            <span className="truncate">Buscar concepto, autor o tema…</span>
+            <span className="truncate">{t.navSearchPlaceholder}</span>
           </span>
           <kbd className="rounded-md border border-white/12 bg-white/5 px-1.5 py-0.5 font-mono-meta text-[10px] text-slate-400">
             ⌘K
           </kbd>
         </button>
 
-        {/* Right Action Pills (ultra-clean on mobile, full set on desktop) */}
+        {/* Right Action Pills + Language Selector */}
         <div className="pointer-events-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
             data-tour="search"
             onClick={() => setSearchOpen(true)}
             className="flex xl:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/88 p-2.5 text-slate-200 backdrop-blur-xl hover:bg-white/10"
-            aria-label="Buscar"
-            title="Buscar (⌘K)"
+            aria-label={t.navSearchButton}
+            title={`${t.navSearchButton} (⌘K)`}
           >
             <Search className="h-4 w-4" />
           </button>
 
-          {/* Desktop-only Problems & Routes pills (on mobile they live cleanly in the bottom dock) */}
           <div data-tour="guides" className="hidden md:flex items-center gap-2">
             <button
               onClick={() => setProblemsOpen(true)}
               className="flex items-center gap-1.5 whitespace-nowrap rounded-2xl border border-white/12 bg-[#090e1a]/85 px-3 py-2.5 text-xs font-medium text-slate-200 backdrop-blur-xl transition hover:border-rose-400/40 hover:text-white"
-              title="Entrar por un problema real"
+              title={t.navYourProblem}
             >
               <Flame className="h-3.5 w-3.5 shrink-0 text-rose-400" />
-              <span className="hidden lg:inline">¿Tu problema?</span>
+              <span className="hidden lg:inline">{t.navYourProblem}</span>
             </button>
 
             <button
@@ -667,10 +668,10 @@ export function App() {
                   ? 'border-amber-400/45 bg-amber-400/15 text-amber-100'
                   : 'border-white/12 bg-[#090e1a]/85 text-slate-200 hover:border-amber-400/35 hover:text-white'
               }`}
-              title="Rutas guiadas paso a paso"
+              title={t.navRoutes}
             >
               <Compass className="h-3.5 w-3.5 shrink-0 text-amber-300" />
-              <span>{activeRoute ? 'Ruta activa' : 'Rutas'}</span>
+              <span>{activeRoute ? t.navRouteActive : t.navRoutes}</span>
             </button>
           </div>
 
@@ -678,11 +679,11 @@ export function App() {
             data-tour="progress"
             onClick={() => setProgressOpen(true)}
             className="flex items-center gap-1.5 whitespace-nowrap rounded-2xl border border-white/12 bg-[#090e1a]/88 px-2.5 sm:px-3 py-2.5 text-xs font-medium text-slate-200 backdrop-blur-xl transition hover:border-emerald-400/35 hover:text-white"
-            title="Tu progreso y notas exportables"
+            title={t.navProgressTooltip}
           >
             <Award className="h-3.5 w-3.5 shrink-0 text-emerald-300" />
             <span className="font-mono-meta text-[11px]">
-              {masteredSlugs.size}/{CONCEPTS.length}
+              {masteredSlugs.size}/{concepts.length}
             </span>
             {masteredPct > 0 && (
               <span className="hidden sm:inline text-[10px] text-emerald-300/90 font-mono-meta">
@@ -691,6 +692,9 @@ export function App() {
             )}
           </button>
 
+          {/* Language Selector (ES / EN + upcoming languages) */}
+          <LanguageSelector />
+
           {/* Mobile quick Help (?) replay tour button */}
           <button
             onClick={() => {
@@ -698,16 +702,16 @@ export function App() {
               setSelectedCore(false);
               setTourOpen(true);
             }}
-            className="flex md:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/88 p-2.5 text-slate-400 backdrop-blur-xl hover:text-amber-300"
-            aria-label="Ver guía rápida"
-            title="Ver guía rápida"
+            className="hidden xs:flex md:hidden items-center justify-center rounded-2xl border border-white/10 bg-[#090e1a]/88 p-2.5 text-slate-400 backdrop-blur-xl hover:text-amber-300"
+            aria-label={t.navGuideTooltip}
+            title={t.navGuideTooltip}
           >
             <HelpCircle className="h-4 w-4" />
           </button>
         </div>
       </header>
 
-      {/* Bottom-Left Constellation & Camera Controls (sits above mobile dock on phones!) */}
+      {/* Bottom-Left Constellation & Camera Controls */}
       {viewMode === 'constellation' && (
         <div
           data-tour="controls"
@@ -724,8 +728,8 @@ export function App() {
               )
             }
             className="rounded-xl p-2 text-slate-300 transition hover:bg-white/10 hover:text-white"
-            title="Acercar"
-            aria-label="Acercar"
+            title={t.zoomIn}
+            aria-label={t.zoomIn}
           >
             <Plus className="h-4 w-4" />
           </button>
@@ -740,24 +744,24 @@ export function App() {
               )
             }
             className="rounded-xl p-2 text-slate-300 transition hover:bg-white/10 hover:text-white"
-            title="Alejar"
-            aria-label="Alejar"
+            title={t.zoomOut}
+            aria-label={t.zoomOut}
           >
             <Minus className="h-4 w-4" />
           </button>
           <button
             onClick={handleResetView}
             className="rounded-xl p-2 text-slate-300 transition hover:bg-white/10 hover:text-white"
-            title="Centrar vista"
-            aria-label="Centrar vista"
+            title={t.centerView}
+            aria-label={t.centerView}
           >
             <Maximize2 className="h-4 w-4" />
           </button>
           <div className="mx-0.5 h-5 w-px bg-white/10" />
           <button
             onClick={handleToggleAllFamilies}
-            aria-label={allExpanded ? 'Contraer todo' : 'Desplegar todo'}
-            title={allExpanded ? 'Contraer todo' : 'Desplegar todo'}
+            aria-label={allExpanded ? t.collapseAll : t.expandAll}
+            title={allExpanded ? t.collapseAll : t.expandAll}
             className={`flex items-center gap-1.5 rounded-xl px-2.5 sm:px-3 py-2 text-xs font-medium transition ${
               allExpanded
                 ? 'bg-amber-400/18 text-amber-200 hover:bg-amber-400/25'
@@ -766,7 +770,7 @@ export function App() {
           >
             <Trees className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">
-              {allExpanded ? 'Contraer todo' : 'Desplegar todo'}
+              {allExpanded ? t.collapseAll : t.expandAll}
             </span>
           </button>
           <div className="hidden md:block mx-0.5 h-5 w-px bg-white/10" />
@@ -777,18 +781,18 @@ export function App() {
               setTourOpen(true);
             }}
             className="hidden md:inline-flex rounded-xl p-2 text-slate-400 transition hover:bg-white/10 hover:text-amber-300"
-            title="Ver guía rápida de navegación"
-            aria-label="Ver guía rápida de navegación"
+            title={t.navGuideTooltip}
+            aria-label={t.navGuideTooltip}
           >
             <HelpCircle className="h-4 w-4" />
           </button>
         </div>
       )}
 
-      {/* Floating iOS-style Mobile Bottom Navigation Dock (mobile only, hidden when drawer is full-screen) */}
+      {/* Floating iOS-style Mobile Bottom Navigation Dock */}
       {!selectedConcept && !selectedCore && (
         <nav
-          aria-label="Navegación móvil"
+          aria-label="Mobile navigation"
           className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] inset-x-3 z-30 grid grid-cols-4 gap-1 rounded-2xl border border-white/12 bg-[#0a0f1c]/94 p-1.5 shadow-[0_14px_45px_rgba(0,0,0,0.75)] backdrop-blur-2xl md:hidden"
         >
           <button
@@ -804,7 +808,7 @@ export function App() {
                 viewMode === 'index' ? 'text-cyan-300' : 'text-slate-400'
               }`}
             />
-            <span>Índice</span>
+            <span>{t.navIndex}</span>
           </button>
 
           <button
@@ -825,7 +829,7 @@ export function App() {
                   : 'text-slate-400'
               }`}
             />
-            <span>Mapa</span>
+            <span>{t.navMapShort}</span>
           </button>
 
           <button
@@ -837,7 +841,7 @@ export function App() {
             }`}
           >
             <Compass className="h-4 w-4 text-amber-300" />
-            <span>{activeRoute ? 'Ruta' : 'Rutas'}</span>
+            <span>{activeRoute ? t.navRouteShort : t.navRoutes}</span>
           </button>
 
           <button
@@ -845,7 +849,7 @@ export function App() {
             className="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-[10px] font-medium text-slate-400 transition active:bg-white/8 hover:text-white"
           >
             <Flame className="h-4 w-4 text-rose-400" />
-            <span>Problema</span>
+            <span>{t.navProblemShort}</span>
           </button>
         </nav>
       )}
@@ -858,7 +862,7 @@ export function App() {
           rel="noopener noreferrer"
           className="fixed bottom-4 right-4 z-20 hidden md:inline-flex items-center gap-1.5 rounded-full border border-white/8 bg-[#090e1a]/75 px-3 py-1.5 text-[11px] text-slate-400 backdrop-blur-xl transition hover:border-amber-400/30 hover:text-amber-200"
         >
-          <span>Basado en El Turrero Post · @Recuenco</span>
+          <span>{t.basedOnAttribution}</span>
           <ExternalLink className="h-3 w-3 opacity-70" />
         </a>
       )}
@@ -873,19 +877,20 @@ export function App() {
           <div className="fixed bottom-4 left-1/2 z-20 -translate-x-1/2 hidden xl:flex items-center gap-3 rounded-full border border-white/12 bg-[#090e1a]/88 px-4 py-2 text-xs text-slate-300 shadow-2xl backdrop-blur-xl animate-fade-up">
             <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
             <span>
-              Haz clic en una <strong className="text-white">constelación</strong>{' '}
-              para abrir sus ramas · o{' '}
+              {t.onboardingWhisperPrefix}{' '}
+              <strong className="text-white">{t.onboardingWhisperStrong}</strong>{' '}
+              {t.onboardingWhisperMid}{' '}
               <button
-                onClick={() => handleStartRoute(GUIDED_ROUTES[0])}
+                onClick={() => handleStartRoute(guidedRoutes[0])}
                 className="font-semibold text-amber-300 underline decoration-amber-400/40 underline-offset-2 hover:text-amber-200"
               >
-                empieza la ruta guiada
+                {t.onboardingWhisperCta}
               </button>
             </span>
             <button
               onClick={() => setShowOnboardingHint(false)}
               className="text-slate-500 hover:text-slate-200"
-              aria-label="Ocultar ayuda"
+              aria-label={t.closePanel}
             >
               <X className="h-3.5 w-3.5" />
             </button>
@@ -913,7 +918,7 @@ export function App() {
               {activeRoute.steps.length}
             </p>
             <p className="truncate font-medium text-white">
-              {CONCEPT_MAP[activeRoute.steps[activeRouteStep].slug]?.term}
+              {conceptMap[activeRoute.steps[activeRouteStep].slug]?.term}
             </p>
           </button>
           <button
@@ -926,18 +931,18 @@ export function App() {
           <div className="h-5 w-px bg-white/10" />
           <button
             onClick={() => {
-              setActiveRoute(null);
+              setActiveRouteId(null);
               setUrlHash('');
             }}
             className="rounded-lg p-1 text-slate-400 hover:bg-white/10 hover:text-white"
-            title="Salir de la ruta"
+            title={t.routeExitFree}
           >
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
       )}
 
-      {/* Right Slide-Over Panels (Full-Screen Sheet on Mobile!) */}
+      {/* Right Slide-Over Panels */}
       {selectedConcept && (
         <ConceptDrawer
           concept={selectedConcept}
@@ -961,7 +966,7 @@ export function App() {
           onClose={() => setSelectedCore(false)}
           onSelectConcept={(slug) => handleSelectConcept(slug, true)}
           onFocusFamily={handleFocusFamily}
-          onStartIntroRoute={() => handleStartRoute(GUIDED_ROUTES[0])}
+          onStartIntroRoute={() => handleStartRoute(guidedRoutes[0])}
         />
       )}
 
@@ -985,7 +990,7 @@ export function App() {
         onClose={() => setRoutesOpen(false)}
         onSelectRoute={(route) => handleStartRoute(route, true)}
         onClearRoute={() => {
-          setActiveRoute(null);
+          setActiveRouteId(null);
           setUrlHash('');
         }}
       />
