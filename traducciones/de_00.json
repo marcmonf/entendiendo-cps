@@ -1,0 +1,443 @@
+{
+  "lang": "de",
+  "ui": {
+    "pageTitle": "CPS-Observatorium · Konzeptatlas von El Turrero Post",
+    "brandTitle": "CPS-Observatorium",
+    "brandSubtitle": "El Turrero Post · {count} Konzepte",
+    "navConstellation": "Konstellation",
+    "navIndex": "Index",
+    "navMapShort": "Karte",
+    "navSearchPlaceholder": "Konzept, Autor oder Thema suchen…",
+    "navSearchButton": "Suchen",
+    "navYourProblem": "Dein Problem?",
+    "navProblemShort": "Problem",
+    "navRoutes": "Routen",
+    "navRouteActive": "Aktive Route",
+    "navRouteShort": "Route",
+    "navProgressTooltip": "Dein Fortschritt & exportierbare Notizen",
+    "navGuideTooltip": "Schnellstart-Guide anzeigen",
+    "langComingSoon": "Bald verfügbar",
+    "ringConstellations": "9 KONSTELLATIONEN",
+    "ringGateway": "EINSTIEG",
+    "ringDeepening": "VERTIEFUNG",
+    "sunSubtitle": "4 SÄULEN · 5 ATTRAKTOREN",
+    "conceptsCount": "{count} Konzepte",
+    "understoodCount": "{done}/{total} verstanden",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "centerView": "Ansicht zentrieren",
+    "expandAll": "Alle aufklappen",
+    "collapseAll": "Alle zuklappen",
+    "basedOnAttribution": "Basierend auf El Turrero Post · @Recuenco",
+    "suggestConcept": "Fehlt ein Konzept? Schlag es vor",
+    "onboardingWhisperPrefix": "Klicke auf eine",
+    "onboardingWhisperStrong": "Konstellation",
+    "onboardingWhisperMid": "zum Aufklappen · oder",
+    "onboardingWhisperCta": "starte die geführte Route",
+    "hoverConstellation": "Konstellation",
+    "hoverClickToToggle": "Klicken zum {action}",
+    "hoverExpand": "Aufklappen",
+    "hoverCollapse": "Zuklappen",
+    "hoverConnections": "{count} Verbindungen auf der Karte · klicken zum Vertiefen",
+    "tierCore": "Einstieg",
+    "tierDeep": "Vertiefung",
+    "pillarBadge": "CPS-Säule",
+    "alsoCalled": "Auch bekannt als:",
+    "copyLinkTooltip": "Direktlink zu diesem Konzept kopieren",
+    "copied": "Kopiert",
+    "expandReadingTooltip": "Lesebereich vergrößern",
+    "compactReadingTooltip": "Kompakte Ansicht",
+    "closePanel": "Panel schließen",
+    "routeStopCounter": "Station {current} / {total}",
+    "tabPlain": "1 · Klartext",
+    "tabPractice": "2 · Praxis",
+    "tabDeep": "3 · Vertiefung",
+    "tabSources": "4 · Quellen",
+    "oneSentenceTitle": "Die Idee in einem Satz",
+    "analogyTitle": "Stell es dir so vor (Alltagsanalogie)",
+    "cynefinDomainsTitle": "Die 5 Cynefin-Domänen",
+    "cynefinCpsBadge": "CPS-Terrain",
+    "connectsWithTitle": "Verbindet sich in der Konstellation mit ({count})",
+    "ctaToPractice": "Ebene 2 · Anwendung im Alltag & typische Fallen",
+    "howToApplyTitle": "So nutzt du es im Alltag",
+    "antiPatternTitle": "Die typische Falle (Anti-Pattern)",
+    "glossarySynthesisTitle": "Glossar-Synthese · El Turrero Post",
+    "originTitle": "Woher es kommt",
+    "ctaToDeep": "Ebene 3 · Vertiefung (Tiefenlektüre der Turras)",
+    "deepThesisLabel": "Kernthese aus den Turras",
+    "deepReadingLabel": "Tiefenlektüre",
+    "quoteAuthorPrefix": "— Javier G. Recuenco, in",
+    "keyInsightsTitle": "Kernideen aus den Turras",
+    "realExamplesTitle": "Reale Fälle & Referenzen aus den Turras",
+    "reflectionQuestionsTitle": "Diagnosefragen für dein Umfeld",
+    "ctaToSources": "Ebene 4 · Zu den Original-Turras & zitierten Büchern",
+    "sourcesTurrasTitle": "Original-Turras, in denen es vertieft wird ({count})",
+    "sourcesOriginalSpanishNote": "Die Original-Turras in El Turrero Post erscheinen auf Spanisch.",
+    "sourcesBooksTitle": "In diesen Turras zitierte Bücher ({count})",
+    "openInTurrero": "Eintrag in El Turrero Post öffnen",
+    "notesHeader": "Deine Notizen zu „{term}“",
+    "notesSavedLocally": "In diesem Browser gespeichert",
+    "notesPlaceholder": "Notiere, wie das in deinem Projekt greift, eine Schlüsselidee oder eine offene Frage für später…",
+    "markUnderstood": "Als verstanden markieren",
+    "understood": "Verstanden",
+    "noteSingular": "Notiz",
+    "notesLabel": "Notizen",
+    "prevStop": "Vorherige Station",
+    "nextStop": "Weiter",
+    "coreSunBadge": "Die Sonne des Observatoriums",
+    "coreIntroLead": "Für Javier G. Recuenco ist ein komplexes Problem nicht einfach ein schwieriges Problem, sondern eines, bei dem",
+    "coreIntroHighlight": "die großen Experten passen müssen",
+    "coreIntroMid": "— weil es kein Handbuch dafür gibt. CPS ist die",
+    "coreIntroArt": "Wissenskunst (Cienciarte)",
+    "coreIntroEnd": "für das Navigieren im Nebel mithilfe von vier Querschnittssäulen.",
+    "coreStartRouteCta": "Geführte Route starten: „Hier startet CPS“ (8 Stationen)",
+    "coreFourPillarsTitle": "Die 4 Säulen des CPS",
+    "coreFiveAttractorsTitle": "Im Zentrum: die 5 Attraktoren",
+    "coreViewConcept": "Konzept ansehen →",
+    "coreFifteenThemesTitle": "Die 15 Themen von El Turrero Post",
+    "coreFifteenThemesHelp": "Tippe auf ein Thema, um seine Konstellation auf der Karte aufzuklappen.",
+    "coreCreditPre": "Basierend auf dem öffentlichen Archiv (263 Turras), Glossar (90 Konzepte) und der Bibliothek (324 Bücher) von",
+    "coreCreditPost": ", zusammengestellt von der CPS-Community aus den Turras von Javier G. Recuenco.",
+    "indexEyebrow": "El Turrero Post · 9 Konstellationen · 4 Ebenen",
+    "indexTitle": "Atlas des Complex Problem Solving",
+    "indexSubtitle": "Alle 121 Konzepte von Javier G. Recuenco im Klartext erklärt — mit Praxisbezug, Tiefenlektüre aus 263 Turras und zitierten Büchern.",
+    "indexCountBadge": "{visible} von {total} Konzepten",
+    "indexQuickStartTitle": "Hier starten",
+    "indexQuickStartSub": "Route mit 8 Stationen",
+    "indexQuickProblemTitle": "Dein Problem?",
+    "indexQuickProblemSub": "8 reale Situationen",
+    "indexQuickPillarsTitle": "4 Säulen & 5 Attraktoren",
+    "indexQuickPillarsSub": "Der Kern des CPS",
+    "indexSearchPlaceholder": "Konzept, Alias oder Thema suchen…",
+    "filterAll": "Alle",
+    "filterCore": "Einstieg",
+    "filterPillars": "4 Säulen",
+    "filterMastered": "Verstanden",
+    "filterNotes": "Mit Notizen",
+    "filterThemes": "15 Themen",
+    "allFamiliesPill": "Alle (9)",
+    "themesSectionHelp": "Nach den 15 offiziellen Themen von El Turrero Post filtern",
+    "noFilterResults": "Keine Konzepte entsprechen diesem Filter.",
+    "clearFilters": "Filter zurücksetzen",
+    "viewOnMap": "Auf Karte zeigen ↗",
+    "turraSingular": "Turra",
+    "turraPlural": "Turras",
+    "fourLevelsTag": "4 Ebenen →",
+    "searchModalPlaceholder": "Konzept, Autor, Alias oder Thema suchen (z. B. Cynefin, Personotecnia, KI, AACC)…",
+    "searchResultsFound": "{count} Treffer gefunden",
+    "searchRecommendedHeader": "Empfohlene Einstiegskonzepte ({count} Konzepte insgesamt)",
+    "searchNoMatches": "Keine Treffer für „{query}“.",
+    "routesEyebrow": "Geführte Touren",
+    "routesTitle": "Entdecke das CPS-Universum Schritt für Schritt",
+    "routesSubtitle": "Jede Route beleuchtet einen nummerierten Pfad durch die Konstellation und führt dich vom Einfachen in die Tiefe.",
+    "routeActiveBadge": "Aktiv",
+    "routeExitFree": "Aktive Route verlassen und frei erkunden",
+    "problemsEyebrow": "Praxiseinstieg · Schnelldiagnose",
+    "problemsTitle": "Welches Problem liegt heute bei dir auf dem Tisch?",
+    "problemsSubtitle": "Wähle die Situation, die deiner am nächsten kommt, und springe direkt zu den CPS-Werkzeugen, die sie ausleuchten.",
+    "progressEyebrow": "Deine Lernkarte",
+    "progressTitle": "{count} von {total} Konzepten verstanden",
+    "progressNotesSavedSingular": "1 persönliche Notiz gespeichert",
+    "progressNotesSavedPlural": "{count} persönliche Notizen gespeichert",
+    "progressSubtitle": "Dein Fortschritt und deine Notizen bleiben lokal in diesem Browser gespeichert und lassen sich als Markdown (Obsidian/Notion) exportieren.",
+    "progressGlobalLabel": "Gesamtüberblick über das CPS-Universum",
+    "progressExportMd": "Notizen exportieren (.md)",
+    "progressReset": "Fortschritt zurücksetzen",
+    "tourBadge": "Schnellstart · {current} / {total}",
+    "tourSkip": "Überspringen",
+    "tourBack": "Zurück",
+    "tourNext": "Weiter",
+    "tourFinish": "Los geht’s!",
+    "mdTitle": "CPS-Observatorium · Meine Notizen & Fortschritt",
+    "mdDateLabel": "Exportdatum",
+    "mdMasteredLabel": "Verstandene Konzepte",
+    "mdNotesLabel": "Persönliche Notizen",
+    "mdArchiveLabel": "Originalarchiv",
+    "mdMyNoteLabel": "Meine Notiz",
+    "mdSourcesLabel": "Quellen",
+    "mdEmptyMessage": "Du hast noch keine Konzepte markiert oder Notizen geschrieben. Markiere Konzepte als „Verstanden“ oder füge eigene Notizen hinzu und exportiere erneut."
+  },
+  "routes": {
+    "empieza-aqui": {
+      "title": "Hier startet CPS: Der Kern",
+      "subtitle": "Deine erste Schritt-für-Schritt-Tour, um zu verstehen, wie ein Complex Problem Solver denkt und arbeitet.",
+      "duration": "8 Stationen · 6 Min.",
+      "stepNotes": {
+        "cps": "Der Ausgangspunkt: Was ein komplexes Problem ist — und was nicht.",
+        "cienciarte": "Warum CPS wissenschaftliche Strenge mit künstlerischer Intuition verbindet.",
+        "cynefin": "Der unverzichtbare Kompass: Klar, Kompliziert und Komplex unterscheiden.",
+        "sensemaking": "Im Nebel erst Orientierung schaffen, bevor du losrennst.",
+        "diagnostico": "Echte Ursachen von lauten Symptomen trennen.",
+        "estrategia": "Diagnose, Leitlinie und kohärente Maßnahmen — ohne heiße Luft.",
+        "factor-x": "Menschen sind keine Excel-Zellen: Verhalten entscheidet das Spiel.",
+        "orquestacion-cognitiva": "Das große Geheimnis: Extrem verschiedene Talente gemeinsam zum Glänzen bringen."
+      }
+    },
+    "estrategia-sin-humo": {
+      "title": "Strategie ohne heiße Luft",
+      "subtitle": "Wie du abgelaufene Wertversprechen, Tiefenströmungen und geschickte Seitenwechsel erkennst.",
+      "duration": "7 Stationen · 5 Min.",
+      "stepNotes": {
+        "estrategia": "Löst eine angebliche Strategie das Problem nicht, ist sie schlechte Strategie.",
+        "atractores": "Die 5 großen Tiefenkräfte, die sämtliche Branchen verschieben.",
+        "hotel-de-hilbert": "Jedes Wertversprechen ist eine Tür, die irgendwann wieder zufällt.",
+        "business-acumen": "Echter Geschäftssinn jenseits hübscher PowerPoint-Folien.",
+        "moat": "Schutzgräben bauen, die niemand über Nacht kopieren kann.",
+        "metajuego": "Erkennen, welche Taktik heute dominiert — und was sie morgen schlägt.",
+        "sidestepping": "Dem Frontalangriff ausweichen und dein eigenes Spielfeld eröffnen."
+      }
+    },
+    "equipos-y-poder": {
+      "title": "Teams, Macht & Anreize",
+      "subtitle": "Warum Teams voller Stars krachend scheitern und wie du Anreize baust, die wirklich greifen.",
+      "duration": "7 Stationen · 5 Min.",
+      "stepNotes": {
+        "equipo-apolo": "Warum die klügsten Köpfe in einem Raum oft ein Desaster produzieren.",
+        "emulsificador-de-equipo": "Das Schlüsselprofil, das unvereinbare Welten übersetzt und verbindet.",
+        "arquitectura-de-incentivos": "Die unsichtbare Neigung des Bodens, die eine Organisation wirklich bewegt.",
+        "incentivo-perverso": "Wenn eine schlecht gebaute Belohnung exakt das Gegenteil bewirkt.",
+        "skin-in-the-game": "Für deine Empfehlungen mit der eigenen Haut haften.",
+        "recoger-cable": "Bei neuen Fakten die Meinung ändern, ohne dass das Ego im Weg steht.",
+        "asertividad": "Unbequeme Wahrheiten klar, standhaft und respektvoll aussprechen."
+      }
+    },
+    "personotecnia-ia": {
+      "title": "Personotecnia & KI mit Verstand",
+      "subtitle": "Von aufdringlicher Schein-Personalisierung zum Mensch-KI-Zentaur und menschlichem Luxus.",
+      "duration": "7 Stationen · 5 Min.",
+      "stepNotes": {
+        "personotecnia": "Jeden Menschen als einzigartig behandeln — auch in der Skalierung.",
+        "procesos-de-alta-variabilidad": "Wo starre Skripte scheitern und der Kontext regiert.",
+        "capitalismo-de-vigilancia": "Warum Cookie-Verfolgung Aufmerksamkeit und Vertrauen zerstört hat.",
+        "autosegmentacion": "Den wirklich interessierten Kunden von selbst die Hand heben lassen.",
+        "ecosistemas-tecnologicos": "Technologiewellen als System lesen, nicht als kurzlebigen Hype.",
+        "centauro": "Mensch + KI in echter Symbiose.",
+        "lujo-humano": "Wenn KI alles andere billig macht, wird das Menschliche zum höchsten Gut."
+      }
+    },
+    "leer-el-mundo": {
+      "title": "Welt, Stämme & heiße Luft lesen",
+      "subtitle": "Kritische Werkzeuge gegen blinden Idealismus, kollektive Pantomimen und Herden-Biases.",
+      "duration": "7 Stationen · 5 Min.",
+      "stepNotes": {
+        "vaca-esferica": "Wunderschöne Modelle auf Papier, die auf der Straße sofort zerbrechen.",
+        "cultura-luterana": "Die Obsession, alles zu vermessen — selbst dort, wo es nicht geht.",
+        "falacia-de-mcnamara": "Das Entscheidende ignorieren, nur weil es sich schwer in eine KPI pressen lässt.",
+        "pompismo": "Schöner Idealismus, der frontal gegen die Realität prallt.",
+        "pantomima": "Falsche Narrative, die alle am Leben halten, weil es allen nützt.",
+        "espiral-del-silencio": "Schweigen aus Angst, außerhalb der scheinbaren Mehrheit zu stehen.",
+        "zeitgeist": "Der unsichtbare Geist der Epoche, der entscheidet, welche Ideen zünden."
+      }
+    }
+  },
+  "pillars": {
+    "ciencias-de-la-complejidad": {
+      "name": "Komplexitätswissenschaften",
+      "desc": "Nichtlineare Systeme, Emergenz, Cynefin und Sensemaking."
+    },
+    "business-acumen": {
+      "name": "Business Acumen",
+      "desc": "Echte Strategie, Wertversprechen, Anreize und harte Kasse."
+    },
+    "factor-x": {
+      "name": "Faktor X",
+      "desc": "Psychologie, Biases, Teams, Personotecnia und menschliches Verhalten."
+    },
+    "ecosistemas-tecnologicos": {
+      "name": "Technologie-Ökosysteme",
+      "desc": "Megatrends (KI, Daten, Plattformen) und wie sie das Spielfeld verändern."
+    }
+  },
+  "attractors": [
+    {
+      "name": "Technologische Megatrends",
+      "detail": "KI, Automatisierung und neue Infrastrukturen machen das Berechenbare billig und heben den Wert von Urteilskraft."
+    },
+    {
+      "name": "Crunching Business Models",
+      "detail": "Beschleunigte Kompression und Verfallsdatum klassischer Wertversprechen (Hilberts Hotel)."
+    },
+    {
+      "name": "Hyperpersonalisierung & Personotecnia",
+      "detail": "Ende der Einheitsgröße: echte kontextuelle Relevanz statt massenhaftem Rauschen."
+    },
+    {
+      "name": "Vertrauens- & Institutionenkrise",
+      "detail": "Müdigkeit gegenüber der Pantomime, Erosion von Vermittlern und Aufstieg echter Vertrauenstoken."
+    },
+    {
+      "name": "Neuordnung von Talent & Bildung",
+      "detail": "Kognitive Orchestrierung, Neurodivergenz und lebenslanges Lernen in nichtlinearen Umfeldern."
+    }
+  ],
+  "themes": {
+    "Método CPS": "CPS-Methode",
+    "Sistemas complejos y sensemaking": "Komplexe Systeme & Sensemaking",
+    "Estrategia": "Strategie",
+    "Equipos y liderazgo": "Teams & Führung",
+    "Organizaciones e incentivos": "Organisationen & Anreize",
+    "Finanzas e inversión": "Finanzen & Investitionen",
+    "Marketing y publicidad": "Marketing & Werbung",
+    "Personotecnia": "Personotecnia",
+    "Psicología y decisiones": "Psychologie & Entscheidungen",
+    "Desarrollo personal": "Persönliche Entwicklung",
+    "Sociedad y política": "Gesellschaft & Politik",
+    "IA y tecnología": "KI & Technologie",
+    "Educación y altas capacidades": "Bildung & Hochbegabung",
+    "Cómic, cine y videojuegos": "Comics, Film & Videospiele",
+    "Reflexiones personales": "Persönliche Reflexionen"
+  },
+  "problems": {
+    "equipo-estrellas": {
+      "question": "„Ich habe brillante Leute, aber das Team liefert nicht oder kracht ständig aneinander“",
+      "diagnosis": "Top-Lebensläufe addieren sich nicht linear: Egos, Agenden und Sprachen prallen aufeinander. Du brauchst kognitive Orchestrierung und einen Übersetzer."
+    },
+    "estrategia-humo": {
+      "question": "„Unsere Strategie klingt in PowerPoint großartig, löst aber rein gar nichts“",
+      "diagnosis": "Wunschliste mit Strategie verwechselt. Zurück zur ungeschönten Diagnose, prüfen ob das Wertversprechen abgelaufen ist, und echte Verzichte wählen."
+    },
+    "ia-pilotos": {
+      "question": "„Wir machen tausend KI-Piloten, aber im Geschäft ändert sich nichts wirklich“",
+      "diagnosis": "Du steckst im Graben zwischen schicker Demo und echter Nutzung fest. Trenne Wiederholbares von menschlichen Prozessen mit hoher Variabilität."
+    },
+    "incentivos-kpis": {
+      "question": "„Wir setzen KPIs und Boni, aber die Leute tun genau das Gegenteil“",
+      "diagnosis": "Die Murmeln rollen immer der realen Neigung des Bodens nach. Prüfe perverse Anreize, irreführende Metriken und wer wirklich die eigene Haut riskiert."
+    },
+    "nadie-dice-verdad": {
+      "question": "„Alle wissen, dass etwas schiefläuft, aber im Meeting sagt es niemand“",
+      "diagnosis": "Corporate-Pantomime, Angst vor Isolation und die „Wozu-noch?“-Müdigkeit wirken zusammen. Senke die Kosten dafür, die Wahrheit auszusprechen."
+    },
+    "incertidumbre-paralisis": {
+      "question": "„Wir haben keine verlässlichen Daten und scheuen Entscheidungen ohne Gewissheit“",
+      "diagnosis": "Willkommen im komplexen Quadranten. Der Ruf nach dem perfekten Masterplan lähmt: Jetzt zählen Sensemaking und kleine, kluge Experimente."
+    },
+    "marketing-ignorado": {
+      "question": "„Wir stecken immer mehr in Marketing und Daten, aber die Kunden ignorieren uns“",
+      "diagnosis": "Die Massenverfolgung hat Immunität erzeugt. Hör auf, Fremde zu bombardieren, und baue echte Relevanz auf, damit die Richtigen selbst die Hand heben."
+    },
+    "talento-no-encaja": {
+      "question": "„Ich denke anders (oder führe atypisches Talent) und das System erstickt es“",
+      "diagnosis": "Strukturen für den statistischen Durchschnitt verpulvern außergewöhnliches Talent. Suche liminale Räume, echte Mentoren und gelebte Koexistenz."
+    }
+  },
+  "tourDesktop": [
+    {
+      "id": "welcome",
+      "title": "Willkommen im CPS-Observatorium",
+      "description": "Hier findest du 121 Konzepte des Complex Problem Solving in 9 Konstellationen und 4 Tiefenebenen — vom Klartext bis zur Lektüre der 263 Original-Turras. Klicke auf eine Konstellation, um ihre Zweige aufzuklappen, oder auf die Sonne im Zentrum für die 4 Säulen und 5 Attraktoren.",
+      "tip": "Ziehe den Hintergrund, um dich frei am Sternenhimmel zu bewegen."
+    },
+    {
+      "id": "view-switcher",
+      "target": "view-switcher",
+      "title": "Wechsle zwischen Karte & Index",
+      "description": "Schalte jederzeit zwischen der visuellen Konstellationsansicht und der Index-Ansicht mit Karten um, die nach den 15 Themen von El Turrero Post filterbar sind.",
+      "tip": "Auf dem Handy oder für schnelles Filtern nach Themen ist der Index super bequem."
+    },
+    {
+      "id": "search",
+      "target": "search",
+      "title": "Sofortsuche (⌘K)",
+      "description": "Gib hier ein beliebiges Konzept, einen Alias, Autor oder ein Stichwort ein (z. B. „Cynefin“, „Personotecnia“ oder „AACC“) — die Karte fliegt direkt zu diesem Stern.",
+      "tip": "Am Rechner öffnest du die Suche jederzeit mit ⌘K oder Strg+K."
+    },
+    {
+      "id": "guides",
+      "target": "guides",
+      "title": "Dein Problem? & Geführte Routen",
+      "description": "Du weißt nicht, wo du anfangen sollst? Unter „Dein Problem?“ wählst du eine reale Situation (Teams, KI, Strategie, Anreize) und landest bei den passenden Werkzeugen. Unter „Routen“ folgst du nummerierten Pfaden Schritt für Schritt.",
+      "tip": "Jedes Konzept hat 4 Reiter: Klartext → Praxis → Vertiefung → Quellen."
+    },
+    {
+      "id": "progress",
+      "target": "progress",
+      "title": "Dein Fortschritt & persönliche Notizen",
+      "description": "Markiere Konzepte als „Verstanden“ und halte deine eigenen Notizen direkt in jeder Karte fest. Hier siehst du deinen Stand pro Konstellation und kannst alles als Markdown für Obsidian oder Notion exportieren.",
+      "tip": "Alles wird automatisch in deinem Browser gespeichert — ganz ohne Konto oder Anmeldung."
+    },
+    {
+      "id": "controls",
+      "target": "controls",
+      "title": "Zoom, Zentrieren & Alle aufklappen",
+      "description": "Mit diesen Bedienelementen kannst du hineinzoomen (+), herauszoomen (−), die Ansicht zentrieren oder alle 121 Sterne mit einem Klick gleichzeitig aufklappen.",
+      "tip": "Du kannst auch mit dem Mausrad zoomen oder auf Handy und Tablet mit zwei Fingern aufziehen."
+    }
+  ],
+  "tourMobile": [
+    {
+      "id": "m-welcome",
+      "title": "Willkommen im CPS-Observatorium",
+      "description": "Dich erwarten 121 Konzepte des Complex Problem Solving von Javier G. Recuenco in 9 Konstellationen. Tippe auf eine Karte für ihre 4 Ebenen: Klartext, Praxis, Vertiefung (263 Turras) und Quellen.",
+      "tip": "Starte mit der geführten Route „Hier starten“ oder filtere nach Familie."
+    },
+    {
+      "id": "m-nav",
+      "title": "Schnellnavigation unten",
+      "description": "In der unteren Leiste wechselst du mit einem Tipp zwischen Index, interaktiver Konstellationskarte, den 5 geführten Routen und „Dein Problem?“ für reale Situationen.",
+      "tip": "In der Kartenansicht ziehst du mit einem Finger und zoomst mit zwei Fingern."
+    },
+    {
+      "id": "m-search-notes",
+      "title": "Suche, Fortschritt & Notizen",
+      "description": "Oben findest du die Lupe für die Sofortsuche und deinen Fortschrittszähler. In jeder Karte kannst du „Verstanden“ markieren, Notizen speichern und den Direktlink kopieren.",
+      "tip": "Diesen Guide kannst du jederzeit über das ?-Symbol oben erneut öffnen."
+    }
+  ],
+  "families": {
+    "oficio": {
+      "name": "Das CPS-Handwerk",
+      "shortName": "CPS-Handwerk",
+      "subtitle": "Wie ein Problemlöser denkt und arbeitet",
+      "description": "Der methodische und handwerkliche Kern des Complex Problem Solving: weder starre Formel noch leere Intuition, sondern Wissenskunst (Cienciarte), ehrliche Diagnose und Orchestrierung von Talent."
+    },
+    "sistemas": {
+      "name": "Systeme & Sensemaking",
+      "shortName": "Systeme",
+      "subtitle": "Lebendige Realitäten lesen, ohne sie zu verstümmeln",
+      "description": "Denkrahmen der Komplexitätswissenschaften, um zu verstehen, warum man ein lebendiges System nicht wie einen Motor repariert: Cynefin, Emergenz, Autopoiesis und Sinnstiftung vor dem Handeln."
+    },
+    "incertidumbre": {
+      "name": "Unsicherheit & Kontext",
+      "shortName": "Unsicherheit",
+      "subtitle": "Mit Urteilskraft durch den Nebel navigieren",
+      "description": "Wenn sich die Regeln im laufenden Spiel ändern und der Kontext alles entscheidet: hochvariable Prozesse, Hormesis, schwarze Elefanten und das fruchtbare Unbehagen ohne Gewissheiten."
+    },
+    "estrategia": {
+      "name": "Strategie & Metaspiel",
+      "shortName": "Strategie",
+      "subtitle": "Probleme lösen und das Spiel vorauslesen",
+      "description": "Wenn es das Problem nicht löst, ist es keine Strategie. Verfallende Wertversprechen, fünf Tiefenattraktoren, Sidestepping und das Metaspiel vor dem Rivalen durchschauen."
+    },
+    "empresas": {
+      "name": "Unternehmen, Anreize & Kapital",
+      "shortName": "Unternehmen",
+      "subtitle": "Geld, Macht und Corporate-Fallen",
+      "description": "Wie sich Organisationen wirklich verhalten, wenn Schulden, Boni, Beratungen und Egos im Spiel sind: Anreizarchitektur, Skin in the Game und Schlangeneier."
+    },
+    "factorx": {
+      "name": "Faktor X, Teams & Personotecnia",
+      "shortName": "Faktor X",
+      "subtitle": "Menschliches Verhalten & Relevanz im Maßstab",
+      "description": "Menschen sind keine Excel-Zellen. Vom Vermeiden dysfunktionaler Star-Teams bis zur Behandlung jedes Kunden als Individuum im Maßstab — ohne im algorithmischen Spam zu landen."
+    },
+    "mente": {
+      "name": "Psychologie, Biases & Hochbegabung",
+      "shortName": "Psyche & HB",
+      "subtitle": "Biases, Neurodivergenz und Lernen",
+      "description": "Wie wir unbequeme Wahrheiten verarbeiten, warum niemand durch bloße Überredung umdenkt und welche Schlüsselrolle Hochbegabung, Neurodivergenz und Bildung spielen."
+    },
+    "sociedad": {
+      "name": "Gesellschaft, Narrative & Stämme",
+      "shortName": "Gesellschaft",
+      "subtitle": "Kultur, heiße Luft und der Geist der Zeit",
+      "description": "Ungeschönte Diagnose kollektiver Dynamiken: realitätsferner Idealismus, gemeinsame Pantomimen, Schafsherden-Stämme und der Puls des Zeitgeists."
+    },
+    "tecnologia": {
+      "name": "KI, Technologie & Kultur",
+      "shortName": "KI & Kultur",
+      "subtitle": "Megatrends, KI und spielerische Metaphern",
+      "description": "Wo KI im echten CPS wirklich hingehört, warum das Menschliche zum knappen Luxus wird und wie Videospiele, Comics und Fiktion als Denklabor dienen."
+    }
+  }
+}
