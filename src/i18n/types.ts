@@ -13,7 +13,7 @@ export interface LanguageOption {
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { code: 'es', shortLabel: 'ES', nativeName: 'Español', ready: true },
   { code: 'en', shortLabel: 'EN', nativeName: 'English', ready: true },
-  { code: 'fr', shortLabel: 'FR', nativeName: 'Français', ready: false },
+  { code: 'fr', shortLabel: 'FR', nativeName: 'Français', ready: true },
   { code: 'pt', shortLabel: 'PT', nativeName: 'Português', ready: true },
   { code: 'de', shortLabel: 'DE', nativeName: 'Deutsch', ready: false },
   { code: 'ja', shortLabel: 'JA', nativeName: '日本語', ready: false },
