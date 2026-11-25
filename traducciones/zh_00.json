@@ -1,0 +1,443 @@
+{
+  "lang": "zh",
+  "ui": {
+    "pageTitle": "CPS 观星台 · El Turrero Post 概念图谱",
+    "brandTitle": "CPS 观星台",
+    "brandSubtitle": "El Turrero Post · {count} 个概念",
+    "navConstellation": "星图",
+    "navIndex": "索引",
+    "navMapShort": "星图",
+    "navSearchPlaceholder": "搜索概念、作者或主题…",
+    "navSearchButton": "搜索",
+    "navYourProblem": "你的难题？",
+    "navProblemShort": "难题",
+    "navRoutes": "路线",
+    "navRouteActive": "进行中路线",
+    "navRouteShort": "路线",
+    "navProgressTooltip": "你的学习进度与可导出笔记",
+    "navGuideTooltip": "查看快速导航指南",
+    "langComingSoon": "敬请期待",
+    "ringConstellations": "9 大星群",
+    "ringGateway": "入门必读",
+    "ringDeepening": "进阶深读",
+    "sunSubtitle": "4 大支柱 · 5 大吸引子",
+    "conceptsCount": "{count} 个概念",
+    "understoodCount": "已懂 {done}/{total}",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "centerView": "居中视图",
+    "expandAll": "全部展开",
+    "collapseAll": "全部收起",
+    "basedOnAttribution": "基于 El Turrero Post · @Recuenco",
+    "suggestConcept": "缺了某个概念？来提建议",
+    "onboardingWhisperPrefix": "点击任意",
+    "onboardingWhisperStrong": "星群",
+    "onboardingWhisperMid": "展开分支 · 或",
+    "onboardingWhisperCta": "开启导览路线",
+    "hoverConstellation": "星群",
+    "hoverClickToToggle": "点击{action}分支",
+    "hoverExpand": "展开",
+    "hoverCollapse": "收起",
+    "hoverConnections": "星图中有 {count} 条关联 · 点击深入了解",
+    "tierCore": "入门必读",
+    "tierDeep": "进阶深读",
+    "pillarBadge": "CPS 支柱",
+    "alsoCalled": "别名：",
+    "copyLinkTooltip": "复制此概念的直达链接",
+    "copied": "已复制",
+    "expandReadingTooltip": "展开阅读面板",
+    "compactReadingTooltip": "紧凑视图",
+    "closePanel": "关闭面板",
+    "routeStopCounter": "第 {current} / {total} 站",
+    "tabPlain": "1 · 通俗",
+    "tabPractice": "2 · 实战",
+    "tabDeep": "3 · 深读",
+    "tabSources": "4 · 溯源",
+    "oneSentenceTitle": "一句话核心",
+    "analogyTitle": "这么去想（日常类比）",
+    "cynefinDomainsTitle": "Cynefin 的 5 大领域",
+    "cynefinCpsBadge": "CPS 主战场",
+    "connectsWithTitle": "星图关联概念（{count}）",
+    "ctaToPractice": "第 2 层 · 实战用法与常见陷阱",
+    "howToApplyTitle": "如何在日常工作中运用",
+    "antiPatternTitle": "典型陷阱（反模式）",
+    "glossarySynthesisTitle": "术语表精要 · El Turrero Post",
+    "originTitle": "概念由来",
+    "ctaToDeep": "第 3 层 · 进阶深读（原帖 turra 深度拆解）",
+    "deepThesisLabel": "turra 中的核心论点",
+    "deepReadingLabel": "深度阅读",
+    "quoteAuthorPrefix": "—— Javier G. Recuenco，出自",
+    "keyInsightsTitle": "原帖核心洞见",
+    "realExamplesTitle": "turra 中的真实案例与出处",
+    "reflectionQuestionsTitle": "给你的实战诊断问题",
+    "ctaToSources": "第 4 层 · 前往原始 turra 与引用书目",
+    "sourcesTurrasTitle": "展开论述的原始 turra（{count}）",
+    "sourcesOriginalSpanishNote": "El Turrero Post 中的原始 turra 均为西班牙语。",
+    "sourcesBooksTitle": "这些 turra 中引用的书目（{count}）",
+    "openInTurrero": "在 El Turrero Post 打开词条",
+    "notesHeader": "你关于“{term}”的笔记",
+    "notesSavedLocally": "已保存在本浏览器中",
+    "notesPlaceholder": "记下它如何用在你的项目里、一个关键启发，或留待日后复盘的疑问……",
+    "markUnderstood": "标记已懂",
+    "understood": "已懂",
+    "noteSingular": "笔记",
+    "notesLabel": "笔记",
+    "prevStop": "上一站",
+    "nextStop": "下一站",
+    "coreSunBadge": "观星台的太阳",
+    "coreIntroLead": "在 Javier G. Recuenco 看来，复杂问题不只是难题，而是",
+    "coreIntroHighlight": "连顶级专家都束手无策的问题",
+    "coreIntroMid": "——因为根本没有现成手册。CPS 正是结合四大跨领域支柱，在这片迷雾中前行的",
+    "coreIntroArt": "科艺融合（Cienciarte）",
+    "coreIntroEnd": "之道。",
+    "coreStartRouteCta": "开启导览路线：“CPS 从这里起步”（8 站）",
+    "coreFourPillarsTitle": "CPS 四大支柱",
+    "coreFiveAttractorsTitle": "核心所在：五大吸引子",
+    "coreViewConcept": "查看概念 →",
+    "coreFifteenThemesTitle": "El Turrero Post 的 15 个主题",
+    "coreFifteenThemesHelp": "点击任意主题，即可在星图中展开对应星群。",
+    "coreCreditPre": "内容基于",
+    "coreCreditPost": "的公开档案（263 篇 turra）、术语表（90 个概念）及书库（324 本书），由 CPS 社区整理自 Javier G. Recuenco 的原帖。",
+    "indexEyebrow": "El Turrero Post · 9 大星群 · 4 层深度",
+    "indexTitle": "复杂问题解决（CPS）概念图谱",
+    "indexSubtitle": "收录 Javier G. Recuenco 的 121 个核心概念，从通俗拆解、实战用法，到 263 篇 turra 深读与引用书目一网打尽。",
+    "indexCountBadge": "共 {total} 个概念，当前显示 {visible} 个",
+    "indexQuickStartTitle": "从这里起步",
+    "indexQuickStartSub": "8 站入门路线",
+    "indexQuickProblemTitle": "你的难题？",
+    "indexQuickProblemSub": "8 种真实处境",
+    "indexQuickPillarsTitle": "4 大支柱与 5 大吸引子",
+    "indexQuickPillarsSub": "CPS 的核心内核",
+    "indexSearchPlaceholder": "搜索概念、别名或主题…",
+    "filterAll": "全部",
+    "filterCore": "入门必读",
+    "filterPillars": "四大支柱",
+    "filterMastered": "已懂",
+    "filterNotes": "有笔记",
+    "filterThemes": "15 个主题",
+    "allFamiliesPill": "全部 (9)",
+    "themesSectionHelp": "按 El Turrero Post 官方 15 个主题筛选",
+    "noFilterResults": "没有符合当前筛选条件的概念。",
+    "clearFilters": "清空筛选",
+    "viewOnMap": "在星图查看 ↗",
+    "turraSingular": "篇 turra",
+    "turraPlural": "篇 turra",
+    "fourLevelsTag": "4 层深度 →",
+    "searchModalPlaceholder": "搜索概念、作者、别名或主题（如 Cynefin、人本技术、AI、AACC）…",
+    "searchResultsFound": "找到 {count} 条结果",
+    "searchRecommendedHeader": "推荐入门概念（共 {count} 个概念）",
+    "searchNoMatches": "未找到与“{query}”匹配的结果。",
+    "routesEyebrow": "导览路线",
+    "routesTitle": "一步步探索 CPS 宇宙",
+    "routesSubtitle": "每条路线都会在星图上点亮编号轨迹，带你由浅入深地打通脉络。",
+    "routeActiveBadge": "进行中",
+    "routeExitFree": "退出当前路线，自由探索",
+    "problemsEyebrow": "实战入口 · 快速诊断",
+    "problemsTitle": "你今天桌上摆着什么难题？",
+    "problemsSubtitle": "挑一个最贴近你当下处境的场景，直达能帮你拨开迷雾的 CPS 工具。",
+    "progressEyebrow": "你的学习地图",
+    "progressTitle": "已懂 {count} / {total} 个概念",
+    "progressNotesSavedSingular": "已保存 1 条个人笔记",
+    "progressNotesSavedPlural": "已保存 {count} 条个人笔记",
+    "progressSubtitle": "你的进度和笔记保存在当前浏览器中，随时可导出为 Markdown（适配 Obsidian / Notion）。",
+    "progressGlobalLabel": "CPS 宇宙整体掌握度",
+    "progressExportMd": "导出笔记 (.md)",
+    "progressReset": "重置进度",
+    "tourBadge": "快速导览 · {current} / {total}",
+    "tourSkip": "跳过",
+    "tourBack": "上一步",
+    "tourNext": "下一步",
+    "tourFinish": "开始探索！",
+    "mdTitle": "CPS 观星台 · 我的笔记与进度",
+    "mdDateLabel": "导出日期",
+    "mdMasteredLabel": "已懂概念",
+    "mdNotesLabel": "个人笔记",
+    "mdArchiveLabel": "原始档案",
+    "mdMyNoteLabel": "我的笔记",
+    "mdSourcesLabel": "参考来源",
+    "mdEmptyMessage": "你还没有标记概念或写下笔记。先标记几个“已懂”或写点笔记，再来导出吧。"
+  },
+  "routes": {
+    "empieza-aqui": {
+      "title": "从这里起步：CPS 核心",
+      "subtitle": "你的第一条循序渐进路线，搞懂复杂问题解决者到底怎么思考和干活。",
+      "duration": "8 站 · 6 分钟",
+      "stepNotes": {
+        "cps": "一切的起点：什么才算（以及什么不算）复杂问题。",
+        "cienciarte": "为什么 CPS 必须兼顾科学严谨与艺术直觉。",
+        "cynefin": "核心罗盘：分清清晰域、繁杂域和复杂域。",
+        "sensemaking": "先在迷雾中建构意义，别急着一头扎进执行。",
+        "diagnostico": "把真正的病根和吵闹的表象剥离开。",
+        "estrategia": "诊断、指导方针与连贯行动：拒绝画大饼。",
+        "factor-x": "人不是 Excel 里的单元格：人的行为决定胜负。",
+        "orquestacion-cognitiva": "真正的绝活：让性格迥异的顶尖奇才同台发光。"
+      }
+    },
+    "estrategia-sin-humo": {
+      "title": "不卖空气的真战略",
+      "subtitle": "如何看穿已过期的价值主张、底层暗流与侧步破局。",
+      "duration": "7 站 · 5 分钟",
+      "stepNotes": {
+        "estrategia": "如果一套所谓战略解决不了问题，那就是烂战略。",
+        "atractores": "推动所有行业转向的五大深层力量。",
+        "hotel-de-hilbert": "每个价值主张都是一扇终会关上的门。",
+        "business-acumen": "跳出漂亮 PPT，练就真正的商业嗅觉。",
+        "moat": "筑起对手抄不走的防御护城河。",
+        "metajuego": "看懂当下哪种打法占优，并预判明天什么能克制它。",
+        "sidestepping": "避开正面硬刚，另开自己的棋盘。"
+      }
+    },
+    "equipos-y-poder": {
+      "title": "团队、权力与激励",
+      "subtitle": "为什么全明星阵容反而一败涂地，以及如何设计真正管用的激励。",
+      "duration": "7 站 · 5 分钟",
+      "stepNotes": {
+        "equipo-apolo": "为什么把最聪明的人凑一屋子，往往会酿成灾难。",
+        "emulsificador-de-equipo": "翻译并粘合互不兼容世界的关键角色。",
+        "arquitectura-de-incentivos": "真正驱动组织运转的无形地面坡度。",
+        "incentivo-perverso": "设计糟糕的奖励，如何逼出南辕北辙的结果。",
+        "skin-in-the-game": "为自己给出的建议押上身家。",
+        "recoger-cable": "看到新证据就及时改口，别让面子当家。",
+        "asertividad": "坚定而体面地说出刺耳的真话。"
+      }
+    },
+    "personotecnia-ia": {
+      "title": "清醒看待人本技术与 AI",
+      "subtitle": "从令人反感的伪个性化，走向人机半人马模式与人性奢侈品。",
+      "duration": "7 站 · 5 分钟",
+      "stepNotes": {
+        "personotecnia": "哪怕在大规模下，也把每位客户当独特个体来对待。",
+        "procesos-de-alta-variabilidad": "死板脚本失灵、语境说了算的地带。",
+        "capitalismo-de-vigilancia": "为什么拿 Cookie 满世界追人，反而毁掉了注意力。",
+        "autosegmentacion": "让真正有兴趣的客户自己举手现身。",
+        "ecosistemas-tecnologicos": "把技术浪潮当系统看，别当一阵风潮追。",
+        "centauro": "人类与 AI 真正共生协作。",
+        "lujo-humano": "当 AI 把一切都拉成白菜价，人的温度反成最稀缺的奢侈品。"
+      }
+    },
+    "leer-el-mundo": {
+      "title": "看透世界、部落与泡沫",
+      "subtitle": "识破盲目理想主义、集体哑剧与群体偏见的批判工具箱。",
+      "duration": "7 站 · 5 分钟",
+      "stepNotes": {
+        "vaca-esferica": "纸面上美如画、一上街就碎一地的模型。",
+        "cultura-luterana": "哪怕量不了，也要硬给万物称重打分的执念。",
+        "falacia-de-mcnamara": "只因塞不进 KPI，就对决定性因素视而不见。",
+        "pompismo": "脱离现实地基、一撞就碎的精致空想。",
+        "pantomima": "大家都心知肚明是假的，却因各有所图而一起演下去的戏。",
+        "espiral-del-silencio": "怕被“大多数”孤立，于是选择集体闭嘴。",
+        "zeitgeist": "决定每个时代哪些观念能火起来的无形底色。"
+      }
+    }
+  },
+  "pillars": {
+    "ciencias-de-la-complejidad": {
+      "name": "复杂性科学",
+      "desc": "非线性系统、涌现、Cynefin 与意义建构。"
+    },
+    "business-acumen": {
+      "name": "商业敏锐度（Business Acumen）",
+      "desc": "真战略、价值主张、激励机制与真金白银的现金流。"
+    },
+    "factor-x": {
+      "name": "X 因素",
+      "desc": "心理学、偏见、团队、人本技术与人类真实行为。"
+    },
+    "ecosistemas-tecnologicos": {
+      "name": "技术生态",
+      "desc": "技术大趋势（AI、数据、平台）以及它们如何改写棋局。"
+    }
+  },
+  "attractors": [
+    {
+      "name": "技术大趋势",
+      "detail": "AI、自动化与新型基础设施把可预测工作压成白菜价，同时大幅推高判断力的价值。"
+    },
+    {
+      "name": "商业模式挤压（Crunching Business Models）",
+      "detail": "传统价值主张加速萎缩与过期（希尔伯特旅馆）。"
+    },
+    {
+      "name": "超个性化与人本技术",
+      "detail": "“一刀切”时代的终结：用真正的语境相关性对抗铺天盖地的噪音。"
+    },
+    {
+      "name": "信任与机构危机",
+      "detail": "大众对职场与机构哑剧彻底厌倦，中介权威瓦解，真实信任通证崛起。"
+    },
+    {
+      "name": "人才与教育重塑",
+      "detail": "非线性环境下的认知编排、神经多样性与终身学习。"
+    }
+  ],
+  "themes": {
+    "Método CPS": "CPS 方法",
+    "Sistemas complejos y sensemaking": "复杂系统与意义建构",
+    "Estrategia": "战略",
+    "Equipos y liderazgo": "团队与领导力",
+    "Organizaciones e incentivos": "组织与激励",
+    "Finanzas e inversión": "金融与投资",
+    "Marketing y publicidad": "营销与广告",
+    "Personotecnia": "人本技术（Personotecnia）",
+    "Psicología y decisiones": "心理学与决策",
+    "Desarrollo personal": "个人成长",
+    "Sociedad y política": "社会与政治",
+    "IA y tecnología": "AI 与技术",
+    "Educación y altas capacidades": "教育与高潜能",
+    "Cómic, cine y videojuegos": "漫画、电影与游戏",
+    "Reflexiones personales": "个人随想"
+  },
+  "problems": {
+    "equipo-estrellas": {
+      "question": "“手下个个履历闪瞎眼，团队却出不了活，天天互相掐”",
+      "diagnosis": "顶尖履历不会线性叠加：自我、私心和语境必然对撞。你需要的是认知编排和一个能互通语言的翻译者。"
+    },
+    "estrategia-humo": {
+      "question": "“我们的战略在 PPT 里美得发光，落到地上却啥也没解决”",
+      "diagnosis": "把愿望清单当成了战略。得回到赤裸裸的诊断，查查价值主张是不是早过期了，再做出真正的取舍。"
+    },
+    "ia-pilotos": {
+      "question": "“我们搞了一百个 AI 试点，但业务根本没发生实质变化”",
+      "diagnosis": "你卡在了炫酷 Demo 和真实落地之间的鸿沟里。先把可重复环节和人类高变异性流程拆开。"
+    },
+    "incentivos-kpis": {
+      "question": "“我们定了 KPI、发了奖金，结果大家偏偏反着干”",
+      "diagnosis": "弹珠永远往地面真实的低处滚。去审计逆向激励、误导性指标，看看究竟是谁在押上身家。"
+    },
+    "nadie-dice-verdad": {
+      "question": "“所有人都知道出大事了，可会上愣是没人敢开口”",
+      "diagnosis": "职场哑剧、怕被孤立的恐惧，加上“说了又有什么用”的疲惫叠在一起。必须先把说真话的代价降下来。"
+    },
+    "incertidumbre-paralisis": {
+      "question": "“没有靠谱数据，没把握就吓得不敢拍板”",
+      "diagnosis": "欢迎来到复杂域。在这里等完美总规划只会把人冻死：现在要做的是意义建构和清醒的小步试错。"
+    },
+    "marketing-ignorado": {
+      "question": "“营销和数据越砸越多，客户却越来越不理我们”",
+      "diagnosis": "狂轰滥炸早就催生了免疫。别再拿广告追着陌生人跑了，把真正的相关性做出来，让对的客户自己举手。"
+    },
+    "talento-no-encaja": {
+      "question": "“我觉得自己格格不入（或者带着非典型奇才），体制快把人憋死了”",
+      "diagnosis": "为统计平均值造的系统，天生会磨掉独特人才。去寻找阈限空间、靠谱导师与真正的共生环境。"
+    }
+  },
+  "tourDesktop": [
+    {
+      "id": "welcome",
+      "title": "欢迎来到 CPS 观星台",
+      "description": "这里收录了 121 个复杂问题解决（CPS）概念，排布在 9 大星群、4 层深度之中——从最通俗的入门，一直延伸到 263 篇原始 turra 精读。点击任意星群展开分支，或点击中央的太阳查看四大支柱与五大吸引子。",
+      "tip": "拖动画布背景，即可在星空中自由漫游。"
+    },
+    {
+      "id": "view-switcher",
+      "target": "view-switcher",
+      "title": "在星图与索引之间切换",
+      "description": "你可以随时在可视化星群视图和卡片式索引视图之间切换，并按 El Turrero Post 的 15 个主题快速筛选。",
+      "tip": "在手机上或想按主题速查时，索引视图格外顺手。"
+    },
+    {
+      "id": "search",
+      "target": "search",
+      "title": "即时搜索（⌘K）",
+      "description": "在这里输入任意概念、别名、作者或关键词（比如“Cynefin”、“人本技术”或“AACC”），星图就会直接飞向那颗星。",
+      "tip": "电脑端随时按 ⌘K 或 Ctrl+K 就能呼出搜索框。"
+    },
+    {
+      "id": "guides",
+      "target": "guides",
+      "title": "“你的难题？”与导览路线",
+      "description": "不知从何下手？进“你的难题？”选一个真实处境（团队、AI、战略、激励），直达对症工具；进“路线”按编号一步步走完全程。",
+      "tip": "每个概念都分 4 个标签页：通俗 → 实战 → 深读 → 溯源。"
+    },
+    {
+      "id": "progress",
+      "target": "progress",
+      "title": "学习进度与个人笔记",
+      "description": "在任意词条里标记“已懂”并记下心得。这里会按星群统计你的进度，还能一键导出为 Markdown，直接导入 Obsidian 或 Notion。",
+      "tip": "所有数据自动保存在本地浏览器，无需注册登录。"
+    },
+    {
+      "id": "controls",
+      "target": "controls",
+      "title": "缩放、居中与全部展开",
+      "description": "用这组按钮可以放大（+）、缩小（−）、居中视图，或者一键同时展开全部 121 颗星。",
+      "tip": "也支持鼠标滚轮缩放，手机和平板则可双指捏合缩放。"
+    }
+  ],
+  "tourMobile": [
+    {
+      "id": "m-welcome",
+      "title": "欢迎来到 CPS 观星台",
+      "description": "这里汇聚了 Javier G. Recuenco 的 121 个复杂问题解决概念，归入 9 大星群。点开任意卡片即可浏览 4 层深度：通俗、实战、深读（263 篇 turra）与溯源。",
+      "tip": "可以从“从这里起步”导览路线开始，或按星群筛选。"
+    },
+    {
+      "id": "m-nav",
+      "title": "底部快捷导航",
+      "description": "底部导航栏可一键切换索引、交互式星群图、5 条循序渐进的导览路线，以及按真实处境查找的“你的难题？”。",
+      "tip": "在星图视图中，单指拖动平移，双指捏合缩放。"
+    },
+    {
+      "id": "m-search-notes",
+      "title": "搜索、进度与笔记",
+      "description": "顶部放大镜可秒搜任意术语，旁边显示你的学习进度。点进词条就能标记“已懂”、保存个人笔记并复制直达链接。",
+      "tip": "随时点击顶部的 ? 图标，就能重新打开这份指南。"
+    }
+  ],
+  "families": {
+    "oficio": {
+      "name": "CPS 核心手艺",
+      "shortName": "CPS 手艺",
+      "subtitle": "问题解决者的思维与干活方式",
+      "description": "复杂问题解决的方法论与手艺内核：既非死板套路，也非空泛直觉，而是科艺融合、诚实诊断与人才编排。"
+    },
+    "sistemas": {
+      "name": "系统与意义建构",
+      "shortName": "系统",
+      "subtitle": "读懂鲜活现实，而不把它肢解",
+      "description": "来自复杂性科学的思维框架，帮你看清为什么活系统不能像修发动机一样修：Cynefin、涌现、自创生，以及先建构意义再动手。"
+    },
+    "incertidumbre": {
+      "name": "不确定性与语境",
+      "shortName": "不确定性",
+      "subtitle": "带着判断力穿越迷雾",
+      "description": "当规则边走边变、语境决定一切：高变异性流程、毒物兴奋效应、黑象，以及在没有确定性时的丰饶不适感。"
+    },
+    "estrategia": {
+      "name": "战略与元博弈",
+      "shortName": "战略",
+      "subtitle": "真解决问题，并看穿下一手棋",
+      "description": "解决不了问题的就不叫战略。会过期的价值主张、五大底层吸引子、侧步破局，以及抢在对手之前读懂元博弈。"
+    },
+    "empresas": {
+      "name": "企业、激励与资本",
+      "shortName": "企业",
+      "subtitle": "金钱、权力与职场陷阱",
+      "description": "当债务、奖金、咨询公司和个人面子搅在一起时，组织到底怎么运转：激励架构、风险共担与蛇蛋隐患。"
+    },
+    "factorx": {
+      "name": "X 因素、团队与人本技术",
+      "shortName": "X 因素",
+      "subtitle": "人类行为与规模化的真实相关性",
+      "description": "人不是 Excel 单元格。从避开失灵的全明星团队，到在规模化下依然把每位客户当独特个体来对待，而不沦为算法垃圾轰炸。"
+    },
+    "mente": {
+      "name": "心理学、偏见与高潜能",
+      "shortName": "心智与高潜",
+      "subtitle": "偏见、神经多样性与学习",
+      "description": "人如何消化刺耳真相、为什么光靠讲道理没人会改变，以及高潜能群体、神经多样性与教育的关键角色。"
+    },
+    "sociedad": {
+      "name": "社会、叙事与部落",
+      "shortName": "社会",
+      "subtitle": "文化、泡沫与时代脉搏",
+      "description": "对群体动态毫不留情的诊断：脱离现实的空想、集体维持的哑剧、盲从的羊群部落与时代精神的脉动。"
+    },
+    "tecnologia": {
+      "name": "AI、技术与文化",
+      "shortName": "AI 与文化",
+      "subtitle": "大趋势、AI 与游戏文化隐喻",
+      "description": "AI 在真正的 CPS 里究竟摆在什么位置、为什么人性反成稀缺奢侈品，以及游戏、漫画和虚构作品如何充当思维实验室。"
+    }
+  }
+}

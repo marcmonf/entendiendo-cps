@@ -37,6 +37,22 @@ CJK_LANGS = {"ja", "zh", "ko"}
 # Claves estructurales que NO deben traducirse ni marcarse como sin traducir
 STRUCTURAL_KEYS = {"id", "target", "lang"}
 
+# Fragmentos UI que se concatenan en una sola frase: en idiomas con distinto orden sintáctico (p. ej. CJK)
+# la longitud se redistribuye entre los fragmentos, por lo que no se evalúa el ratio por separado.
+CONCAT_UI_PATHS = {
+    "ui.onboardingWhisperPrefix",
+    "ui.onboardingWhisperStrong",
+    "ui.onboardingWhisperMid",
+    "ui.onboardingWhisperCta",
+    "ui.coreIntroLead",
+    "ui.coreIntroHighlight",
+    "ui.coreIntroMid",
+    "ui.coreIntroArt",
+    "ui.coreIntroEnd",
+    "ui.coreCreditPre",
+    "ui.coreCreditPost",
+}
+
 
 def parse_glossary(glossary_path: Path | None) -> dict[str, Any]:
     """
@@ -229,10 +245,14 @@ def validate_node(
         if lang != "es" and len(es.strip()) >= 25 and tr.strip() == es.strip() and key_name != "term":
             errors.append(f"[{path}] Texto idéntico al español (sin traducir): {tr[:80]!r}")
 
-        # Ratio de longitud razonable (para textos >= 30 chars)
-        if len(es.strip()) >= 30:
+        # Ratio de longitud razonable (para textos >= 30 chars, salvo fragmentos UI concatenados)
+        if len(es.strip()) >= 30 and path not in CONCAT_UI_PATHS:
             ratio = len(tr.strip()) / max(len(es.strip()), 1)
-            if lang in CJK_LANGS:
+            if lang == "zh":
+                # El chino simplificado suele medir entre 0,22x y 0,70x respecto al español
+                # (títulos muy compactos pueden bajar a ~0,16x y frases con términos en inglés subir a ~1,10x).
+                err_low, warn_low, warn_high, err_high = 0.10, 0.15, 1.15, 1.60
+            elif lang in CJK_LANGS:
                 err_low, warn_low, warn_high, err_high = 0.12, 0.20, 1.8, 2.5
             else:
                 err_low, warn_low, warn_high, err_high = 0.35, 0.50, 2.1, 2.6
