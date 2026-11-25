@@ -1,0 +1,443 @@
+{
+  "lang": "ja",
+  "ui": {
+    "pageTitle": "CPS天文台 · El Turrero Post 概念アトラス",
+    "brandTitle": "CPS天文台",
+    "brandSubtitle": "El Turrero Post · {count}の概念",
+    "navConstellation": "星座マップ",
+    "navIndex": "一覧",
+    "navMapShort": "マップ",
+    "navSearchPlaceholder": "概念・著者・テーマを検索…",
+    "navSearchButton": "検索",
+    "navYourProblem": "今の課題は？",
+    "navProblemShort": "課題",
+    "navRoutes": "ルート",
+    "navRouteActive": "進行中ルート",
+    "navRouteShort": "ルート",
+    "navProgressTooltip": "学習の進捗とエクスポート可能なメモ",
+    "navGuideTooltip": "クイックガイドを見る",
+    "langComingSoon": "近日公開",
+    "ringConstellations": "9つの星座",
+    "ringGateway": "入門編",
+    "ringDeepening": "深掘り編",
+    "sunSubtitle": "4つの柱 · 5つのアトラクター",
+    "conceptsCount": "{count}の概念",
+    "understoodCount": "{done}/{total} 理解済み",
+    "zoomIn": "拡大",
+    "zoomOut": "縮小",
+    "centerView": "表示を中央へ",
+    "expandAll": "すべて展開",
+    "collapseAll": "すべて折りたたむ",
+    "basedOnAttribution": "出典：El Turrero Post · @Recuenco",
+    "suggestConcept": "載っていない概念がありますか？提案する",
+    "onboardingWhisperPrefix": "いずれかの",
+    "onboardingWhisperStrong": "星座",
+    "onboardingWhisperMid": "をクリックしてブランチを展開 · または",
+    "onboardingWhisperCta": "ガイドルートを始める",
+    "hoverConstellation": "星座",
+    "hoverClickToToggle": "クリックでブランチを{action}",
+    "hoverExpand": "展開",
+    "hoverCollapse": "折りたたむ",
+    "hoverConnections": "マップ上に{count}件のつながり · クリックして深掘り",
+    "tierCore": "入門編",
+    "tierDeep": "深掘り編",
+    "pillarBadge": "CPSの柱",
+    "alsoCalled": "別名：",
+    "copyLinkTooltip": "この概念への直リンクをコピー",
+    "copied": "コピーしました",
+    "expandReadingTooltip": "読書パネルを広げる",
+    "compactReadingTooltip": "コンパクト表示",
+    "closePanel": "パネルを閉じる",
+    "routeStopCounter": "ステップ {current} / {total}",
+    "tabPlain": "1 · 基礎",
+    "tabPractice": "2 · 実践",
+    "tabDeep": "3 · 深掘り",
+    "tabSources": "4 · 出典",
+    "oneSentenceTitle": "ひと言でいうと",
+    "analogyTitle": "身近な例えでイメージする",
+    "cynefinDomainsTitle": "Cynefinの5つの領域",
+    "cynefinCpsBadge": "CPSの主戦場",
+    "connectsWithTitle": "星座マップでつながる概念（{count}）",
+    "ctaToPractice": "レベル2 · 実践での使い方と定番の落とし穴",
+    "howToApplyTitle": "日々の現場での活かし方",
+    "antiPatternTitle": "よくある落とし穴（アンチパターン）",
+    "glossarySynthesisTitle": "用語集サマリー · El Turrero Post",
+    "originTitle": "背景・由来",
+    "ctaToDeep": "レベル3 · さらに深く（元のturraの精読）",
+    "deepThesisLabel": "turraにおける核心テーゼ",
+    "deepReadingLabel": "深掘りエッセイ",
+    "quoteAuthorPrefix": "—— Javier G. Recuenco、出典：",
+    "keyInsightsTitle": "スレッドの核心インサイト",
+    "realExamplesTitle": "turraに登場する実例・リファレンス",
+    "reflectionQuestionsTitle": "あなたの現場に向けた診断クエスチョン",
+    "ctaToSources": "レベル4 · 元のturraと引用書籍を見る",
+    "sourcesTurrasTitle": "この概念を論じた元のturra（{count}）",
+    "sourcesOriginalSpanishNote": "El Turrero Postに掲載されている元のturraはすべてスペイン語です。",
+    "sourcesBooksTitle": "これらのturraで引用された書籍（{count}）",
+    "openInTurrero": "El Turrero Postで記事を開く",
+    "notesHeader": "「{term}」についてのメモ",
+    "notesSavedLocally": "このブラウザに保存されます",
+    "notesPlaceholder": "自分のプロジェクトへの応用、気づき、あとで見返したい疑問などをメモしておきましょう…",
+    "markUnderstood": "理解済みにする",
+    "understood": "理解済み",
+    "noteSingular": "メモ",
+    "notesLabel": "メモ",
+    "prevStop": "前のステップ",
+    "nextStop": "次へ",
+    "coreSunBadge": "天文台の太陽",
+    "coreIntroLead": "Javier G. Recuencoによれば、複雑な問題とは単に難しい問題ではなく、既存の攻略マニュアルが存在しないために",
+    "coreIntroHighlight": "一流の専門家すらお手上げになる問題",
+    "coreIntroMid": "を指します。CPSとは、4つの横断的な柱を組み合わせてその霧の中を航海する",
+    "coreIntroArt": "科学芸術（Cienciarte）",
+    "coreIntroEnd": "です。",
+    "coreStartRouteCta": "ガイドルートを始める：「CPSの第一歩」（全8ステップ）",
+    "coreFourPillarsTitle": "CPSを支える4つの柱",
+    "coreFiveAttractorsTitle": "中心にある5つのアトラクター",
+    "coreViewConcept": "概念を見る →",
+    "coreFifteenThemesTitle": "El Turrero Postの15のテーマ",
+    "coreFifteenThemesHelp": "気になるテーマをクリックすると、マップ上で対応する星座が展開されます。",
+    "coreCreditPre": "本アトラスは、",
+    "coreCreditPost": "の公開アーカイブ（263本のturra）、用語集（90概念）、ライブラリ（324冊の書籍）をベースに、Javier G. RecuencoのturraからCPSコミュニティが編纂したものです。",
+    "indexEyebrow": "El Turrero Post · 9つの星座 · 4段階の深さ",
+    "indexTitle": "複雑な問題解決（CPS）アトラス",
+    "indexSubtitle": "Javier G. Recuencoの121の概念を、わかりやすい解説、実践法、263本のturraの深掘り、引用書籍まで4段階で整理しています。",
+    "indexCountBadge": "全{total}概念中 {visible}件を表示",
+    "indexQuickStartTitle": "ここから始める",
+    "indexQuickStartSub": "全8ステップの入門ルート",
+    "indexQuickProblemTitle": "今の課題は？",
+    "indexQuickProblemSub": "8つの現場シチュエーション",
+    "indexQuickPillarsTitle": "4つの柱と5つのアトラクター",
+    "indexQuickPillarsSub": "CPSの中核",
+    "indexSearchPlaceholder": "概念・別名・テーマを検索…",
+    "filterAll": "すべて",
+    "filterCore": "入門編",
+    "filterPillars": "4つの柱",
+    "filterMastered": "理解済み",
+    "filterNotes": "メモあり",
+    "filterThemes": "15テーマ",
+    "allFamiliesPill": "すべて (9)",
+    "themesSectionHelp": "El Turrero Post公式の15テーマで絞り込む",
+    "noFilterResults": "この条件に一致する概念はありません。",
+    "clearFilters": "フィルターを解除",
+    "viewOnMap": "マップで見る ↗",
+    "turraSingular": "本のturra",
+    "turraPlural": "本のturra",
+    "fourLevelsTag": "4段階 →",
+    "searchModalPlaceholder": "概念・著者・別名・テーマを検索（例：Cynefin、Personotecnia、AI、AACC）…",
+    "searchResultsFound": "{count}件見つかりました",
+    "searchRecommendedHeader": "おすすめの入門概念（全{count}概念）",
+    "searchNoMatches": "「{query}」に一致する結果はありません。",
+    "routesEyebrow": "ガイドルート",
+    "routesTitle": "CPSの世界を一歩ずつ探る",
+    "routesSubtitle": "各ルートは星座マップ上に番号付きの道筋を浮かび上がらせ、基礎から本質へと順に案内します。",
+    "routeActiveBadge": "進行中",
+    "routeExitFree": "ルートを終了して自由に探索する",
+    "problemsEyebrow": "実践からの入り口 · クイック診断",
+    "problemsTitle": "今日、あなたの机の上にはどんな課題がありますか？",
+    "problemsSubtitle": "今の状況に最も近いケースを選ぶと、霧を晴らしてくれるCPSのツールへ直接ジャンプできます。",
+    "progressEyebrow": "あなたの学習マップ",
+    "progressTitle": "{total}概念中 {count}概念を理解済み",
+    "progressNotesSavedSingular": "個人メモ 1件を保存済み",
+    "progressNotesSavedPlural": "個人メモ {count}件を保存済み",
+    "progressSubtitle": "学習の進捗とメモはこのブラウザに保存され、Markdown形式（Obsidian／Notion対応）でエクスポートできます。",
+    "progressGlobalLabel": "CPS全体での習得状況",
+    "progressExportMd": "メモを出力 (.md)",
+    "progressReset": "進捗をリセット",
+    "tourBadge": "クイックガイド · {current} / {total}",
+    "tourSkip": "スキップ",
+    "tourBack": "戻る",
+    "tourNext": "次へ",
+    "tourFinish": "探索を始めよう！",
+    "mdTitle": "CPS天文台 · 自分のメモと進捗",
+    "mdDateLabel": "エクスポート日時",
+    "mdMasteredLabel": "理解済みの概念",
+    "mdNotesLabel": "個人メモ",
+    "mdArchiveLabel": "元アーカイブ",
+    "mdMyNoteLabel": "自分のメモ",
+    "mdSourcesLabel": "出典",
+    "mdEmptyMessage": "まだ理解済みの概念もメモもありません。「理解済み」を付けるかメモを記入してから、もう一度エクスポートしてください。"
+  },
+  "routes": {
+    "empieza-aqui": {
+      "title": "ここから始める：CPSの中核",
+      "subtitle": "複雑な問題解決者がどう考え、どう動くのかを一歩ずつ掴む最初のルートです。",
+      "duration": "8ステップ · 約6分",
+      "stepNotes": {
+        "cps": "すべての出発点：複雑な問題とは何か（そして何ではないか）。",
+        "cienciarte": "なぜCPSは科学的な厳密さと芸術的な直感を兼ね備えるのか。",
+        "cynefin": "必須の羅針盤：明快・煩雑・複雑を見分ける。",
+        "sensemaking": "いきなり実行に飛びつく前に、霧の中で意味を編み上げる。",
+        "diagnostico": "騒がしい症状と本当の原因を切り分ける。",
+        "estrategia": "診断、基本方針、一貫した行動——ハッタリ抜きの戦略。",
+        "factor-x": "人間はExcelのセルではない。行動が勝負を決める。",
+        "orquestacion-cognitiva": "最大の奥義：異なるタイプの異才たちを共に輝かせる。"
+      }
+    },
+    "estrategia-sin-humo": {
+      "title": "ハッタリ抜きの戦略",
+      "subtitle": "賞味期限切れの価値提案、社会の底流、そして正面衝突を避ける一手を読むルートです。",
+      "duration": "7ステップ · 約5分",
+      "stepNotes": {
+        "estrategia": "問題を解決しない戦略もどきは、単なる悪手です。",
+        "atractores": "あらゆる業界を突き動かす5つの巨大な底流。",
+        "hotel-de-hilbert": "どんな価値提案も、いつかは閉ざされる扉です。",
+        "business-acumen": "美しいPowerPointの先にある、本物のビジネス嗅覚。",
+        "moat": "競合に真似されにくい防御の堀を築く。",
+        "metajuego": "今どの戦術が支配的かを読み、明日それを打ち破る一手を先読みする。",
+        "sidestepping": "正面からの殴り合いをかわし、自分だけの盤面を開く。"
+      }
+    },
+    "equipos-y-poder": {
+      "title": "チーム・権力・インセンティブ",
+      "subtitle": "スター揃いのチームがなぜ失敗するのか、そして本当に機能するインセンティブの設計法を探ります。",
+      "duration": "7ステップ · 約5分",
+      "stepNotes": {
+        "equipo-apolo": "最も優秀な人間ばかりを集めると、なぜ惨事になりやすいのか。",
+        "emulsificador-de-equipo": "相容れない世界同士を翻訳し、つなぎ合わせる要の人材。",
+        "arquitectura-de-incentivos": "組織を本当に動かしている、目に見えない床の傾き。",
+        "incentivo-perverso": "設計を誤った報酬が、狙いと真逆の結果を引き起こす仕組み。",
+        "skin-in-the-game": "自分の提案に、自らの身銭と責任を賭ける。",
+        "recoger-cable": "新しいデータを見て、エゴに邪魔されず潔く考えを改める。",
+        "asertividad": "耳の痛い真実を、毅然かつ敬意をもって伝える。"
+      }
+    },
+    "personotecnia-ia": {
+      "title": "冷静に見るPersonotecniaとAI",
+      "subtitle": "押しつけがましい偽パーソナライズから、人間とAIのケンタウロス型、そして人間的な贅沢へ。",
+      "duration": "7ステップ · 約5分",
+      "stepNotes": {
+        "personotecnia": "規模が大きくなっても、一人ひとりの顧客を唯一無二の存在として扱う。",
+        "procesos-de-alta-variabilidad": "硬直したマニュアルが通用せず、文脈がすべてを決める領域。",
+        "capitalismo-de-vigilancia": "Cookieで追いかけ回すやり方が、なぜ人々の注意力を壊したのか。",
+        "autosegmentacion": "関心のある顧客が自ら名乗り出たくなる仕組みをつくる。",
+        "ecosistemas-tecnologicos": "技術の波を一過性の流行ではなく、システムとして捉える。",
+        "centauro": "人間とAIが共生しながら力を発揮する協働モデル。",
+        "lujo-humano": "AIが何でも安価にするほど、人間らしさこそが最も希少な贅沢になる。"
+      }
+    },
+    "leer-el-mundo": {
+      "title": "世界・部族・ハッタリを読み解く",
+      "subtitle": "現実離れした理想主義、組織の茶番劇、集団バイアスを見抜くための批評ツール集です。",
+      "duration": "7ステップ · 約5分",
+      "stepNotes": {
+        "vaca-esferica": "紙の上では完璧でも、現場に出た瞬間に破綻するモデル。",
+        "cultura-luterana": "測れないものまで何でも数値化しようとする強迫観念。",
+        "falacia-de-mcnamara": "KPIに載せにくいという理由だけで、決定的な要素を無視する過ち。",
+        "pompismo": "現実の壁に正面衝突する、美しすぎる綺麗事。",
+        "pantomima": "全員が嘘だと知りつつ、都合がいいから演じ続ける茶番劇。",
+        "espiral-del-silencio": "多数派から浮くのを恐れて口をつぐんでしまう心理。",
+        "zeitgeist": "その時代にどんな思想が栄えるかを決める、目に見えない空気。"
+      }
+    }
+  },
+  "pillars": {
+    "ciencias-de-la-complejidad": {
+      "name": "複雑性の科学",
+      "desc": "非線形システム、創発、Cynefin、センスメイキング。"
+    },
+    "business-acumen": {
+      "name": "ビジネス感覚（Business Acumen）",
+      "desc": "本物の戦略、価値提案、インセンティブ、そしてキャッシュフロー。"
+    },
+    "factor-x": {
+      "name": "Factor X",
+      "desc": "心理学、バイアス、チーム、Personotecnia、人間のリアルな行動。"
+    },
+    "ecosistemas-tecnologicos": {
+      "name": "技術エコシステム",
+      "desc": "メガトレンド（AI・データ・プラットフォーム）と盤面の書き換わり方。"
+    }
+  },
+  "attractors": [
+    {
+      "name": "テクノロジーのメガトレンド",
+      "detail": "AI、自動化、新インフラが予測可能な仕事を安価にし、判断力の価値を押し上げます。"
+    },
+    {
+      "name": "ビジネスモデルの圧縮（Crunching Business Models）",
+      "detail": "従来の価値提案が加速度的に陳腐化し、賞味期限を迎えます（ヒルベルトのホテル）。"
+    },
+    {
+      "name": "ハイパーパーソナライズとPersonotecnia",
+      "detail": "画一モデルの終焉。大量のノイズに対抗する、文脈に即した本物の関連性。"
+    },
+    {
+      "name": "信頼と制度の危機",
+      "detail": "組織のパントマイムへの疲弊、仲介者の権威低下、そして本物の信頼トークンの台頭。"
+    },
+    {
+      "name": "人材と教育の再編",
+      "detail": "非線形な環境における認知オーケストレーション、ニューロダイバージェンス、生涯学習。"
+    }
+  ],
+  "themes": {
+    "Método CPS": "CPS手法",
+    "Sistemas complejos y sensemaking": "複雑系とセンスメイキング",
+    "Estrategia": "戦略",
+    "Equipos y liderazgo": "チームとリーダーシップ",
+    "Organizaciones e incentivos": "組織とインセンティブ",
+    "Finanzas e inversión": "金融と投資",
+    "Marketing y publicidad": "マーケティングと広告",
+    "Personotecnia": "Personotecnia",
+    "Psicología y decisiones": "心理学と意思決定",
+    "Desarrollo personal": "自己成長",
+    "Sociedad y política": "社会と政治",
+    "IA y tecnología": "AIとテクノロジー",
+    "Educación y altas capacidades": "教育とギフテッド",
+    "Cómic, cine y videojuegos": "漫画・映画・ゲーム",
+    "Reflexiones personales": "個人的な思索"
+  },
+  "problems": {
+    "equipo-estrellas": {
+      "question": "「超優秀なメンバーを揃えたのに、チームが機能せず衝突ばかり起きる」",
+      "diagnosis": "華麗な経歴を並べても足し算にはなりません。エゴ、思惑、言語がぶつかり合います。必要なのは認知オーケストレーションと翻訳役です。"
+    },
+    "estrategia-humo": {
+      "question": "「PowerPoint上の戦略は完璧に見えるのに、現場の問題が何ひとつ解決しない」",
+      "diagnosis": "願望リストを戦略と取り違えています。シビアな診断に立ち返り、価値提案が期限切れでないか確かめ、捨てる選択をしましょう。"
+    },
+    "ia-pilotos": {
+      "question": "「AIのPoCを山ほど回しているのに、ビジネスがまったく変わらない」",
+      "diagnosis": "派手なデモと実運用の間のキャズムに嵌まっています。反復作業と、人間が担う高変動プロセスを切り分けて考える必要があります。"
+    },
+    "incentivos-kpis": {
+      "question": "「KPIやボーナスを設定したのに、社員が期待と真逆の行動をとる」",
+      "diagnosis": "ビー玉は必ず床の本当の傾きに沿って転がります。逆インセンティブや見せかけの指標、そして誰が身銭を切っているかを点検しましょう。"
+    },
+    "nadie-dice-verdad": {
+      "question": "「まずい状況だと全員わかっているのに、会議で誰も口に出さない」",
+      "diagnosis": "組織のパントマイム、孤立への恐れ、「今さら何になる」という諦めが重なっています。まずは真実を語るコストを下げることからです。"
+    },
+    "incertidumbre-paralisis": {
+      "question": "「信頼できるデータがなく、確証がないまま決断するのが怖くて動けない」",
+      "diagnosis": "複雑領域へようこそ。ここで完璧な計画書を求めると身動きが取れなくなります。センスメイキングと小さな実験を賢く回しましょう。"
+    },
+    "marketing-ignorado": {
+      "question": "「マーケティングとデータへの投資を増やしているのに、顧客にスルーされる」",
+      "diagnosis": "無差別な追跡広告に人々は免疫をつけています。見知らぬ人を追い回すのをやめ、顧客が自ら手を挙げたくなる本物の関連性を築きましょう。"
+    },
+    "talento-no-encaja": {
+      "question": "「自分の考え方が周囲と合わない（あるいは異才を率いているが）、組織に息苦しさを感じる」",
+      "diagnosis": "統計的な平均値向けに作られた仕組みは、突出した才能をすり減らします。境界的な場（リミナリティ）、メンター、本物の共存環境を探しましょう。"
+    }
+  },
+  "tourDesktop": [
+    {
+      "id": "welcome",
+      "title": "CPS天文台へようこそ",
+      "description": "ここには複雑な問題解決（CPS）の121の概念が、9つの星座と4段階の深さ（基礎から263本の元のturraの精読まで）で整理されています。星座をクリックするとブランチが開き、中央の太陽をクリックすると4つの柱と5つのアトラクターを確認できます。",
+      "tip": "背景をドラッグすると、星空の中を自由に移動できます。"
+    },
+    {
+      "id": "view-switcher",
+      "target": "view-switcher",
+      "title": "マップと一覧を切り替える",
+      "description": "ビジュアルな星座マップ表示と、El Turrero Postの15テーマで絞り込めるカード型の一覧表示をいつでも切り替えられます。",
+      "tip": "スマホで見るときやテーマ別に素早く探したいときは、一覧表示が便利です。"
+    },
+    {
+      "id": "search",
+      "target": "search",
+      "title": "クイック検索（⌘K）",
+      "description": "概念名、別名、著者、キーワード（例：「Cynefin」「Personotecnia」「AACC」）を入力すると、マップがその星へ一気にジャンプします。",
+      "tip": "PCではいつでも ⌘K または Ctrl+K で検索窓を開けます。"
+    },
+    {
+      "id": "guides",
+      "target": "guides",
+      "title": "「今の課題は？」とガイドルート",
+      "description": "どこから見ればいいか迷ったら、「今の課題は？」で現場の悩み（チーム、AI、戦略、インセンティブ）を選ぶと最適なツールへ案内します。「ルート」では番号付きの道筋を順にたどれます。",
+      "tip": "各概念には「基礎 → 実践 → 深掘り → 出典」の4つのタブがあります。"
+    },
+    {
+      "id": "progress",
+      "target": "progress",
+      "title": "学習の進捗と個人メモ",
+      "description": "各ページで「理解済み」をチェックしたり、自分のメモを書き込んだりできます。ここでは星座ごとの進捗を確認でき、ObsidianやNotion向けにMarkdown形式で一括出力も可能です。",
+      "tip": "データはすべてお使いのブラウザに自動保存されます。アカウント登録は不要です。"
+    },
+    {
+      "id": "controls",
+      "target": "controls",
+      "title": "拡大・縮小・全体表示",
+      "description": "これらのボタンから拡大（+）、縮小（−）、表示の中央リセット、そして121個の星すべてをワンクリックで一斉展開できます。",
+      "tip": "マウスホイールでのズームや、スマホ・タブレットでのピンチ操作にも対応しています。"
+    }
+  ],
+  "tourMobile": [
+    {
+      "id": "m-welcome",
+      "title": "CPS天文台へようこそ",
+      "description": "Javier G. Recuencoによる複雑な問題解決（CPS）の121の概念を9つの星座にまとめました。カードをタップすると、基礎・実践・深掘り（263本のturra）・出典の4段階を開けます。",
+      "tip": "まずは「ここから始める」ガイドルートか、星座ごとの絞り込みがおすすめです。"
+    },
+    {
+      "id": "m-nav",
+      "title": "画面下のクイックナビ",
+      "description": "下部バーから、一覧、インタラクティブな星座マップ、5つのガイドルート、そして現場の悩みから探せる「今の課題は？」へワンタップで移動できます。",
+      "tip": "マップ表示では1本指ドラッグで移動、2本指ピンチで拡大・縮小できます。"
+    },
+    {
+      "id": "m-search-notes",
+      "title": "検索・進捗・メモ",
+      "description": "画面上の虫眼鏡から用語を即検索でき、隣に進捗カウンターが表示されます。各概念ページ内で「理解済み」のチェック、メモ保存、直リンクのコピーができます。",
+      "tip": "上の ? アイコンをタップすれば、いつでもこのガイドを見返せます。"
+    }
+  ],
+  "families": {
+    "oficio": {
+      "name": "CPSという職人技",
+      "shortName": "CPSの技",
+      "subtitle": "問題解決者の思考法と仕事の流儀",
+      "description": "複雑な問題解決の方法論と職人技の核心です。硬直した公式でも根拠のない勘でもなく、科学芸術、誠実な診断、そして才能のオーケストレーションを扱います。"
+    },
+    "sistemas": {
+      "name": "システムとセンスメイキング",
+      "shortName": "システム",
+      "subtitle": "生きた現実を損なわず読み解く",
+      "description": "生きているシステムがなぜエンジンのようには修理できないのかを理解するための複雑性の科学の枠組みです。Cynefin、創発、オートポイエーシス、行動前の意味づけを学びます。"
+    },
+    "incertidumbre": {
+      "name": "不確実性と文脈",
+      "shortName": "不確実性",
+      "subtitle": "見識をもって霧の中を進む",
+      "description": "ルールが走りながら変わり、文脈がすべてを決める領域です。高変動プロセス、ホルミシス、黒い象、そして確証がないからこそ生まれる豊かな不快感を扱います。"
+    },
+    "estrategia": {
+      "name": "戦略とメタゲーム",
+      "shortName": "戦略",
+      "subtitle": "問題を解き、次の一手を先読みする",
+      "description": "問題を解決しないものは戦略ではありません。期限切れになる価値提案、5つの底流アトラクター、サイドステッピング、競合より先にメタゲームを読む力を磨きます。"
+    },
+    "empresas": {
+      "name": "企業・インセンティブ・資本",
+      "shortName": "企業",
+      "subtitle": "カネ・権力・組織の落とし穴",
+      "description": "借金、ボーナス、コンサルティング会社、そしてエゴが絡み合うとき、組織は実際どう動くのか。インセンティブ設計、身銭を切る責任、蛇の卵を読み解きます。"
+    },
+    "factorx": {
+      "name": "Factor X・チーム・Personotecnia",
+      "shortName": "Factor X",
+      "subtitle": "人間の行動とスケールする関連性",
+      "description": "人間はExcelのセルではありません。機能不全に陥るスター軍団を避ける方法から、アルゴリズムのスパムに陥らずに大規模でも顧客一人ひとりを特別扱いする技術までを扱います。"
+    },
+    "mente": {
+      "name": "心理・バイアス・ギフテッド",
+      "shortName": "心理・AACC",
+      "subtitle": "バイアス・ニューロダイバージェンス・学び",
+      "description": "人は耳の痛い真実をどう処理するのか、なぜ正論だけでは誰も変わらないのか、そしてギフテッド（AACC）、ニューロダイバージェンス、教育が果たす決定的な役割を探ります。"
+    },
+    "sociedad": {
+      "name": "社会・物語・部族",
+      "shortName": "社会",
+      "subtitle": "文化・ハッタリ・時代精神の脈動",
+      "description": "集団ダイナミクスに対する容赦のない診断です。現実離れした理想主義、全員で演じるパントマイム、思考停止の部族、そして時代精神（Zeitgeist）のうねりを読み解きます。"
+    },
+    "tecnologia": {
+      "name": "AI・技術・文化",
+      "shortName": "AIと文化",
+      "subtitle": "メガトレンド・AI・遊びの比喩",
+      "description": "実践的なCPSの中でAIはどこに位置づくのか、なぜ人間らしさが希少な贅沢になるのか、そしてゲームや漫画、フィクションが思考の実験室としてどう機能するかを探ります。"
+    }
+  }
+}

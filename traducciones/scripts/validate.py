@@ -252,6 +252,10 @@ def validate_node(
                 # El chino simplificado suele medir entre 0,22x y 0,70x respecto al español
                 # (títulos muy compactos pueden bajar a ~0,16x y frases con términos en inglés subir a ~1,10x).
                 err_low, warn_low, warn_high, err_high = 0.10, 0.15, 1.15, 1.60
+            elif lang == "ja":
+                # El japonés suele medir entre 0,32x y 0,90x respecto al español
+                # (títulos compactos en kanji pueden bajar a ~0,18x y frases con katakana/inglés subir a ~1,25x).
+                err_low, warn_low, warn_high, err_high = 0.12, 0.18, 1.30, 1.80
             elif lang in CJK_LANGS:
                 err_low, warn_low, warn_high, err_high = 0.12, 0.20, 1.8, 2.5
             else:
