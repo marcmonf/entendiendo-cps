@@ -225,7 +225,8 @@ def validate_node(
             errors.append(f"[{path}] Contiene puntuación española ('¿' o '¡'): {tr[:80]!r}")
 
         # Texto idéntico sin traducir en cadenas largas (>= 25 chars)
-        if lang != "es" and len(es.strip()) >= 25 and tr.strip() == es.strip():
+        # Los términos de conceptos (key_name == "term") se validan contra el glosario cerrado en validate_glossary
+        if lang != "es" and len(es.strip()) >= 25 and tr.strip() == es.strip() and key_name != "term":
             errors.append(f"[{path}] Texto idéntico al español (sin traducir): {tr[:80]!r}")
 
         # Ratio de longitud razonable (para textos >= 30 chars)
